@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.pod.name}}{{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: deployment
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+       app: deployment
+    spec:
+      containers:
+        - name: fbuilder
+          image: {{ .Values.image.repository.fbuilder}}
+          env:
+            - name: EI_NAME
+              value: {{.Values.pod.name}}{{ .Release.Name }}
+            - name: APP_NAME
+              value: {{.Values.pod.name}}{{ .Release.Name }}-app
+            - name: MOTEBUS_GATEWAY
+              value: 127.0.0.1
+            - name: DC
+              value: dc
+          ports:
+           - name: fbuilder-port
+             containerPort: 8088
+          imagePullPolicy: {{ .Values.image.pullPolicy}}
+
+        # - name: flowbot
+        #   image: {{ .Values.image.repository.flowbot}}
+        #   env:
+        #     - name: MOTEBUS_GATEWAY
+        #       value: 127.0.0.1
+        #     - name: DC
+        #       value: dc
+        #   ports:
+        #    - name: flowbot-port
+        #      containerPort: 1880
+        #   volumeMounts:
+        #    - name: flowbot-vol
+        #      mountPath: /var/motebus/flow
+        #   imagePullPolicy: {{ .Values.image.pullPolicy}}    
+
+        # - name: page
+        #   image: {{ .Values.image.repository.page}}
+        #   ports:
+        #     - name: page-port 
+        #       containerPort: 8080
+        #   imagePullPolicy: {{ .Values.image.pullPolicy}}
+
+
+        - name: motebus
+          image: {{ .Values.image.repository.motebus}}
+          env:
+            - name: MBSTACK_BUSMODE
+              value: "0"
+            - name: MBSTACK_BUSNAME
+              value: {{ .Release.Name }}-pod
+            - name: MBSTACK_UPSTREAM
+              value: {{.Values.mbstack.upstream}}
+            - name: MBSTACK_ALIASES
+              value: {{.Values.mbstack.aliases}}
+          # volumeMounts:
+          #  - name: motebus-vol
+          #    mountPath: /var/motebus
+          imagePullPolicy: {{ .Values.image.pullPolicy}}
+
+      # volumes:
+      #   - name: motebus-vol
+      #     hostPath:
+      #       path: {{.Values.host.path.motebus}}{{.Release.Name}}
+      #       type: DirectoryOrCreate
+      #   - name: flowbot-vol
+      #     hostPath: 
+      #       path: {{.Values.host.path.flowbot}}{{.Release.Name}}
+      #       type: DirectoryOrCreate
+            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: deployment
+  ports:
+    # - name: 1880-tcp
+    #   protocol: {{ .Values.service.protocol }}
+    #   port: 1880
+    #   targetPort: flowbot-port
+    - name: 8088-tcp
+      protocol: {{ .Values.service.protocol }}
+      port: 8088
+      targetPort: fbuilder-port
+    # - name: 8080-tcp
+    #   protocol: {{ .Values.service.protocol }}
+    #   port: 8080
+    #   targetPort: page-port
+
