@@ -3,7 +3,7 @@ entries:
   mpod:
   - apiVersion: v1
     appVersion: 1.16.0
-    created: "2020-03-31T15:45:23.197659789+08:00"
+    created: "2020-03-31T15:47:33.112733244+08:00"
     description: A Helm chart for Kubernetes
     digest: a8f99b591e7afc792f9cadb2dc6a732163a8a00cc086ffdcc7f59d4bf1012504
     keywords:
@@ -12,4 +12,4 @@ entries:
     urls:
     - mpod-1.0.0.tgz
     version: 1.0.0
-generated: "2020-03-31T15:45:23.196306869+08:00"
+generated: "2020-03-31T15:47:33.111259256+08:00"
