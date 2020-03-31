@@ -1,2 +1,3 @@
-# charts
-## mpod-1.0.0
+###package your chart
+
+`helm package .`
