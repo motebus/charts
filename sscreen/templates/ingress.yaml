@@ -16,4 +16,4 @@ spec:
           - path: /sscreen/(.*)
             backend:
               serviceName: {{ .Release.Name }}
-              servicePort: 80-tcp
+              servicePort: 8080-tcp
