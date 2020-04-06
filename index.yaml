@@ -3,7 +3,7 @@ entries:
   mpod:
   - apiVersion: v1
     appVersion: 1.16.0
-    created: "2020-04-06T15:52:20.823949678+08:00"
+    created: "2020-04-06T20:44:12.476570364+08:00"
     description: A Helm chart for Kubernetes
     digest: d2a8259aa23eb74ee816917d885e39cd6f76270eea68e4bb1c6fdf5f57f74be7
     keywords:
@@ -15,13 +15,13 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.1
-    created: "2020-04-06T15:52:20.825053565+08:00"
+    created: "2020-04-06T20:44:12.476987755+08:00"
     description: smartscreen
-    digest: 90745e707496a9b827b15902a835f30fad2c3a911cf58db8562981153236b87f
+    digest: f1a56f896f038fb739f8152b26d5ddc70869f749af09d24c38b18c258521e90a
     keywords:
     - sscreen
     name: sscreen
     urls:
-    - sscreen-1.0.0.tgz
-    version: 1.0.0
-generated: "2020-04-06T15:52:20.822682234+08:00"
+    - sscreen-1.0.1.tgz
+    version: 1.0.1
+generated: "2020-04-06T20:44:12.47520144+08:00"
