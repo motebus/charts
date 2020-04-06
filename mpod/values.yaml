@@ -10,20 +10,22 @@ host:
 pod:
   name: mpod-
 
+container:
+    einame:
+
 mbstack:
   upstream: uc.ypcloud.com,boss.ypcloud.com
-  aliases: uc=oss/uc;ioc=boss/ioc
 
 replicaCount: 1
 
 image:
   repository:
-    flowbot: motebus/flowbot:latest
     motebus: motebus/motebus:v2.4.8
     fbuilder: motebus/fbuilder:latest
-    page: motebus/page-hellow:latest
   pullPolicy: Always
 
 service:
   type: ClusterIP
   protocol: TCP
+
+nodeSelector: {}

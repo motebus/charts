@@ -12,14 +12,18 @@ spec:
       labels:
        app: deployment
     spec:
+{{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+{{- end }}
       containers:
         - name: fbuilder
           image: {{ .Values.image.repository.fbuilder}}
           env:
             - name: EI_NAME
-              value: {{.Values.pod.name}}{{ .Release.Name }}
+              value: {{ .Values.container.einame }}
             - name: APP_NAME
-              value: {{.Values.pod.name}}{{ .Release.Name }}-app
+              value: {{ .Values.container.einame }}-app
             - name: MOTEBUS_GATEWAY
               value: 127.0.0.1
             - name: DC
