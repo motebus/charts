@@ -62,7 +62,7 @@ spec:
             - name: MBSTACK_BUSMODE
               value: "0"
             - name: MBSTACK_BUSNAME
-              value: {{ .Release.Name }}-pod
+              value: mpod
             - name: MBSTACK_UPSTREAM
               value: {{.Values.mbstack.upstream}}
             - name: MBSTACK_ALIASES

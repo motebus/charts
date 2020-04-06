@@ -1,0 +1,29 @@
+ingress:
+  host: myapps.ypcloud.com
+  path: /
+
+host:
+  path:
+    motebus: /var/motebus/
+    flowbot: /var/motebus/flow/
+
+pod:
+  name: mpod-
+
+mbstack:
+  upstream: uc.ypcloud.com,boss.ypcloud.com
+  aliases: uc=oss/uc;ioc=boss/ioc
+
+replicaCount: 1
+
+image:
+  repository:
+    motebus: motebus/motebus:v2.4.8
+    sscreen: motebus/sscreen:latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  protocol: TCP
+
+nodeSelector: {}

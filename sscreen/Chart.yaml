@@ -2,23 +2,23 @@ apiVersion: v1
 #The chart API version (required)
 #The apiVersion field should be v2 for Helm charts that require at least Helm 3
 
-name: mpod
+name: sscreen
 # The name of the chart (required)
 
-version: 1.0.1
+version: 1.0.0
 # A SemVer range of compatible Kubernetes versions (optional)
 
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
 
-description: A Helm chart for Kubernetes
+description: smartscreen
 # - A single-sentence description of this project (optional)
 
 type: application
 # It is the type of chart (optional)
 
 keywords:
-  - mpod
+  - sscreen
 #   - A list of keywords about this project (optional)
 
 # home: The URL of this project's home page (optional)
@@ -44,7 +44,7 @@ keywords:
 #     url: A URL for the maintainer (optional for each maintainer)
 # icon: A URL to an SVG or PNG image to be used as an icon (optional).
 
-appVersion: 1.4.0
+appVersion: v2.0.1
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
 #  The version of the app that this contains (optional). This needn't be SemVer.
