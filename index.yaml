@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-04-08T08:28:04.913720648+08:00"
+    created: "2020-04-08T08:28:10.512514595+08:00"
     description: aibot
     digest: 43794a0b7736cb82d963f1f92e5b290b2551b506bb883b3fb30bcbd40969acab
     keywords:
@@ -15,7 +15,7 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: 1.4.0
-    created: "2020-04-08T08:28:04.913948749+08:00"
+    created: "2020-04-08T08:28:10.51280546+08:00"
     description: A Helm chart for Kubernetes
     digest: d3eb7b0a8558183bcc1ad3b152d0a7dbf428f704f9dbb36ef6af4d5a61c15a80
     keywords:
@@ -27,7 +27,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.1
-    created: "2020-04-08T08:28:04.914180388+08:00"
+    created: "2020-04-08T08:28:10.513026496+08:00"
     description: smartscreen
     digest: f1a56f896f038fb739f8152b26d5ddc70869f749af09d24c38b18c258521e90a
     keywords:
@@ -36,4 +36,4 @@ entries:
     urls:
     - sscreen-1.0.1.tgz
     version: 1.0.1
-generated: "2020-04-08T08:28:04.913172288+08:00"
+generated: "2020-04-08T08:28:10.507807515+08:00"
