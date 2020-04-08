@@ -5,12 +5,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: deployment
+      app: {{ .Release.Name }}-deployment
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-       app: deployment
+       app: {{ .Release.Name }}-deployment
     spec:
 {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -90,7 +90,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: deployment
+    app: {{ .Release.Name }}-deployment
   ports:
     # - name: 1880-tcp
     #   protocol: {{ .Values.service.protocol }}

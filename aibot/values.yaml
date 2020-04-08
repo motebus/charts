@@ -1,0 +1,24 @@
+host:
+  path:
+    motebus: /var/motebus/
+
+pod:
+  name: mpod-
+
+mbstack:
+  upstream: uc.ypcloud.com,boss.ypcloud.com
+
+
+replicaCount: 1
+
+image:
+  repository:
+    motebus: motebus/motebus:v2.4.8
+    aibot: motebus/aibot-yolo-gpu:latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  protocol: TCP
+
+nodeSelector: {}
