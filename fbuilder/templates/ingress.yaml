@@ -13,15 +13,7 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
-          # - path: {{ .Values.ingress.path }}{{ .Release.Name}}/flow/(.*)
-          #   backend:
-          #     serviceName: {{ .Release.Name }}
-          #     servicePort: 1880-tcp
           - path: /fbuilder/(.*)
             backend:
               serviceName: {{ .Release.Name }}
-              servicePort: 8088-tcp
-          # - path: {{ .Values.ingress.path }}{{ .Release.Name}}/page/(.*)
-          #   backend:
-          #     serviceName: {{ .Release.Name }}
-          #     servicePort: 8080-tcp
+              servicePort: 80-tcp

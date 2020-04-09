@@ -30,31 +30,8 @@ spec:
               value: dc
           ports:
            - name: fbuilder-port
-             containerPort: 8088
+             containerPort: 18880
           imagePullPolicy: {{ .Values.image.pullPolicy}}
-
-        # - name: flowbot
-        #   image: {{ .Values.image.repository.flowbot}}
-        #   env:
-        #     - name: MOTEBUS_GATEWAY
-        #       value: 127.0.0.1
-        #     - name: DC
-        #       value: dc
-        #   ports:
-        #    - name: flowbot-port
-        #      containerPort: 1880
-        #   volumeMounts:
-        #    - name: flowbot-vol
-        #      mountPath: /var/motebus/flow
-        #   imagePullPolicy: {{ .Values.image.pullPolicy}}    
-
-        # - name: page
-        #   image: {{ .Values.image.repository.page}}
-        #   ports:
-        #     - name: page-port 
-        #       containerPort: 8080
-        #   imagePullPolicy: {{ .Values.image.pullPolicy}}
-
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
@@ -67,20 +44,8 @@ spec:
               value: {{.Values.mbstack.upstream}}
             - name: MBSTACK_ALIASES
               value: {{.Values.mbstack.aliases}}
-          # volumeMounts:
-          #  - name: motebus-vol
-          #    mountPath: /var/motebus
           imagePullPolicy: {{ .Values.image.pullPolicy}}
 
-      # volumes:
-      #   - name: motebus-vol
-      #     hostPath:
-      #       path: {{.Values.host.path.motebus}}{{.Release.Name}}
-      #       type: DirectoryOrCreate
-      #   - name: flowbot-vol
-      #     hostPath: 
-      #       path: {{.Values.host.path.flowbot}}{{.Release.Name}}
-      #       type: DirectoryOrCreate
             
 ---
 apiVersion: v1
@@ -92,16 +57,8 @@ spec:
   selector:
     app: {{ .Release.Name }}-deployment
   ports:
-    # - name: 1880-tcp
-    #   protocol: {{ .Values.service.protocol }}
-    #   port: 1880
-    #   targetPort: flowbot-port
-    - name: 8088-tcp
+    - name: 80-tcp
       protocol: {{ .Values.service.protocol }}
-      port: 8088
+      port: 80
       targetPort: fbuilder-port
-    # - name: 8080-tcp
-    #   protocol: {{ .Values.service.protocol }}
-    #   port: 8080
-    #   targetPort: page-port
 
