@@ -16,4 +16,4 @@ spec:
           - path: /fbuilder/(.*)
             backend:
               serviceName: {{ .Release.Name }}
-              servicePort: 80-tcp
+              servicePort: 18880-tcp
