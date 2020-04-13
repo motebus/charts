@@ -57,8 +57,8 @@ spec:
   selector:
     app: {{ .Release.Name }}-deployment
   ports:
-    - name: 18880-tcp
+    - name: http
       protocol: {{ .Values.service.protocol }}
-      port: 18880
+      port: 80
       targetPort: fbuilder-port
 

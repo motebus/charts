@@ -5,12 +5,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: deployment
+      app: {{ .Release.Name }}-deployment
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-       app: deployment
+       app: {{ .Release.Name }}-deployment
     spec:
 {{- if .Values.nodeSelector }}
       nodeSelector:
@@ -50,10 +50,10 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: deployment
+    app: {{ .Release.Name }}-deployment
   ports:
-    - name: 8080-tcp
+    - name: http
       protocol: {{ .Values.service.protocol }}
-      port: 8080
+      port: 80
       targetPort: sscreen-port
 
