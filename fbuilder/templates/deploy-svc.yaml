@@ -28,6 +28,8 @@ spec:
               value: 127.0.0.1
             - name: DC
               value: dc
+            - name: USER_MODE
+              value: "single"
           ports:
            - name: fbuilder-port
              containerPort: 18880
@@ -42,8 +44,6 @@ spec:
               value: mpod
             - name: MBSTACK_UPSTREAM
               value: {{.Values.mbstack.upstream}}
-            - name: MBSTACK_ALIASES
-              value: {{.Values.mbstack.aliases}}
           imagePullPolicy: {{ .Values.image.pullPolicy}}
 
             
