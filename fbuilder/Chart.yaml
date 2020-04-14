@@ -11,7 +11,7 @@ version: v1.1.0
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
 
-description: A Helm chart for Kubernetes
+description: fbuilder
 # - A single-sentence description of this project (optional)
 
 type: application
