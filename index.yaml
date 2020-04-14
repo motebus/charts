@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-04-14T11:56:02.957318255+08:00"
+    created: "2020-04-14T11:58:09.267143717+08:00"
     description: aibot
     digest: 43794a0b7736cb82d963f1f92e5b290b2551b506bb883b3fb30bcbd40969acab
     keywords:
@@ -15,18 +15,18 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-04-14T11:56:02.957744826+08:00"
+    created: "2020-04-14T11:58:09.267756736+08:00"
     description: A Helm chart for Kubernetes
-    digest: fae02bbe061d25bacf1647a427a9c021ce64752661c328bd6738cbdf5e87ccd4
+    digest: 75dbf0716129ef92304688aa6f71e83357125a7cc6c2941002552ab8065a6bbb
     keywords:
     - fbuilder
     name: fbuilder
     urls:
-    - fbuilder-v1.0.5.tgz
-    version: v1.0.5
+    - fbuilder-v1.1.0.tgz
+    version: v1.1.0
   gitlab-ce:
   - appVersion: 9.4.1
-    created: "2020-04-14T11:56:02.960210249+08:00"
+    created: "2020-04-14T11:58:09.270321875+08:00"
     deprecated: true
     description: GitLab Community Edition
     digest: bff94e42503671f96c6208039506b1930700634ad5457b9829449e8f0d3d3b6a
@@ -49,7 +49,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.4
-    created: "2020-04-14T11:56:02.960640202+08:00"
+    created: "2020-04-14T11:58:09.270704334+08:00"
     description: smartscreen
     digest: ee6dad4426d27c3894609524ae5cc26ad2028abbe68b60e71382b3fdf76903d7
     keywords:
@@ -58,4 +58,4 @@ entries:
     urls:
     - sscreen-v1.0.2.tgz
     version: v1.0.2
-generated: "2020-04-14T11:56:02.956314067+08:00"
+generated: "2020-04-14T11:58:09.266736401+08:00"
