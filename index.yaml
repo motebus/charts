@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-04-14T12:33:23.824928407+08:00"
+    created: "2020-04-14T13:04:56.644090816+08:00"
     description: aibot
     digest: 43794a0b7736cb82d963f1f92e5b290b2551b506bb883b3fb30bcbd40969acab
     keywords:
@@ -15,7 +15,7 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-04-14T12:33:23.825412824+08:00"
+    created: "2020-04-14T13:04:56.64428505+08:00"
     description: A Helm chart for Kubernetes
     digest: 75dbf0716129ef92304688aa6f71e83357125a7cc6c2941002552ab8065a6bbb
     keywords:
@@ -24,32 +24,10 @@ entries:
     urls:
     - fbuilder-v1.1.0.tgz
     version: v1.1.0
-  gitlab-ce:
-  - appVersion: 9.4.1
-    created: "2020-04-14T12:33:23.827788077+08:00"
-    deprecated: true
-    description: GitLab Community Edition
-    digest: c1a054db72cf5f2d821e8f397b4201f953dd989df43f8d13cd14078884e16303
-    home: https://about.gitlab.com
-    icon: https://gitlab.com/uploads/group/avatar/6543/gitlab-logo-square.png
-    keywords:
-    - git
-    - ci
-    - deploy
-    - issue tracker
-    - code review
-    - wiki
-    name: gitlab-ce
-    sources:
-    - https://hub.docker.com/r/gitlab/gitlab-ce/
-    - https://docs.gitlab.com/omnibus/
-    urls:
-    - gitlab-ce-0.2.4.tgz
-    version: 0.2.4
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.4
-    created: "2020-04-14T12:33:23.828200246+08:00"
+    created: "2020-04-14T13:04:56.64442905+08:00"
     description: smartscreen
     digest: ee6dad4426d27c3894609524ae5cc26ad2028abbe68b60e71382b3fdf76903d7
     keywords:
@@ -58,4 +36,4 @@ entries:
     urls:
     - sscreen-v1.0.2.tgz
     version: v1.0.2
-generated: "2020-04-14T12:33:23.824248528+08:00"
+generated: "2020-04-14T13:04:56.643718225+08:00"
