@@ -1,3 +1,6 @@
+sslRedirect:
+    enabled: false
+
 ingress:
   host: myapps.ypcloud.com
   path: /

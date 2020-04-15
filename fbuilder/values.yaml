@@ -1,3 +1,6 @@
+sslRedirect:
+    enabled: false
+
 ingress:
   host: myapps.ypcloud.com
   path: /
@@ -15,6 +18,7 @@ container:
 
 mbstack:
   upstream: uc.ypcloud.com,boss.ypcloud.com
+
 
 replicaCount: 1
 
