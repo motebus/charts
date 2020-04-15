@@ -1,5 +1,4 @@
-sslRedirect:
-    enabled: false
+enabledSslRedirect: false
 
 ingress:
   host: myapps.ypcloud.com

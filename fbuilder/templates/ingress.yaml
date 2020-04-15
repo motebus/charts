@@ -7,6 +7,11 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.sslRedirect.enabled}}
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+{{- if .Values.enabledSslRedirect }}
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+{{- else }}
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+{{- end }}
 spec:
   rules:
     #對外訪問的域名
