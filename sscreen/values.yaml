@@ -10,9 +10,6 @@ host:
     motebus: /var/motebus/
     flowbot: /var/motebus/flow/
 
-pod:
-  name: mpod-
-
 mbstack:
   upstream: uc.ypcloud.com,boss.ypcloud.com
   aliases: uc=oss/uc;ioc=boss/ioc

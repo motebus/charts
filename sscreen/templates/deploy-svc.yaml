@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.pod.name}}{{ .Release.Name }}
+  name: {{ .Release.Name }}
 spec:
   selector:
     matchLabels:
