@@ -23,7 +23,7 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
-          - path: /fbuilder/(.*)
+          - path: {{.Values.ingress.path}}{{ .Release.Name }}/(.*)
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.service.port}}
