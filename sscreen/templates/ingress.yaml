@@ -24,4 +24,4 @@ spec:
           - path: /sscreen/(.*)
             backend:
               serviceName: {{ .Release.Name }}
-              servicePort: http
+              servicePort: {{ .Values.service.port}}
