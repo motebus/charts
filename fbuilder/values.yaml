@@ -1,3 +1,4 @@
+enabledHttpsBackendProtocol: false
 enabledSslRedirect: false
 
 ingress:
