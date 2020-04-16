@@ -17,7 +17,7 @@ spec:
   tls:
     - hosts:
         - {{.Values.ingress.host}}
-      secretName: 
+      secretName: {{ .Release.Name}}-tls-secret
   rules:
     #對外訪問的域名
     - host: {{.Values.ingress.host}}
