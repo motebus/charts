@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-04-16T13:34:06.850851343+08:00"
+    created: "2020-04-17T00:15:31.14860481+08:00"
     description: aibot
     digest: 43794a0b7736cb82d963f1f92e5b290b2551b506bb883b3fb30bcbd40969acab
     keywords:
@@ -15,25 +15,25 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-04-16T13:34:06.851070772+08:00"
+    created: "2020-04-17T00:15:31.151100853+08:00"
     description: fbuilder
-    digest: d0f334679cca910c5f1208c587d4c7ca952a869ab769c52e05a9ecda29587cf5
+    digest: 70c984ddedabd0c0a02248d694b595258a3b547111fb3310b76118db5d9afde3
     keywords:
     - fbuilder
     name: fbuilder
     urls:
-    - fbuilder-v1.1.10.tgz
-    version: v1.1.10
+    - fbuilder-v1.2.0.tgz
+    version: v1.2.0
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.4
-    created: "2020-04-16T13:34:06.852237283+08:00"
+    created: "2020-04-17T00:15:31.151540894+08:00"
     description: smartscreen
-    digest: 1ac5a2dda8ed2ceb2a4dabe441e050e8816c138afc3b7020e106dcc01e8a53bc
+    digest: f58a247555e0aa8a58e6e4d2f096196b23b3cb6e14eb5a565605356f39d14ab9
     keywords:
     - sscreen
     name: sscreen
     urls:
-    - sscreen-v1.0.8.tgz
-    version: v1.0.8
-generated: "2020-04-16T13:34:06.850191496+08:00"
+    - sscreen-v1.1.0.tgz
+    version: v1.1.0
+generated: "2020-04-17T00:15:31.148178654+08:00"
