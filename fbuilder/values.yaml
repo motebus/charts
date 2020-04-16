@@ -12,6 +12,12 @@ host:
 
 container:
     einame:
+    motebusGateway: 127.0.0.1
+    dc: dc
+    userMode: "single"
+    port: 18880
+    storageMode: "cloud"
+
 
 mbstack:
   upstream: uc.ypcloud.com,boss.ypcloud.com

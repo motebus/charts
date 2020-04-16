@@ -25,14 +25,16 @@ spec:
             - name: APP_NAME
               value: {{ .Values.container.einame }}-app
             - name: MOTEBUS_GATEWAY
-              value: 127.0.0.1
+              value: {{ .Values.container.motebusGateway}}
             - name: DC
-              value: dc
+              value: {{ .Values.container.dc}}
             - name: USER_MODE
-              value: "single"
+              value: {{ .Values.container.userMode}}
+            - name: STORAGE_MODE
+              value: {{ .Values.container.storageMode}}
           ports:
            - name: fbuilder-port
-             containerPort: 18880
+             containerPort: {{ .Values.container.port}}
           imagePullPolicy: {{ .Values.image.pullPolicy}}
 
         - name: motebus
