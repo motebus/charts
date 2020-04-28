@@ -1,5 +1,8 @@
 enabledHttpsBackendProtocol: false
+
 enabledSslRedirect: false
+
+namespace: default
 
 ingress:
   host: myapps.ypcloud.com
