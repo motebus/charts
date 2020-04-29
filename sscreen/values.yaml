@@ -14,7 +14,7 @@ host:
     flowbot: /var/motebus/flow/
 
 mbstack:
-  upstream: uc.ypcloud.com,boss.ypcloud.com
+  upstream: uc.ypcloud.com:6889,boss.ypcloud.com
   aliases: uc=oss/uc;ioc=boss/ioc
 
 replicaCount: 1
@@ -28,6 +28,6 @@ image:
 service:
   type: ClusterIP
   protocol: TCP
-  port: 443
+  port: 80
 
 nodeSelector: {}

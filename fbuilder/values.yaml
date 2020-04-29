@@ -36,6 +36,6 @@ image:
 service:
   type: ClusterIP
   protocol: TCP
-  port: 443
+  port: 80
 
 nodeSelector: {}
