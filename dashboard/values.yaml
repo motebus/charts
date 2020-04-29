@@ -1,0 +1,10 @@
+ingress:
+    annotations: {}
+    host: run.ypcloud.com
+    path: /dashboard
+    secretName: k8s-dashboard-tls
+
+dashboard:
+    args: []
+    # args: 
+    #   - --enable-skip-login
