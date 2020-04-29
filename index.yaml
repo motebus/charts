@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-04-29T16:17:05.38518262+08:00"
+    created: "2020-04-29T17:00:40.70124813+08:00"
     description: aibot
     digest: 43794a0b7736cb82d963f1f92e5b290b2551b506bb883b3fb30bcbd40969acab
     keywords:
@@ -15,19 +15,19 @@ entries:
   dashboard:
   - apiVersion: v1
     appVersion: v2.0.0-beta8
-    created: "2020-04-29T16:17:05.385983503+08:00"
+    created: "2020-04-29T17:00:40.702277938+08:00"
     description: Kubernetes-dashboard
-    digest: 87f3dd851568746c03bbbe5db3e6a6d6379bbe0e490abb6c84c1eb93fe5f1446
+    digest: ed3e78f0801b3012353f963505867d09c6521a866c24326e9471903693076eba
     keywords:
     - dashboard
     name: dashboard
     urls:
-    - dashboard-v1.0.0.tgz
-    version: v1.0.0
+    - dashboard-v1.0.1.tgz
+    version: v1.0.1
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-04-29T16:17:05.386439033+08:00"
+    created: "2020-04-29T17:00:40.702777539+08:00"
     description: fbuilder
     digest: 032a068ebb43705186d5f52e90bed31135e4d5dfae4c4c080aa85ec42d3495c2
     keywords:
@@ -39,7 +39,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-04-29T16:17:05.386875168+08:00"
+    created: "2020-04-29T17:00:40.703198676+08:00"
     description: smartscreen
     digest: ef75218d9b7907c74b1b4472e25584423b9f7b2bc089bb5602a4d844b5766e87
     keywords:
@@ -48,4 +48,4 @@ entries:
     urls:
     - sscreen-v1.1.3.tgz
     version: v1.1.3
-generated: "2020-04-29T16:17:05.38431506+08:00"
+generated: "2020-04-29T17:00:40.698609709+08:00"
