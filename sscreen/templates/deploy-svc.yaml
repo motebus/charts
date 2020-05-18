@@ -30,7 +30,6 @@ spec:
              containerPort: 8080
           imagePullPolicy: {{ .Values.image.pullPolicy}}
 
-      initContainers:
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
           env:
