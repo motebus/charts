@@ -47,7 +47,7 @@ spec:
 
             
 ---
-{{- if }}
+{{- if .Values.ui.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -61,4 +61,4 @@ spec:
     - protocol: {{ .Values.service.protocol }}
       port: {{ .Values.service.port}}
       targetPort: flowbot-port
-
+{{- end}}
