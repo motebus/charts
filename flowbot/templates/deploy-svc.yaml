@@ -32,7 +32,7 @@ spec:
 {{- if .Values.ui.enabled }}
             - name: FBOT_UI
               value: "1"
-{{ - end}}
+{{- end}}
           ports:
            - name: flowbot-port
              containerPort: {{ .Values.container.port}}
