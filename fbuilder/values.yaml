@@ -26,7 +26,9 @@ image:
   repository:
     motebus: motebus/motebus:v2.4.8
     fbuilder: motebus/fbuilder:latest
-  pullPolicy: Always
+  pullPolicy: 
+    motebus: IfNotPresent
+    fbuilder: Always
 
 service:
   type: ClusterIP

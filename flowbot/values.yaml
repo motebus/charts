@@ -25,7 +25,9 @@ image:
   repository:
     motebus: motebus/motebus:v2.4.8
     flowbot: motebus/flowbot:latest
-  pullPolicy: Always
+  pullPolicy: 
+    motebus: IfNotPresent
+    flowbot: Always
 
 service:
   type: ClusterIP

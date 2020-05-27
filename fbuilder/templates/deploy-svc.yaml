@@ -36,7 +36,7 @@ spec:
           ports:
            - name: fbuilder-port
              containerPort: {{ .Values.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
@@ -47,7 +47,7 @@ spec:
               value: 
             - name: MBSTACK_UPSTREAM
               value: {{.Values.mbstack.upstream}}
-          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
 
             
 ---

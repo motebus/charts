@@ -32,7 +32,7 @@ spec:
           ports:
            - name: flowbot-port
              containerPort: {{ .Values.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
@@ -43,7 +43,7 @@ spec:
               value: 
             - name: MBSTACK_UPSTREAM
               value: {{.Values.mbstack.upstream}}
-          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
 
             
 ---
