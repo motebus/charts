@@ -1,0 +1,2 @@
+If UI was opened:
+URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}{{.Release.Name}}/

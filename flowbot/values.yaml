@@ -2,19 +2,18 @@ enabledHttpsBackendProtocol: false
 enabledSslRedirect: false
 
 namespace: default 
+ui:
+    enabled: true
 
 ingress:
   host: myapps.ypcloud.com
-  path: /fbuilder/
+  path: /flowbot/
 
 container:
-    einame: fbuilder-exmaple
+    einame: flowbot-exmaple
     motebusGateway: 127.0.0.1
     dc: dc
-    userMode: "single"
-    port: 18880
-    storageMode: "cloud"
-
+    port: 18888
 
 mbstack:
   upstream: gke.ypcloud.com
@@ -25,7 +24,7 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus:v2.4.8
-    fbuilder: motebus/fbuilder:latest
+    flowbot: motebus/flowbot:latest
   pullPolicy: Always
 
 service:
