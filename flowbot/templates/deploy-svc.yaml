@@ -33,7 +33,7 @@ spec:
             - name: UI_MODE
               value: "1"
             - name: PORT
-              value: {{ .Values.container.port}}
+              value: 1880
 {{- end}}
           ports:
            - name: flowbot-port
