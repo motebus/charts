@@ -30,8 +30,10 @@ spec:
             - name: DC
               value: {{ .Values.container.dc}}
 {{- if .Values.ui.enabled }}
-            - name: FBOT_UI
+            - name: UI_MODE
               value: "1"
+            - name: PORT
+              value: {{ .Values.container.port}}
 {{- end}}
           ports:
            - name: flowbot-port
