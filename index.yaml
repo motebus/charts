@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-05-27T13:43:13.707645177+08:00"
+    created: "2020-05-27T14:09:56.088610123+08:00"
     description: aibot
     digest: df9b6473f01be876df701517291676382f5439fa57dfeb68959c677ab4699aee
     keywords:
@@ -15,31 +15,31 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-05-27T13:43:13.70819815+08:00"
+    created: "2020-05-27T14:09:56.090763211+08:00"
     description: fbuilder
-    digest: c8e423eeec3418db5b44d2ade9d295001f03114f0acf35c31ec82a1c74b4cd22
+    digest: 6696fae461e43d2f3ebe661ae420a30ebe69e4be327c81199ee27cb1ad6b0edc
     keywords:
     - fbuilder
     name: fbuilder
     urls:
-    - fbuilder-v1.2.4.tgz
-    version: v1.2.4
+    - fbuilder-v1.2.5.tgz
+    version: v1.2.5
   flowbot:
   - apiVersion: v1
     appVersion: v1.4.6
-    created: "2020-05-27T13:43:13.708630171+08:00"
+    created: "2020-05-27T14:09:56.091315535+08:00"
     description: flowbot
-    digest: 776c169fd2c6938613528462d87e1e4ade7230b4d65da7a3784be9ffefa86836
+    digest: f6ef15ecda5ca0ad7173098d29a141cbedfc09b97be8ab07bedb3ce2216ce0f7
     keywords:
     - flowbot
     name: flowbot
     urls:
-    - flowbot-v1.0.0.tgz
-    version: v1.0.0
+    - flowbot-v1.0.1.tgz
+    version: v1.0.1
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-05-27T13:43:13.709066728+08:00"
+    created: "2020-05-27T14:09:56.091749879+08:00"
     description: smartscreen
     digest: 3a9d214500c8ccfcbd8940b85ac64d54d6353cc374c66be2c8583f125ab8290f
     keywords:
@@ -48,4 +48,4 @@ entries:
     urls:
     - sscreen-v1.1.6.tgz
     version: v1.1.6
-generated: "2020-05-27T13:43:13.705456415+08:00"
+generated: "2020-05-27T14:09:56.088108621+08:00"
