@@ -13,7 +13,7 @@ container:
     einame: flowbot-exmaple
     motebusGateway: 127.0.0.1
     dc: dc
-    port: 18888
+    port: "18888"
 
 mbstack:
   upstream: gke.ypcloud.com
