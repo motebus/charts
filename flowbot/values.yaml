@@ -24,10 +24,10 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus:v2.4.8
-    flowbot: motebus/flowbot:latest
+    flowbot: motebus/flowbot:v1.4.6
   pullPolicy: 
     motebus: IfNotPresent
-    flowbot: Always
+    flowbot: IfNotPresent
 
 service:
   type: ClusterIP
