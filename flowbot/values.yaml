@@ -23,7 +23,7 @@ replicaCount: 1
 
 image:
   repository:
-    motebus: motebus/motebus:v2.4.8
+    motebus: motebus/motebus:v2.4.9
     flowbot: motebus/flowbot:v1.4.3
   pullPolicy: 
     motebus: IfNotPresent

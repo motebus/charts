@@ -24,7 +24,7 @@ replicaCount: 1
 
 image:
   repository:
-    motebus: motebus/motebus:v2.4.8
+    motebus: motebus/motebus:v2.4.9
     fbuilder: motebus/fbuilder:v1.4.2
   pullPolicy: 
     motebus: IfNotPresent

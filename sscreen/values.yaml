@@ -21,7 +21,7 @@ replicaCount: 1
 
 image:
   repository:
-    motebus: motebus/motebus:v2.4.8
+    motebus: motebus/motebus:v2.4.9
     sscreen: motebus/sscreen:latest
   pullPolicy: Always
 
