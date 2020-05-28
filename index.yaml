@@ -3,49 +3,49 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-05-27T17:10:59.276333048+08:00"
+    created: "2020-05-28T10:04:54.870755362+08:00"
     description: aibot
-    digest: df9b6473f01be876df701517291676382f5439fa57dfeb68959c677ab4699aee
+    digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
     - aibot
     name: aibot
     urls:
-    - aibot-1.0.2.tgz
-    version: 1.0.2
+    - aibot-1.0.3.tgz
+    version: 1.0.3
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-05-27T17:10:59.27681525+08:00"
+    created: "2020-05-28T10:04:54.871382927+08:00"
     description: fbuilder
-    digest: f52831d6ac0b52cfc6c5e954ea79718cd2f5979d2b5adbe41dff1ef3e74b36d1
+    digest: 27ae25d8b520c14f710390557633c57602ad15900bdf5349e6ea8c9e9b3fe45f
     keywords:
     - fbuilder
     name: fbuilder
     urls:
-    - fbuilder-v1.2.6.tgz
-    version: v1.2.6
+    - fbuilder-v1.2.7.tgz
+    version: v1.2.7
   flowbot:
   - apiVersion: v1
     appVersion: v1.4.6
-    created: "2020-05-27T17:10:59.277271775+08:00"
+    created: "2020-05-28T10:04:54.871889307+08:00"
     description: flowbot
-    digest: ea7e141a83c993899da21d3783887b7db6144857aeecbe887e78a3707d7da022
+    digest: d5440137d5a397fcc628f4a12d280e76f65c54bc8fda1f3883098e522e0396d6
     keywords:
     - flowbot
     name: flowbot
     urls:
-    - flowbot-v1.0.9.tgz
-    version: v1.0.9
+    - flowbot-v1.0.10.tgz
+    version: v1.0.10
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-05-27T17:10:59.277698917+08:00"
+    created: "2020-05-28T10:04:54.872385569+08:00"
     description: smartscreen
-    digest: 3a9d214500c8ccfcbd8940b85ac64d54d6353cc374c66be2c8583f125ab8290f
+    digest: 96837db23cedaf67834e4a0177797dd6c2782d7b71236dae4b37c2b783e732f8
     keywords:
     - sscreen
     name: sscreen
     urls:
-    - sscreen-v1.1.6.tgz
-    version: v1.1.6
-generated: "2020-05-27T17:10:59.275079173+08:00"
+    - sscreen-v1.1.7.tgz
+    version: v1.1.7
+generated: "2020-05-28T10:04:54.868643627+08:00"
