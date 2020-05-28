@@ -14,6 +14,8 @@ container:
     motebusGateway: 127.0.0.1
     dc: dc
     port: 1880
+    flowID: 99999
+    extraEnvs: {}
 
 mbstack:
   upstream: gke.ypcloud.com

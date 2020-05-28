@@ -33,6 +33,9 @@ spec:
               value: {{ .Values.container.userMode}}
             - name: STORAGE_MODE
               value: {{ .Values.container.storageMode}}
+{{- if .Values.container.extraEnvs }}
+{{ toYaml .Values.container.extraEnvs | indent 12 }}
+{{- end }}
           ports:
            - name: fbuilder-port
              containerPort: {{ .Values.container.port}}

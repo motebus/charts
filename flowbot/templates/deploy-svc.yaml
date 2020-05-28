@@ -29,12 +29,17 @@ spec:
               value: {{ .Values.container.motebusGateway}}
             - name: DC
               value: {{ .Values.container.dc}}
+            - name: FLOW_ID
+              value: {{ .Values.container.flowID}}
 {{- if .Values.ui.enabled }}
             - name: UI_MODE
               value: "1"
             - name: PORT
               value: "1880"
 {{- end}}
+{{- if .Values.container.extraEnvs }}
+{{ toYaml .Values.container.extraEnvs | indent 12 }}
+{{- end }}
           ports:
            - name: flowbot-port
              containerPort: {{ .Values.container.port}}
