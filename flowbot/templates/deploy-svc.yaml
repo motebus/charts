@@ -21,6 +21,8 @@ spec:
         - name: flowbot
           image: {{ .Values.image.repository.flowbot}}
           env:
+            - name: FLOW_ID
+              value: {{ .Values.container.flowId | quote}}
             - name: EI_NAME
               value: {{ .Values.container.einame }}
             - name: APP_NAME
@@ -29,8 +31,6 @@ spec:
               value: {{ .Values.container.motebusGateway}}
             - name: DC
               value: {{ .Values.container.dc}}
-            - name: FLOW_ID
-              value: {{ .Values.container.flowID}}
 {{- if .Values.ui.enabled }}
             - name: UI_MODE
               value: "1"

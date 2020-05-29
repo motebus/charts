@@ -1,28 +1,41 @@
-enabledHttpsBackendProtocol: false
+# nginx-ingress-control annotation ssl redirect
 enabledSslRedirect: false
 
+# chart namespace
 namespace: default 
+
+# flowbot image ui, deciding whether to open ingress, service and container port
 ui:
     enabled: true
 
+# ingress host and path
 ingress:
   host: myapps.ypcloud.com
   path: /flowbot/
 
+# container env settings
 container:
+# flowbot einame 
     einame: flowbot-exmaple
+# motechat motebus gatway
     motebusGateway: 127.0.0.1
+# motechat dc 
     dc: dc
+# flowbot port
     port: 1880
-    flowID: "99999"
+# flowbot flow ID 
+    flowId: 99999
+
     extraEnvs: {}
 
+# motebus upstream
 mbstack:
   upstream: gke.ypcloud.com
 
-
+# replication
 replicaCount: 1
 
+# docker image and pull policy
 image:
   repository:
     motebus: motebus/motebus:v2.4.9
@@ -31,9 +44,11 @@ image:
     motebus: IfNotPresent
     flowbot: IfNotPresent
 
+# service settings
 service:
   type: ClusterIP
   protocol: TCP
   port: 80
 
+# pod node selector
 nodeSelector: {}

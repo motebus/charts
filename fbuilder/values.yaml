@@ -1,27 +1,37 @@
-enabledHttpsBackendProtocol: false
+# nginx-ingress-control annotation ssl redirect
 enabledSslRedirect: false
 
+# chart namespace
 namespace: default 
 
+# ingress host and path
 ingress:
   host: myapps.ypcloud.com
   path: /fbuilder/
 
+# container env settings
 container:
+# fbuilder einame 
     einame: fbuilder-exmaple
+# motechat motebus gatway
     motebusGateway: 127.0.0.1
+# motechat dc
     dc: dc
+# fbuilder user mode
     userMode: "single"
+# fbuilder port
     port: 18880
+# fbuilder storage mode
     storageMode: "cloud"
 
-
+# motebus upstream
 mbstack:
   upstream: gke.ypcloud.com
 
-
+# replication
 replicaCount: 1
 
+#container image settings and pull policy
 image:
   repository:
     motebus: motebus/motebus:v2.4.9
@@ -30,9 +40,11 @@ image:
     motebus: IfNotPresent
     fbuilder: IfNotPresent
 
+# service settings
 service:
   type: ClusterIP
   protocol: TCP
   port: 80
 
+# pod node selector
 nodeSelector: {}

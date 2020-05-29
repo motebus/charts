@@ -1,33 +1,33 @@
-enabledHttpsBackendProtocol: false
-
+# nginx-ingress-control annotation ssl redirect
 enabledSslRedirect: false
 
+# chart namespace
 namespace: default
 
+# ingress host and path
 ingress:
   host: myapps.ypcloud.com
   path: /
 
-host:
-  path:
-    motebus: /var/motebus/
-    flowbot: /var/motebus/flow/
-
+# motebus upstream
 mbstack:
-  upstream: uc.ypcloud.com:6889,boss.ypcloud.com
-  aliases: uc=oss/uc;ioc=boss/ioc
+  upstream: gke.ypcloud.com
 
+# replication
 replicaCount: 1
 
+# container images
 image:
   repository:
     motebus: motebus/motebus:v2.4.9
     sscreen: motebus/sscreen:latest
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
+# service settings
 service:
   type: ClusterIP
   protocol: TCP
   port: 80
 
+# pod node selector
 nodeSelector: {}

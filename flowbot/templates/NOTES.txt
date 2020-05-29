@@ -1,2 +1,3 @@
-If UI was opened:
-URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}{{.Release.Name}}/
+{{- if .Values.ui.enabled}}
+    URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}{{.Release.Name}}/
+{{- end}}

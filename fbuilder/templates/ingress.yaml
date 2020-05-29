@@ -6,9 +6,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: "nginx"
-{{- if .Values.enabledHttpsBackendProtocol }}
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-{{- end }}
 {{- if .Values.enabledSslRedirect }}
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 {{- else }}
