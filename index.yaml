@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-06-02T16:23:24.536685389+08:00"
+    created: "2020-06-02T17:49:58.281933251+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -15,7 +15,7 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-06-02T16:23:24.53787506+08:00"
+    created: "2020-06-02T17:49:58.283047692+08:00"
     description: fbuilder
     digest: 4b30af6cb46de7bf22651b03581de7ece4eedafdf7fbb95e9c13ab286171c4aa
     keywords:
@@ -27,7 +27,7 @@ entries:
   flowbot:
   - apiVersion: v1
     appVersion: v1.4.6
-    created: "2020-06-02T16:23:24.538521878+08:00"
+    created: "2020-06-02T17:49:58.28400381+08:00"
     description: flowbot
     digest: dc672c4cdc542e4b99571118afe5a0c5c350eb9a1bb3c91b84ed56daab9e3922
     keywords:
@@ -39,19 +39,19 @@ entries:
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-02T16:23:24.539041151+08:00"
+    created: "2020-06-02T17:49:58.284518497+08:00"
     description: miki
-    digest: 18acae4970e0a5a0a5955a0a0ad9c60e3dd0783f896cb4dacc4b7527cfde55c0
+    digest: 402fd1700b11e58ab78401c8ad1e6d153d3841d9405131644e4f1ee2a693b6a5
     keywords:
     - miki
     name: miki
     urls:
-    - miki-v1.0.0.tgz
-    version: v1.0.0
+    - miki-v1.0.1.tgz
+    version: v1.0.1
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-06-02T16:23:24.539479756+08:00"
+    created: "2020-06-02T17:49:58.285010001+08:00"
     description: smartscreen
     digest: 96837db23cedaf67834e4a0177797dd6c2782d7b71236dae4b37c2b783e732f8
     keywords:
@@ -60,4 +60,4 @@ entries:
     urls:
     - sscreen-v1.1.7.tgz
     version: v1.1.7
-generated: "2020-06-02T16:23:24.533678541+08:00"
+generated: "2020-06-02T17:49:58.281535245+08:00"
