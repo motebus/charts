@@ -11,17 +11,17 @@ ingress:
 
 # container env settings
 container:
-# fbuilder einame 
+    # fbuilder einame 
     einame: fbuilder-exmaple
-# motechat motebus gatway
+    # motechat motebus gatway
     motebusGateway: 127.0.0.1
-# motechat dc
+    # motechat dc
     dc: dc
-# fbuilder user mode
+    # fbuilder user mode
     userMode: "single"
-# fbuilder port
+    # fbuilder port
     port: 18880
-# fbuilder storage mode
+    # fbuilder storage mode
     storageMode: "cloud"
 
 # motebus upstream

@@ -13,39 +13,44 @@ spec:
       labels:
        app: {{ .Release.Name }}-deployment
     spec:
-{{- with .Values.nodeSelector }}
+{{- if .Values.nodeSelector }}
       nodeSelector:
-{{ toYaml . | indent 8 }}
+        {{ toYaml .Values.nodeSelector}}
 {{- end }}
       containers:
-        - name: flowbot
-          image: {{ .Values.image.repository.flowbot}}
+        - name: miki
+          image: {{ .Values.image.repository.miki}}
           env:
-            - name: FLOW_ID
-              value: {{ .Values.container.flowId | quote}}
-            - name: MCHAT_EINAME
-              value: {{ .Values.container.einame }}
-            - name: MCHAT_APPNAME
-              value: {{ .Values.container.einame }}-app
             - name: MCHAT_MBGWIP
               value: {{ .Values.container.motebusGateway}}
             - name: MCHAT_DC
               value: {{ .Values.container.dc}}
+            - name: MCHAT_APPNAME
+              value: {{ .Values.container.einame}}-app
+            - name: MCHAT_EINAME
+              value: {{ .Values.container.einame}}
             - name: MCHAT_MBPORT
               value: {{ .Values.container.motebusPort}}
-{{- if .Values.ui.enabled }}
-            - name: UI_MODE
-              value: "1"
             - name: PORT
-              value: "1880"
-{{- end}}
-{{- if .Values.container.extraEnvs }}
-{{ toYaml .Values.container.extraEnvs | indent 12 }}
-{{- end }}
+              value: {{ .Values.container.port}}
+            - name: MINIO_ACCESS_KEY
+              value: {{ .Values.container.minioAccessKey}}
+            - name: MINIO_SECRET_KEY
+              value: {{ .Values.container.minioSecretKey}}
+            - name: MINIO_ENDPOINT
+              value: {{ .Values.container.minioEndPoint}}
+            - name: MINIO_PORT
+              value: {{ .Values.container.minioPort}}
+            - name: IP
+              value: {{ .Values.container.ip}}
+            - name: NODE_ENV
+              value: production
+            - name: PUBLIC_URL
+              value: '/'
           ports:
-           - name: flowbot-port
+           - name: miki-port
              containerPort: {{ .Values.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.miki}}
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
@@ -57,10 +62,8 @@ spec:
             - name: MBSTACK_UPSTREAM
               value: {{.Values.mbstack.upstream}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
-
             
 ---
-{{- if .Values.ui.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -73,5 +76,5 @@ spec:
   ports:
     - protocol: {{ .Values.service.protocol }}
       port: {{ .Values.service.port}}
-      targetPort: flowbot-port
-{{- end}}
+      targetPort: miki-port
+

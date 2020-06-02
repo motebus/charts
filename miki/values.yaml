@@ -1,0 +1,48 @@
+# nginx-ingress-control annotation ssl redirect
+enabledSslRedirect: false
+
+# chart namespace
+namespace: default
+
+# ingress host and path
+ingress:
+  host: myapps.ypcloud.com
+  path: /
+
+# motebus upstream
+mbstack:
+  upstream: gke.ypcloud.com
+
+container:
+    motebusGateway: 127.0.0.1
+    dc: dc
+    einame: miki-chart
+    motebusPort: 6262
+    port: 3000
+    minioAccessKey: mikiypcloud
+    minioSecretKey: ${SECRET_KEY}
+    minioEndPoint: miki.ypcloud.com
+    minioPort: 9000
+    ip: "0.0.0.0"
+
+
+# replication
+replicaCount: 1
+
+# container images
+image:
+  repository:
+    motebus: motebus/motebus:v2.4.9
+    miki: motebus/miki:latest
+  pullPolicy: 
+    motebus: IfNotPresent
+    miki: Always
+
+# service settings
+service:
+  type: ClusterIP
+  protocol: TCP
+  port: 80
+
+# pod node selector
+nodeSelector: {}

@@ -21,18 +21,20 @@ spec:
         - name: fbuilder
           image: {{ .Values.image.repository.fbuilder}}
           env:
-            - name: EI_NAME
+            - name: MCHAT_EINAME
               value: {{ .Values.container.einame }}
-            - name: APP_NAME
+            - name: MCHAT_APPNAME
               value: {{ .Values.container.einame }}-app
-            - name: MOTEBUS_GATEWAY
+            - name: MCHAT_MBGWIP
               value: {{ .Values.container.motebusGateway}}
-            - name: DC
+            - name: MCHAT_DC
               value: {{ .Values.container.dc}}
             - name: USER_MODE
               value: {{ .Values.container.userMode}}
             - name: STORAGE_MODE
               value: {{ .Values.container.storageMode}}
+            - name: PORT
+              value: {{ .Values.container.port}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
