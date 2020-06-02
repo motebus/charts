@@ -21,7 +21,7 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
-          - path: /sscreen/(.*)
+          - path: /miki/(.*)
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.service.port}}
