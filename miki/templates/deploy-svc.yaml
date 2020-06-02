@@ -30,9 +30,9 @@ spec:
             - name: MCHAT_EINAME
               value: {{ .Values.container.einame}}
             - name: MCHAT_MBPORT
-              value: {{ .Values.container.motebusPort}}
+              value: {{ .Values.container.motebusPort | quote}}
             - name: PORT
-              value: {{ .Values.container.port}}
+              value: {{ .Values.container.port | quote }}
             - name: MINIO_ACCESS_KEY
               value: {{ .Values.container.minioAccessKey}}
             - name: MINIO_SECRET_KEY
@@ -40,7 +40,7 @@ spec:
             - name: MINIO_ENDPOINT
               value: {{ .Values.container.minioEndPoint}}
             - name: MINIO_PORT
-              value: {{ .Values.container.minioPort}}
+              value: {{ .Values.container.minioPort | quote}}
             - name: IP
               value: {{ .Values.container.ip}}
             - name: NODE_ENV
