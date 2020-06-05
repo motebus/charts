@@ -18,7 +18,7 @@ container:
     # flowbot einame 
     einame: flowbot-exmaple
     # flowbot mode
-    mode: xstorage
+    mode: local
     # flowbot flow ID 
     flowId: 99999
     # motechat motebus gatway
