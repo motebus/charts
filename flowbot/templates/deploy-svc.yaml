@@ -48,7 +48,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
           volumeMounts:
           - name: module-vol
-            mountPath: /usr/src/node-red/node_modules
+            mountPath: /usr/src/node-red/node_modules/leveldown
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
