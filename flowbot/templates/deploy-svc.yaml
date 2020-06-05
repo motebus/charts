@@ -46,9 +46,9 @@ spec:
            - name: flowbot-port
              containerPort: 1880
           imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
-          volumeMounts:
-          - name: module-vol
-            mountPath: /usr/src/node-red/node_modules/leveldown
+        #   volumeMounts:
+        #   - name: module-vol
+        #     mountPath: /usr/src/node-red/node_modules/leveldown
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
@@ -61,13 +61,11 @@ spec:
               value: {{.Values.mbstack.upstream}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
 
-      volumes:
-        - name: module-vol
-          hostPath:
-            path: {{ .Values.volumes.path}}{{ .Release.Name }}
-            type: DirectoryOrCreate
-
-            
+    #   volumes:
+    #     - name: module-vol
+    #       hostPath:
+    #         path: {{ .Values.volumes.path}}{{ .Release.Name }}
+    #         type: DirectoryOrCreate
 ---
 {{- if .Values.ui.enabled }}
 apiVersion: v1
