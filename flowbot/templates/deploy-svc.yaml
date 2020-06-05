@@ -21,22 +21,22 @@ spec:
         - name: flowbot
           image: {{ .Values.image.repository.flowbot}}
           env:
-            - name: FLOW_ID
+            - name: FBOT_FLOWID
               value: {{ .Values.container.flowId | quote}}
-            - name: MCHAT_EINAME
+            - name: FBOT_EINAME
               value: {{ .Values.container.einame }}
-            - name: MCHAT_APPNAME
+            - name: FBOT_APPNAME
               value: {{ .Values.container.einame }}-app
+            - name: FBOT_MODE
+              value: {{ .Values.container.mode}}
             - name: MCHAT_MBGWIP
               value: {{ .Values.container.motebusGateway}}
             - name: MCHAT_DC
               value: {{ .Values.container.dc}}
-            - name: MCHAT_MBPORT
-              value: {{ .Values.container.motebusPort}}
 {{- if .Values.ui.enabled }}
-            - name: UI_MODE
+            - name: FBOT_UI
               value: "1"
-            - name: PORT
+            - name: FBOT_PORT
               value: "1880"
 {{- end}}
 {{- if .Values.container.extraEnvs }}

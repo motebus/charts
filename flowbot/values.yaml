@@ -17,16 +17,14 @@ ingress:
 container:
     # flowbot einame 
     einame: flowbot-exmaple
+    # flowbot mode
+    mode: xstorage
+    # flowbot flow ID 
+    flowId: 99999
     # motechat motebus gatway
     motebusGateway: 127.0.0.1
     # motechat dc 
     dc: dc
-    # motebus port
-    motebusPort: 6262
-    # flowbot port
-    port: 1880
-    # flowbot flow ID 
-    flowId: 99999
     #extead envs
     extraEnvs: {}
 
