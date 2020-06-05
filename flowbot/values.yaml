@@ -18,7 +18,7 @@ container:
     # flowbot einame 
     einame: flowbot-exmaple
     # flowbot mode
-    mode: local
+    mode: xstorage
     # flowbot flow ID 
     flowId: 99999
     # motechat motebus gatway
@@ -42,7 +42,7 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus:v2.4.9
-    flowbot: motebus/flowbot:v1.4.7
+    flowbot: motebus/flowbot:v1.5.1
   pullPolicy: 
     motebus: IfNotPresent
     flowbot: IfNotPresent
