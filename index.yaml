@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-06-05T16:01:23.59838711+08:00"
+    created: "2020-06-05T16:19:39.983349023+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -15,7 +15,7 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-06-05T16:01:23.598972297+08:00"
+    created: "2020-06-05T16:19:39.983834236+08:00"
     description: fbuilder
     digest: 4b30af6cb46de7bf22651b03581de7ece4eedafdf7fbb95e9c13ab286171c4aa
     keywords:
@@ -27,19 +27,19 @@ entries:
   flowbot:
   - apiVersion: v1
     appVersion: v1.5.1
-    created: "2020-06-05T16:01:23.5994783+08:00"
+    created: "2020-06-05T16:19:39.984319176+08:00"
     description: flowbot
-    digest: 331da38cdd65902a074f3f2946206dc7bd82d9eadb33b11cd673ca92b38c9bf3
+    digest: 10523d3d32dab8853fff1801be52a8d3a79ee92f00ba06e467d67a678f4bb448
     keywords:
     - flowbot
     name: flowbot
     urls:
-    - flowbot-v1.1.6.tgz
-    version: v1.1.6
+    - flowbot-v1.1.7.tgz
+    version: v1.1.7
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-05T16:01:23.599973628+08:00"
+    created: "2020-06-05T16:19:39.984828346+08:00"
     description: miki
     digest: 6ccefd5eeeacb876f25c7756375ec12ac2d4af167ca0900b9314a3a6e908dbf5
     keywords:
@@ -51,7 +51,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-06-05T16:01:23.600467631+08:00"
+    created: "2020-06-05T16:19:39.985292221+08:00"
     description: smartscreen
     digest: 96837db23cedaf67834e4a0177797dd6c2782d7b71236dae4b37c2b783e732f8
     keywords:
@@ -60,4 +60,4 @@ entries:
     urls:
     - sscreen-v1.1.7.tgz
     version: v1.1.7
-generated: "2020-06-05T16:01:23.597038196+08:00"
+generated: "2020-06-05T16:19:39.982059216+08:00"
