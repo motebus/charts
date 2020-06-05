@@ -28,8 +28,8 @@ container:
     #extead envs
     extraEnvs: {}
 
-volumes:
-    path: /usr/src/node-red/node_modules/
+# volumes:
+#     path: /usr/src/node-red/node_modules/
 
 # motebus upstream
 mbstack:
