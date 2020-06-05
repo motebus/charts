@@ -64,7 +64,7 @@ spec:
       volumes:
         - name: module-vol
           hostPath:
-            path: /usr/src/node-red/node_modules
+            path: {{ .Values.volumes.path}}{{ .Release.Name }}
             type: DirectoryOrCreate
 
             
