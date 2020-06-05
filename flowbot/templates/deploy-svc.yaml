@@ -44,7 +44,7 @@ spec:
 {{- end }}
           ports:
            - name: flowbot-port
-             containerPort: {{ .Values.container.port}}
+             containerPort: 1880
           imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
 
         - name: motebus
