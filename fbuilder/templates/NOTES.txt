@@ -1,5 +1,5 @@
 {{- if eq .Values.container.userMode "single" }}
 URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}{{.Release.Name}}/
 {{- else }}
-URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}/
+URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}
 {{- end}}

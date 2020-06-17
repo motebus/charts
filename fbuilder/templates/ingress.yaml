@@ -24,7 +24,7 @@ spec:
 {{- if eq .Values.container.userMode "single" }}
           - path: {{.Values.ingress.path}}{{ .Release.Name }}/(.*)
 {{- else }}
-          - path: {{.Values.ingress.path}}/(.*)
+          - path: {{.Values.ingress.path}}(.*)
 {{- end}}
             backend:
               serviceName: {{ .Release.Name }}
