@@ -34,7 +34,7 @@ spec:
             - name: STORAGE_MODE
               value: {{ .Values.container.storageMode}}
             - name: PORT
-              value: {{ .Values.container.port}}
+              value: {{ .Values.container.port | quote}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
