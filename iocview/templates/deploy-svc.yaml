@@ -18,37 +18,35 @@ spec:
         {{ toYaml .Values.nodeSelector}}
 {{- end }}
       containers:
-        - name: {{ .Values.container.name}}
-          image: {{ .Values.image.repository.sscreen}}
+        - name: iocview
+          image: {{ .Values.image.repository.iocview}}
           env:
             - name: MCHAT_MBGWIP
-              value: 127.0.0.1
+              value: {{ .Values.MCHAT_MBGWIP}}
             - name: MCHAT_DC
-              value: dc
+              value: {{ .Values.MCHAT_DC}}
             - name: MCHAT_MBGWPORT
-              value: 6262
+              value: {{ .Values.MCHAT_MBGWPORT | quote}}
             - name: MCAHT_WATCHLEVEL
-              value: 1
+              value: {{ .Values.MCAHT_WATCHLEVEL | quote}}
             - name: MCHAT_EINAME
-              value: "ioc-h1"
+              value: {{ .Values.MCHAT_EINAME}}
             - name: MCHAT_APPNAME
-              value: "ioc-svc"
+              value: {{ .Values.MCHAT_APPNAME}}
           ports:
-           - name: sscreen-port
-             containerPort: 8080
+           - name: iocview-port
+             containerPort: {{ .Values.container.port}}
           imagePullPolicy: {{ .Values.image.pullPolicy}}
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
           env:
             - name: MBSTACK_BUSMODE
-              value: "0"
+              value: {{ .Values.MBSTACK_BUSMODE | quote}}
             - name: MBSTACK_BUSNAME
-              value: 
+              value: {{ .Values.MBSTACK_BUSNAME }}
             - name: MBSTACK_UPSTREAM
-              value: {{.Values.mbstack.upstream}}
-            - name: MBSTACK_ALIASES
-              value: {{.Values.mbstack.aliases}}
+              value: {{ .Values.MBSTACK_UPSTREAM }}
           imagePullPolicy: {{ .Values.image.pullPolicy}}
             
 ---
@@ -64,5 +62,5 @@ spec:
   ports:
     - protocol: {{ .Values.service.protocol }}
       port: {{ .Values.service.port}}
-      targetPort: sscreen-port
+      targetPort: iocview-port
 

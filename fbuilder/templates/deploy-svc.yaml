@@ -22,17 +22,17 @@ spec:
           image: {{ .Values.image.repository.fbuilder}}
           env:
             - name: MCHAT_EINAME
-              value: {{ .Values.container.einame }}
+              value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
-              value: {{ .Values.container.einame }}-app
+              value: {{ .Values.MCHAT_EINAME }}-app
             - name: MCHAT_MBGWIP
-              value: {{ .Values.container.motebusGateway}}
+              value: {{ .Values.MCHAT_MBGWIP}}
             - name: MCHAT_DC
-              value: {{ .Values.container.dc}}
+              value: {{ .Values.MCHAT_DC}}
             - name: USER_MODE
-              value: {{ .Values.container.userMode}}
+              value: {{ .Values.USER_MODE}}
             - name: STORAGE_MODE
-              value: {{ .Values.container.storageMode}}
+              value: {{ .Values.STORAGE_MODE}}
             - name: PORT
               value: {{ .Values.container.port | quote}}
 {{- if .Values.container.extraEnvs }}
@@ -47,11 +47,9 @@ spec:
           image: {{ .Values.image.repository.motebus}}
           env:
             - name: MBSTACK_BUSMODE
-              value: "0"
-            - name: MBSTACK_BUSNAME
-              value: 
+              value: {{.Values.MBSTACK_BUSMODE | quote}}
             - name: MBSTACK_UPSTREAM
-              value: {{.Values.mbstack.upstream}}
+              value: {{.Values.MBSTACK_UPSTREAM}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
 
             

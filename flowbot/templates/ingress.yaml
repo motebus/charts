@@ -1,4 +1,4 @@
-{{- if .Values.ui.enabled}}
+{{- if .Values.FBOT_UI }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

@@ -11,18 +11,10 @@ ingress:
 
 # container env settings
 container:
-    # fbuilder einame 
-    einame: fbuilder-exmaple
-    # motechat motebus gatway
-    motebusGateway: 127.0.0.1
-    # motechat dc
-    dc: dc
-    # fbuilder user mode
-    userMode: "single"
     # fbuilder port
     port: 18880
-    # fbuilder storage mode
-    storageMode: "cloud"
+    #extra envs
+    extraEnvs: {}
 
 # motebus upstream
 mbstack:
@@ -48,3 +40,19 @@ service:
 
 # pod node selector
 nodeSelector: {}
+
+
+#motechat ei name
+MCHAT_EINAME: fbuilder-example
+#motechat motebus gateway
+MCHAT_MBGWIP: 127.0.0.1
+#motechat dc
+MCHAT_DC: dc
+#fbuilder user mode
+USER_MODE: single
+#fbuilder xstorage mode
+STORAGE_MODE: xstorage
+# motebus upstream
+MBSTACK_UPSTREAM: gke.ypcloud.com
+# motebus bus mode
+MBSTACK_BUSMODE: 0

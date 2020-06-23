@@ -21,41 +21,39 @@ spec:
         - name: flowbot
           image: {{ .Values.image.repository.flowbot}}
           env:
-            - name: FBOT_FLOWID
-              value: {{ .Values.container.flowId | quote}}
-            - name: FBOT_EINAME
-              value: {{ .Values.container.einame }}
-            - name: FBOT_APPNAME
-              value: {{ .Values.container.einame }}-app
-            - name: FBOT_MODE
-              value: {{ .Values.container.mode}}
+            - name: MCHAT_EINAME
+              value: {{ .Values.MCHAT_EINAME }}
+            - name: MCHAT_APPNAME
+              value: {{ .Values.MCHAT_EINAME }}-app
             - name: MCHAT_MBGWIP
-              value: {{ .Values.container.motebusGateway}}
+              value: {{ .Values.MCHAT_MBGWIP}}
+            - name: MCHAT_MBGWPORT
+              value: {{ .Values.MCHAT_MBGWPORT}}
             - name: MCHAT_DC
-              value: {{ .Values.container.dc}}
-{{- if .Values.ui.enabled }}
-            - name: FBOT_UI
-              value: "1"
+              value: {{ .Values.MCHAT_DC}}
+            - name: FBOT_MODE
+              value: {{ .Values.FBOT_MODE}}
+            - name: FBOT_FLOWID
+              value: {{ .Values.FBOT_FLOWID | quote}}
             - name: FBOT_PORT
-              value: "1880"
-{{- end}}
+              value: {{ .Values.FBOT_PORT | quote }}
+            - name: FBOT_UI
+              value: {{ .Values.FBOT_UI | quote}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
            - name: flowbot-port
-             containerPort: 1880
+             containerPort: {{ .Values.FBOT_PORT }}
           imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
           env:
             - name: MBSTACK_BUSMODE
-              value: "0"
-            - name: MBSTACK_BUSNAME
-              value: 
+              value: {{ .Values.MBSTACK_BUSMODE | quote}}
             - name: MBSTACK_UPSTREAM
-              value: {{.Values.mbstack.upstream}}
+              value: {{.Values.MBSTACK_UPSTREAM}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
 ---
 {{- if .Values.ui.enabled }}

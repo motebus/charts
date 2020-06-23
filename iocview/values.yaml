@@ -9,17 +9,10 @@ ingress:
   host: myapps.ypcloud.com
   path: /
 
-# motebus upstream
-mbstack:
-  upstream: gke.ypcloud.com
-
 # container
 container:
-    # container name
-    name: iocview
-    # motechat motebus gateway
-    mchatMotebusGateway: 127.0.0.1
-    #
+    # container port
+    port: 8083
 
 # replication
 replicaCount: 1
@@ -28,7 +21,7 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus:v2.4.9
-    sscreen: motebus/sscreen:latest
+    iocview: motebus/iocview:v2.0.7
   pullPolicy: IfNotPresent
 
 # service settings
@@ -39,3 +32,23 @@ service:
 
 # pod node selector
 nodeSelector: {}
+
+
+#motechat motebus gateway
+MCHAT_MBGWIP: 127.0.0.1
+#motechat motebus gateway port
+MCHAT_MBGWPORT: 6262
+#motechat dc
+MCHAT_DC: dc
+#motechat watch level
+MCAHT_WATCHLEVEL: 1
+#motechat ei name
+MCHAT_EINAME: ioc
+#motechat app name
+MCHAT_APPNAME: ioc-svc
+#motebus bus mode
+MBSTACK_BUSMODE: 0
+#motebus bus name
+MBSTACK_BUSNAME: ioc
+#motebus upstream
+MBSTACK_UPSTREAM: gke.ypcloud.com

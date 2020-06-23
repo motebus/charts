@@ -9,22 +9,9 @@ ingress:
   host: myapps.ypcloud.com
   path: /
 
-# motebus upstream
-mbstack:
-  upstream: gke.ypcloud.com
-
 container:
-    motebusGateway: 127.0.0.1
-    dc: dc
-    einame: miki-chart
-    motebusPort: 6262
+    # container port
     port: 3000
-    minioAccessKey: mikiypcloud
-    minioSecretKey: ${SECRET_KEY}
-    minioEndPoint: miki.ypcloud.com
-    minioPort: 9000
-    ip: "0.0.0.0"
-
 
 # replication
 replicaCount: 1
@@ -46,3 +33,31 @@ service:
 
 # pod node selector
 nodeSelector: {}
+
+
+# motechat ei name
+MCHAT_EINAME: flowbot-example
+# motechat motebus gateway
+MCHAT_MBGWIP: 127.0.0.1
+# motechat dc
+MCHAT_DC: dc
+# motechat motebus gatway port
+MCHAT_MBGWPORT: 6262
+# motebus upstream
+MBSTACK_UPSTREAM: gke.ypcloud.com
+# motebus bus mode
+MBSTACK_BUSMODE: 0
+# minio access key
+MINIO_ACCESS_KEY: mikiypcloud
+# minio secret key
+MINIO_SECRET_KEY: 
+# minio endpoint
+MINIO_ENDPOINT: miki.ypcloud.com
+# minio port
+MINIO_PORT: 9000
+# minio ip cidr
+IP: "0.0.0.0"
+# motebus upstream
+MBSTACK_UPSTREAM: gke.ypcloud.com
+# motebus bus mode
+MBSTACK_BUSMODE: 0

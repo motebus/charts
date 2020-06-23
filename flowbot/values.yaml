@@ -4,10 +4,6 @@ enabledSslRedirect: false
 # chart namespace
 namespace: default 
 
-# flowbot image ui, deciding whether to open ingress, service and container port
-ui:
-    enabled: true
-
 # ingress host and path
 ingress:
   host: myapps.ypcloud.com
@@ -15,25 +11,8 @@ ingress:
 
 # container env settings
 container:
-    # flowbot einame 
-    einame: flowbot-exmaple
-    # flowbot mode
-    mode: xstorage
-    # flowbot flow ID 
-    flowId: 99999
-    # motechat motebus gatway
-    motebusGateway: 127.0.0.1
-    # motechat dc 
-    dc: dc
-    #extead envs
+    #extra envs
     extraEnvs: {}
-
-# volumes:
-#     path: /usr/src/node-red/node_modules/
-
-# motebus upstream
-mbstack:
-  upstream: gke.ypcloud.com
 
 # replication
 replicaCount: 1
@@ -55,3 +34,25 @@ service:
 
 # pod node selector
 nodeSelector: {}
+
+
+# flowbot id
+FBOT_FLOWID: 99999
+# flowbot mode
+FBOT_MODE: xstorage
+# flowbot port
+FBOT_PORT: 1880
+# flowbot ui
+FBOT_UI: 1
+# motechat ei name
+MCHAT_EINAME: flowbot-example
+# motechat motebus gateway
+MCHAT_MBGWIP: 127.0.0.1
+# motechat dc
+MCHAT_DC: dc
+# motechat motebus gatway port
+MCHAT_MBGWPORT: 6262
+# motebus upstream
+MBSTACK_UPSTREAM: gke.ypcloud.com
+# motebus bus mode
+MBSTACK_BUSMODE: 0

@@ -9,12 +9,12 @@ ingress:
   host: myapps.ypcloud.com
   path: /
 
-# motebus upstream
-mbstack:
-  upstream: gke.ypcloud.com
-
 # replication
 replicaCount: 1
+
+container:
+    # container port
+    port: 8080
 
 # container images
 image:
@@ -31,3 +31,13 @@ service:
 
 # pod node selector
 nodeSelector: {}
+
+
+# motechat motebus gateway
+MCHAT_MBGWIP: 127.0.0.1
+# motechat dc
+MCHAT_DC: dc
+# motebus upstream
+MBSTACK_UPSTREAM: gke.ypcloud.com
+# motebus bus mode
+MBSTACK_BUSMODE: 0
