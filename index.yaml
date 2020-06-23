@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-06-17T16:28:46.805815107+08:00"
+    created: "2020-06-23T18:16:13.829514837+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -15,49 +15,61 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-06-17T16:28:46.807022777+08:00"
+    created: "2020-06-23T18:16:13.829964579+08:00"
     description: fbuilder
-    digest: ea88dfb042746a31f8764f1140080842452671898addb5d22032253a2fe08918
+    digest: e17193d09e4b7bbb2aa8be82d4628a5333c6f30939debda92e607825d64c54fb
     keywords:
     - fbuilder
     name: fbuilder
     urls:
-    - fbuilder-v1.3.3.tgz
-    version: v1.3.3
+    - fbuilder-v2.0.0.tgz
+    version: v2.0.0
   flowbot:
   - apiVersion: v1
-    appVersion: v1.5.1
-    created: "2020-06-17T16:28:46.807509148+08:00"
+    appVersion: v1.5.4
+    created: "2020-06-23T18:16:13.830416103+08:00"
     description: flowbot
-    digest: fa9c7a1ea94162c5998365de791481b8312f656881f4f86ce835822c89794edc
+    digest: 3c80ec1d933c9ea76efe46daafcd874758fc5d1477d73a886975250d0aca8ba2
     keywords:
     - flowbot
     name: flowbot
     urls:
-    - flowbot-v1.1.8.tgz
-    version: v1.1.8
+    - flowbot-v2.0.0.tgz
+    version: v2.0.0
+  iocview:
+  - apiVersion: v1
+    appVersion: v2.0.7
+    created: "2020-06-23T18:16:13.830811698+08:00"
+    description: iocview
+    digest: 14501a123349f8269fdfd389aec7b9b17ecbf61b7e7f61c679d7e0dfcd210e62
+    keywords:
+    - iocview
+    name: iocview
+    urls:
+    - iocview-v1.0.0.tgz
+    version: v1.0.0
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-17T16:28:46.807989436+08:00"
+    created: "2020-06-23T18:16:13.831245328+08:00"
     description: miki
-    digest: 6ccefd5eeeacb876f25c7756375ec12ac2d4af167ca0900b9314a3a6e908dbf5
+    digest: 30e535a55eeb870819fc44023b784f84777d7c65c574113261f4e5fc7846fb9b
     keywords:
     - miki
     name: miki
     urls:
-    - miki-v1.0.2.tgz
-    version: v1.0.2
+    - miki-v2.0.0.tgz
+    version: v2.0.0
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-06-17T16:28:46.808533921+08:00"
+    created: "2020-06-23T18:16:13.831721323+08:00"
     description: smartscreen
-    digest: 96837db23cedaf67834e4a0177797dd6c2782d7b71236dae4b37c2b783e732f8
+    digest: b6cc79073a969a44c8a27a3f47671168d98f2d88f6c7a1d8a7d69a2d9b0e7b09
     keywords:
     - sscreen
     name: sscreen
     urls:
-    - sscreen-v1.1.7.tgz
-    version: v1.1.7
-generated: "2020-06-17T16:28:46.805398709+08:00"
+    - sscreen-v2.0.0.tgz
+    version: v2.0.0
+generated: "2020-06-23T18:16:13.828640366+08:00"
