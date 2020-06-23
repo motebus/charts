@@ -1,0 +1,41 @@
+# nginx-ingress-control annotation ssl redirect
+enabledSslRedirect: false
+
+# chart namespace
+namespace: default
+
+# ingress host and path
+ingress:
+  host: myapps.ypcloud.com
+  path: /
+
+# motebus upstream
+mbstack:
+  upstream: gke.ypcloud.com
+
+# container
+container:
+    # container name
+    name: iocview
+    # motechat motebus gateway
+    mchatMotebusGateway: 127.0.0.1
+    #
+
+# replication
+replicaCount: 1
+
+# container images
+image:
+  repository:
+    motebus: motebus/motebus:v2.4.9
+    sscreen: motebus/sscreen:latest
+  pullPolicy: IfNotPresent
+
+# service settings
+service:
+  type: ClusterIP
+  protocol: TCP
+  port: 80
+
+# pod node selector
+nodeSelector: {}
