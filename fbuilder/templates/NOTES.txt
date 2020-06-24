@@ -1,4 +1,4 @@
-{{- if eq .Values.container.userMode "single" }}
+{{- if eq .Values.USER_MODE "single" }}
 URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}{{.Release.Name}}/
 {{- else }}
 URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}
