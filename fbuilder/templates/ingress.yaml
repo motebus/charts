@@ -21,7 +21,7 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
-{{- if eq .Values.container.userMode "single" }}
+{{- if eq .Values.USER_MODE "single" }}
           - path: {{.Values.ingress.path}}{{ .Release.Name }}/(.*)
 {{- else }}
           - path: {{.Values.ingress.path}}(.*)
