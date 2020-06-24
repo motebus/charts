@@ -7,7 +7,7 @@ namespace: default
 # ingress host and path
 ingress:
   host: myapps.ypcloud.com
-  path: /
+  path: /sscreen
 
 # replication
 replicaCount: 1
