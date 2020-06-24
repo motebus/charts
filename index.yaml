@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-06-24T10:45:06.775733082+08:00"
+    created: "2020-06-24T10:48:29.959731135+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -15,7 +15,7 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-06-24T10:45:06.776250814+08:00"
+    created: "2020-06-24T10:48:29.960233073+08:00"
     description: fbuilder
     digest: 9936d26532d531628c7f70578b7b736534e9f460fbf3e15ed0b888c2eb2c9117
     keywords:
@@ -27,7 +27,7 @@ entries:
   flowbot:
   - apiVersion: v1
     appVersion: v1.5.4
-    created: "2020-06-24T10:45:06.77667483+08:00"
+    created: "2020-06-24T10:48:29.960677677+08:00"
     description: flowbot
     digest: 3c80ec1d933c9ea76efe46daafcd874758fc5d1477d73a886975250d0aca8ba2
     keywords:
@@ -39,19 +39,19 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.0.7
-    created: "2020-06-24T10:45:06.777177154+08:00"
+    created: "2020-06-24T10:48:29.961172425+08:00"
     description: iocview
-    digest: c9bfc1beb5826d90ec216ed8b768f90b4d871931a60ae771c19705775ef3aa09
+    digest: c5176a74473041703ce5a345829f4f816fb120138d180207cdadbdd2610ebe1d
     keywords:
     - iocview
     name: iocview
     urls:
-    - iocview-v1.0.1.tgz
-    version: v1.0.1
+    - iocview-v1.0.2.tgz
+    version: v1.0.2
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-24T10:45:06.777567665+08:00"
+    created: "2020-06-24T10:48:29.961740302+08:00"
     description: miki
     digest: 30e535a55eeb870819fc44023b784f84777d7c65c574113261f4e5fc7846fb9b
     keywords:
@@ -63,13 +63,13 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-06-24T10:45:06.778027113+08:00"
+    created: "2020-06-24T10:48:29.962232+08:00"
     description: smartscreen
-    digest: ec774e3677afaffc379bdcb217d5094b1798f38f52b69fe7beab7a33614a9421
+    digest: 404a05c18ade518b9798a4cc196f4e5085a48d6767481de22a2e72bb7e22022e
     keywords:
     - sscreen
     name: sscreen
     urls:
-    - sscreen-v2.0.1.tgz
-    version: v2.0.1
-generated: "2020-06-24T10:45:06.7746889+08:00"
+    - sscreen-v2.0.2.tgz
+    version: v2.0.2
+generated: "2020-06-24T10:48:29.958291358+08:00"
