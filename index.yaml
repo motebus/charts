@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-06-29T17:34:56.875892184+08:00"
+    created: "2020-06-29T17:40:51.203571288+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -15,7 +15,7 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-06-29T17:34:56.876408636+08:00"
+    created: "2020-06-29T17:40:51.204086709+08:00"
     description: fbuilder
     digest: 471c73f8302ba4aa1ccf33f00565f97ce88a040046022fd48a571bb363405dbd
     keywords:
@@ -28,7 +28,7 @@ entries:
   flowbot:
   - apiVersion: v1
     appVersion: v1.5.4
-    created: "2020-06-29T17:34:56.876875514+08:00"
+    created: "2020-06-29T17:40:51.204516084+08:00"
     description: flowbot
     digest: 3c80ec1d933c9ea76efe46daafcd874758fc5d1477d73a886975250d0aca8ba2
     keywords:
@@ -40,7 +40,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.0.7
-    created: "2020-06-29T17:34:56.877277049+08:00"
+    created: "2020-06-29T17:40:51.204933114+08:00"
     description: iocview
     digest: c5176a74473041703ce5a345829f4f816fb120138d180207cdadbdd2610ebe1d
     keywords:
@@ -52,7 +52,7 @@ entries:
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-29T17:34:56.877660581+08:00"
+    created: "2020-06-29T17:40:51.205307133+08:00"
     description: miki
     digest: 30e535a55eeb870819fc44023b784f84777d7c65c574113261f4e5fc7846fb9b
     keywords:
@@ -64,7 +64,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-06-29T17:34:56.877980004+08:00"
+    created: "2020-06-29T17:40:51.205647187+08:00"
     description: smartscreen
     digest: 404a05c18ade518b9798a4cc196f4e5085a48d6767481de22a2e72bb7e22022e
     keywords:
@@ -73,4 +73,4 @@ entries:
     urls:
     - sscreen-v2.0.2.tgz
     version: v2.0.2
-generated: "2020-06-29T17:34:56.875278488+08:00"
+generated: "2020-06-29T17:40:51.203075931+08:00"
