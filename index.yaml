@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-06-24T13:57:50.583383561+08:00"
+    created: "2020-06-29T16:08:14.416239652+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -15,19 +15,20 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: v1.4.2
-    created: "2020-06-24T13:57:50.584285779+08:00"
+    created: "2020-06-29T16:08:14.41681073+08:00"
     description: fbuilder
-    digest: 00871bb81227de48a84598a3c8b7ae7ba4ed8e2d8addaea7429f281ef2429c68
+    digest: 9b3a51c3519552ee63be0d61dba9bce943dd940c3acc70637f214ebcfb7e590e
     keywords:
     - fbuilder
     name: fbuilder
+    type: application
     urls:
-    - fbuilder-v2.0.3.tgz
-    version: v2.0.3
+    - fbuilder-v3.0.0.tgz
+    version: v3.0.0
   flowbot:
   - apiVersion: v1
     appVersion: v1.5.4
-    created: "2020-06-24T13:57:50.584843531+08:00"
+    created: "2020-06-29T16:08:14.417296969+08:00"
     description: flowbot
     digest: 3c80ec1d933c9ea76efe46daafcd874758fc5d1477d73a886975250d0aca8ba2
     keywords:
@@ -39,7 +40,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.0.7
-    created: "2020-06-24T13:57:50.585295975+08:00"
+    created: "2020-06-29T16:08:14.41769881+08:00"
     description: iocview
     digest: c5176a74473041703ce5a345829f4f816fb120138d180207cdadbdd2610ebe1d
     keywords:
@@ -51,7 +52,7 @@ entries:
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-24T13:57:50.585725206+08:00"
+    created: "2020-06-29T16:08:14.418075537+08:00"
     description: miki
     digest: 30e535a55eeb870819fc44023b784f84777d7c65c574113261f4e5fc7846fb9b
     keywords:
@@ -63,7 +64,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-06-24T13:57:50.586133415+08:00"
+    created: "2020-06-29T16:08:14.418454842+08:00"
     description: smartscreen
     digest: 404a05c18ade518b9798a4cc196f4e5085a48d6767481de22a2e72bb7e22022e
     keywords:
@@ -72,4 +73,4 @@ entries:
     urls:
     - sscreen-v2.0.2.tgz
     version: v2.0.2
-generated: "2020-06-24T13:57:50.582869758+08:00"
+generated: "2020-06-29T16:08:14.407749028+08:00"
