@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-06-29T17:43:48.812852632+08:00"
+    created: "2020-06-29T17:59:02.977772893+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -14,21 +14,21 @@ entries:
     version: 1.0.3
   fbuilder:
   - apiVersion: v1
-    appVersion: v1.4.2
-    created: "2020-06-29T17:43:48.8133344+08:00"
+    appVersion: latest
+    created: "2020-06-29T17:59:02.978471675+08:00"
     description: fbuilder
-    digest: e9507f1e1289792327fd392608a64a9e840331c070a5f9cb90ad162b0b1562ad
+    digest: 449f85dc4bf5a16c6c5a3bceb609705e6c221b44c83a9cf388cbe6178402e3fb
     keywords:
     - fbuilder
     name: fbuilder
     type: application
     urls:
-    - fbuilder-v3.1.1.tgz
-    version: v3.1.1
+    - fbuilder-v3.1.2.tgz
+    version: v3.1.2
   flowbot:
   - apiVersion: v1
     appVersion: v1.5.4
-    created: "2020-06-29T17:43:48.813786949+08:00"
+    created: "2020-06-29T17:59:02.979101087+08:00"
     description: flowbot
     digest: 3c80ec1d933c9ea76efe46daafcd874758fc5d1477d73a886975250d0aca8ba2
     keywords:
@@ -40,7 +40,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.0.7
-    created: "2020-06-29T17:43:48.814146872+08:00"
+    created: "2020-06-29T17:59:02.979489601+08:00"
     description: iocview
     digest: c5176a74473041703ce5a345829f4f816fb120138d180207cdadbdd2610ebe1d
     keywords:
@@ -52,7 +52,7 @@ entries:
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-29T17:43:48.814539304+08:00"
+    created: "2020-06-29T17:59:02.979924933+08:00"
     description: miki
     digest: 30e535a55eeb870819fc44023b784f84777d7c65c574113261f4e5fc7846fb9b
     keywords:
@@ -64,7 +64,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-06-29T17:43:48.814908273+08:00"
+    created: "2020-06-29T17:59:02.980261454+08:00"
     description: smartscreen
     digest: 404a05c18ade518b9798a4cc196f4e5085a48d6767481de22a2e72bb7e22022e
     keywords:
@@ -73,4 +73,4 @@ entries:
     urls:
     - sscreen-v2.0.2.tgz
     version: v2.0.2
-generated: "2020-06-29T17:43:48.812287612+08:00"
+generated: "2020-06-29T17:59:02.977300641+08:00"
