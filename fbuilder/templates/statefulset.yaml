@@ -1,17 +1,17 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   namespace: {{ .Values.namespace}}
   name: {{ .Release.Name }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-deployment
+      app: {{ .Release.Name }}-stateful
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-       app: {{ .Release.Name }}-deployment
+       app: {{ .Release.Name }}-stateful
     spec:
 {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -42,6 +42,9 @@ spec:
            - name: fbuilder-port
              containerPort: {{ .Values.container.port}}
           imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
+          volumeMounts:
+            - name: {{ .Release.Name}}-vol
+              mountPath: /
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
@@ -52,19 +55,20 @@ spec:
               value: {{.Values.MBSTACK_UPSTREAM}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
 
-            
----
-apiVersion: v1
-kind: Service
-metadata:
-  namespace: {{ .Values.namespace}}
-  name: {{ .Release.Name }}
-spec:
-  type: {{ .Values.service.type }}
-  selector:
-    app: {{ .Release.Name }}-deployment
-  ports:
-    - protocol: {{ .Values.service.protocol }}
-      port: {{ .Values.service.port}}
-      targetPort: fbuilder-port
+{{- if not .Values.persistence.enabled }}
+      volumes:
+        - name: {{ .Release.Name}}-vol
+          emptyDir: {}
+{{- end }}
 
+{{- if .Values.persistence.enabled}}
+  volumeClaimTemplates:
+    - metadata: 
+        name: {{ .Release.Name}}-vol
+      spec:
+        accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        resources:
+            requests:
+                storage: {{ .Values.persistence.size | quote }}
+{{- end}}

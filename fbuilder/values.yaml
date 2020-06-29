@@ -41,6 +41,15 @@ service:
 # pod node selector
 nodeSelector: {}
 
+persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 1Gi
 
 #motechat ei name
 MCHAT_EINAME: fbuilder-example
