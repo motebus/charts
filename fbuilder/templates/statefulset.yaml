@@ -66,9 +66,11 @@ spec:
   volumeClaimTemplates:
     - metadata: 
         name: {{ .Release.Name}}-vol
+        annotations:
+          volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.storageClass | quote }}
       spec:
         accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
-        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        # storageClassName: {{ .Values.persistence.storageClass | quote }}
         resources:
             requests:
                 storage: {{ .Values.persistence.size | quote }}
