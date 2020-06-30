@@ -46,7 +46,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
           volumeMounts:
             - name: {{ .Release.Name}}-vol
-              mountPath: /
+              mountPath: /node_modules
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
