@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-06-30T14:39:02.176745541+08:00"
+    created: "2020-06-30T15:01:39.69147839+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -15,9 +15,9 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-30T14:39:02.177795679+08:00"
+    created: "2020-06-30T15:01:39.692512921+08:00"
     description: fbuilder
-    digest: 04b46ed8f14ba91fc5a0ed6d93cc3a9387bbfe4b0cd6f62c0e25c78a1268d3f8
+    digest: bee061133bfb08fce93a82222ba8389995e01d33ac90a24f17c866b312157846
     keywords:
     - fbuilder
     name: fbuilder
@@ -27,7 +27,7 @@ entries:
     version: v1.1.0
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-30T14:39:02.177203741+08:00"
+    created: "2020-06-30T15:01:39.691936394+08:00"
     description: fbuilder
     digest: c8603116f78cdd61b29dec27d186f78cd94dfdbf04df8f81818a87b4a94955dd
     keywords:
@@ -40,7 +40,7 @@ entries:
   flowbot:
   - apiVersion: v1
     appVersion: v1.5.4
-    created: "2020-06-30T14:39:02.17817944+08:00"
+    created: "2020-06-30T15:01:39.692945277+08:00"
     description: flowbot
     digest: 1d29ce35b2511cb03be1e6b6f9d055e974a9e204d51c5a396175c781a3e0127b
     keywords:
@@ -53,7 +53,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.0.7
-    created: "2020-06-30T14:39:02.182526638+08:00"
+    created: "2020-06-30T15:01:39.693322899+08:00"
     description: iocview
     digest: c5176a74473041703ce5a345829f4f816fb120138d180207cdadbdd2610ebe1d
     keywords:
@@ -65,7 +65,7 @@ entries:
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-06-30T14:39:02.183002458+08:00"
+    created: "2020-06-30T15:01:39.693710581+08:00"
     description: miki
     digest: 30e535a55eeb870819fc44023b784f84777d7c65c574113261f4e5fc7846fb9b
     keywords:
@@ -77,7 +77,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-06-30T14:39:02.183408945+08:00"
+    created: "2020-06-30T15:01:39.694039956+08:00"
     description: smartscreen
     digest: 404a05c18ade518b9798a4cc196f4e5085a48d6767481de22a2e72bb7e22022e
     keywords:
@@ -86,4 +86,4 @@ entries:
     urls:
     - sscreen-v2.0.2.tgz
     version: v2.0.2
-generated: "2020-06-30T14:39:02.176067654+08:00"
+generated: "2020-06-30T15:01:39.690993081+08:00"
