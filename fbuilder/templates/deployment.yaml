@@ -44,7 +44,7 @@ spec:
              containerPort: {{ .Values.container.port}}
           imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
 
-          - name: motebus
+        - name: motebus
           image: {{ .Values.image.repository.motebus}}
           env:
             - name: MBSTACK_BUSMODE
