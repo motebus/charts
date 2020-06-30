@@ -50,7 +50,7 @@ persistence:
     # PVC Access Mode for config volume
     accessMode: ReadWriteOnce
     # PVC Storage Class for config volume
-    # storageClass: 
+    storageClass: nfs-client
     # PVC Storage Request for config volume
     size: 1Gi
 

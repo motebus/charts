@@ -69,8 +69,7 @@ spec:
         name: {{ .Release.Name}}-vol
       spec:
         accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
-        storageClassName: {{ .Release.Name | quote }}
-        # storageClassName: {{ .Values.persistence.storageClass | quote }}
+        storageClassName: {{ .Values.persistence.storageClass | quote }}
         resources:
             requests:
                 storage: {{ .Values.persistence.size | quote }}
