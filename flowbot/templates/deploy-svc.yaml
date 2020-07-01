@@ -28,7 +28,7 @@ spec:
             - name: MCHAT_MBGWIP
               value: {{ .Values.MCHAT_MBGWIP}}
             - name: MCHAT_MBGWPORT
-              value: {{ .Values.MCHAT_MBGWPORT}}
+              value: {{ .Values.MCHAT_MBGWPORT | quote}}
             - name: MCHAT_DC
               value: {{ .Values.MCHAT_DC}}
             - name: FBOT_MODE
@@ -46,6 +46,10 @@ spec:
            - name: flowbot-port
              containerPort: {{ .Values.FBOT_PORT }}
           imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
+          volumeMounts:
+            - name: flowbot-tz
+              mountPath: /etc/localtime
+
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
@@ -55,8 +59,20 @@ spec:
             - name: MBSTACK_UPSTREAM
               value: {{.Values.MBSTACK_UPSTREAM}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
+          volumeMounts:
+            - name: motebus-tz
+              mountPath: /etc/localtime
+    
+      volumes:
+        - name: flowbot-tz
+          hostPath:
+            path: /etc/localtime
+        - name: motebus-tz
+          hostPath:
+            path: /etc/localtime
+
 ---
-{{- if .Values.ui.enabled }}
+{{- if eq .Values.FBOT_UI "1"}}
 apiVersion: v1
 kind: Service
 metadata:

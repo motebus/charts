@@ -1,3 +1,3 @@
-{{- if .Values.ui.enabled}}
+{{- if eq .Values.FBOT_UI "1"}}
     URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}{{.Release.Name}}/
 {{- end}}
