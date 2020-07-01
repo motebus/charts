@@ -46,7 +46,9 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
           volumeMounts:
             - name: {{ .Release.Name}}-vol
-              mountPath: /node_modules
+              mountPath: "/data/node_modules"
+            - name: fbuilder-tz
+              mountPath: /etc/localtime
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
@@ -56,16 +58,25 @@ spec:
             - name: MBSTACK_UPSTREAM
               value: {{.Values.MBSTACK_UPSTREAM}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
+          volumeMounts:
+            - name: motebus-tz
+              mountPath: /etc/localtime
 
-{{- if not .Values.persistence.enabled }}
       volumes:
+        - name: fbuilder-tz
+          hostPath:
+            path: /etc/localtime
+        - name: motebus-tz
+          hostPath:
+            path: /etc/localtime    
+{{- if not .Values.persistence.enabled }}
         - name: {{ .Release.Name}}-vol
           emptyDir: {}
 {{- end }}
 
 {{- if .Values.persistence.enabled}}
   volumeClaimTemplates:
-    - metadata: 
+    - metadata:
         name: {{ .Release.Name}}-vol
       spec:
         accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
