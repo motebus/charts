@@ -1,3 +1,4 @@
+{{- if eq .Values.kind "StatefulSet"}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -7,12 +8,12 @@ spec:
   serviceName: {{ .Release.Name }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-stateful
+      app: {{ .Release.Name }}-deployment
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-       app: {{ .Release.Name }}-stateful
+       app: {{ .Release.Name }}-deployment
     spec:
 {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -83,4 +84,5 @@ spec:
         resources:
             requests:
                 storage: {{ .Values.persistence.size | quote }}
+{{- end}}
 {{- end}}
