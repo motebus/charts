@@ -5,7 +5,7 @@ enabledSslRedirect: false
 namespace: default 
 
 # Deployment, StatefulSet
-kind: Deployment
+kind: StatefulSet
 
 # ingress host and path
 ingress:
@@ -33,7 +33,7 @@ image:
     fbuilder: motebus/fbuilder:latest
   pullPolicy: 
     motebus: IfNotPresent
-    fbuilder: IfNotPresent
+    fbuilder: Always
 
 # service settings
 service:
