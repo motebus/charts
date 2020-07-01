@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-07-01T17:48:44.170162097+08:00"
+    created: "2020-07-01T17:50:03.138522919+08:00"
     description: aibot
     digest: b304c18d9d1c2fa48866390d2ff977df2a60b64bc1f6c41e43a3061244f6577a
     keywords:
@@ -15,7 +15,7 @@ entries:
   fbuilder:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-07-01T17:48:44.172550148+08:00"
+    created: "2020-07-01T17:50:03.140591825+08:00"
     description: fbuilder
     digest: 7a8d1a29a07d51c8f5bbab9c0a0cedc75bfeb4658f2a1aa597701b760a27134c
     keywords:
@@ -27,7 +27,7 @@ entries:
     version: v1.1.2
   - apiVersion: v1
     appVersion: latest
-    created: "2020-07-01T17:48:44.17203938+08:00"
+    created: "2020-07-01T17:50:03.140119974+08:00"
     description: fbuilder
     digest: 412b5257d89919da99523e5ca161e362ec043e47a4ff1267d50a04b97e845136
     keywords:
@@ -39,7 +39,7 @@ entries:
     version: v1.1.1
   - apiVersion: v1
     appVersion: latest
-    created: "2020-07-01T17:48:44.171424879+08:00"
+    created: "2020-07-01T17:50:03.139599654+08:00"
     description: fbuilder
     digest: 20a96d925cec77b835ea68a554107c044c4b5a4b408f1f7dedc604732a32b94a
     keywords:
@@ -51,7 +51,7 @@ entries:
     version: v1.1.0
   - apiVersion: v1
     appVersion: latest
-    created: "2020-07-01T17:48:44.170875674+08:00"
+    created: "2020-07-01T17:50:03.139070868+08:00"
     description: fbuilder
     digest: c8603116f78cdd61b29dec27d186f78cd94dfdbf04df8f81818a87b4a94955dd
     keywords:
@@ -64,7 +64,7 @@ entries:
   flowbot:
   - apiVersion: v1
     appVersion: v1.5.4
-    created: "2020-07-01T17:48:44.173393003+08:00"
+    created: "2020-07-01T17:50:03.141440161+08:00"
     description: flowbot
     digest: 6db59a5f589a53fae9f6eef2bc4254cc9c41562f8ffbbda8915190d10827cd59
     keywords:
@@ -76,7 +76,7 @@ entries:
     version: v2.1.0
   - apiVersion: v1
     appVersion: v1.5.4
-    created: "2020-07-01T17:48:44.172968359+08:00"
+    created: "2020-07-01T17:50:03.141049604+08:00"
     description: flowbot
     digest: 1d29ce35b2511cb03be1e6b6f9d055e974a9e204d51c5a396175c781a3e0127b
     keywords:
@@ -89,7 +89,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.0.7
-    created: "2020-07-01T17:48:44.174291658+08:00"
+    created: "2020-07-01T17:50:03.142303572+08:00"
     description: iocview
     digest: 51c38148d3b692b499a3384cef6c682c28784170ab6312b8077cdf9eb7187ad7
     keywords:
@@ -101,7 +101,7 @@ entries:
     version: v1.1.0
   - apiVersion: v1
     appVersion: v2.0.7
-    created: "2020-07-01T17:48:44.173867013+08:00"
+    created: "2020-07-01T17:50:03.141839299+08:00"
     description: iocview
     digest: c5176a74473041703ce5a345829f4f816fb120138d180207cdadbdd2610ebe1d
     keywords:
@@ -113,7 +113,7 @@ entries:
   miki:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-07-01T17:48:44.175222557+08:00"
+    created: "2020-07-01T17:50:03.143245447+08:00"
     description: miki
     digest: f4d958c7cb8a8717c6cc56d6cad67e3b925a0e9c7ee88cd14e9a4e42430fd215
     keywords:
@@ -125,7 +125,7 @@ entries:
     version: v2.1.0
   - apiVersion: v1
     appVersion: latest
-    created: "2020-07-01T17:48:44.174746453+08:00"
+    created: "2020-07-01T17:50:03.142855743+08:00"
     description: miki
     digest: 30e535a55eeb870819fc44023b784f84777d7c65c574113261f4e5fc7846fb9b
     keywords:
@@ -137,7 +137,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-07-01T17:48:44.17594468+08:00"
+    created: "2020-07-01T17:50:03.144030973+08:00"
     description: smartscreen
     digest: 4a255401a287aa4e0ee8982e1e5656915aaad394eb02b6d1e5726c6f0cc35847
     keywords:
@@ -149,7 +149,7 @@ entries:
     version: v2.1.0
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-07-01T17:48:44.175556653+08:00"
+    created: "2020-07-01T17:50:03.143583647+08:00"
     description: smartscreen
     digest: 404a05c18ade518b9798a4cc196f4e5085a48d6767481de22a2e72bb7e22022e
     keywords:
@@ -158,4 +158,4 @@ entries:
     urls:
     - sscreen-v2.0.2.tgz
     version: v2.0.2
-generated: "2020-07-01T17:48:44.167069962+08:00"
+generated: "2020-07-01T17:50:03.138054098+08:00"
