@@ -68,3 +68,6 @@ STORAGE_MODE: xstorage
 MBSTACK_UPSTREAM: gke.ypcloud.com
 # motebus bus mode
 MBSTACK_BUSMODE: 0
+
+#timezone
+timezone: Asia/Taipei

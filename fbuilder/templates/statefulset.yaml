@@ -23,6 +23,8 @@ spec:
         - name: fbuilder
           image: {{ .Values.image.repository.fbuilder}}
           env:
+            - name: TZ
+              value: {{ .Values.timezone}}
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
@@ -53,6 +55,8 @@ spec:
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
           env:
+            - name: TZ
+              value: {{ .Values.timezone}}
             - name: MBSTACK_BUSMODE
               value: {{.Values.MBSTACK_BUSMODE | quote}}
             - name: MBSTACK_UPSTREAM
