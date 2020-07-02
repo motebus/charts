@@ -22,3 +22,6 @@ service:
   protocol: TCP
 
 nodeSelector: {}
+
+#timezone
+timezone: Asia/Taipei

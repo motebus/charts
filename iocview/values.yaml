@@ -52,3 +52,7 @@ MBSTACK_BUSMODE: 0
 MBSTACK_BUSNAME: ioc
 #motebus upstream
 MBSTACK_UPSTREAM: gke.ypcloud.com
+
+
+#timezone
+timezone: Asia/Taipei

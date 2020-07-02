@@ -57,7 +57,6 @@ MINIO_ENDPOINT: miki.ypcloud.com
 MINIO_PORT: 9000
 # minio ip cidr
 IP: "0.0.0.0"
-# motebus upstream
-MBSTACK_UPSTREAM: gke.ypcloud.com
-# motebus bus mode
-MBSTACK_BUSMODE: 0
+
+#timezone
+timezone: Asia/Taipei

@@ -21,6 +21,8 @@ spec:
         - name: miki
           image: {{ .Values.image.repository.miki}}
           env:
+            - name: TZ
+              value: {{ .Values.timezone}}
             - name: MCHAT_MBGWIP
               value: {{ .Values.MCHAT_MBGWIP}}
             - name: MCHAT_DC
@@ -58,6 +60,8 @@ spec:
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
           env:
+            - name: TZ
+              value: {{ .Values.timezone}}
             - name: MBSTACK_BUSMODE
               value: {{ .Values.MBSTACK_BUSMODE | quote}}
             - name: MBSTACK_UPSTREAM
