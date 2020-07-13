@@ -11,4 +11,6 @@ spec:
     - protocol: {{ .Values.service.protocol }}
       port: {{ .Values.service.port}}
       targetPort: fbuilder-port
+{{- if eq .Values.service.type "ClusterIP"}}
   clusterIP: None
+{{- end}}
