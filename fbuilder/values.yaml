@@ -38,8 +38,9 @@ image:
 
 # service settings
 service:
-  type: ClusterIP
+  type: NodePort
   protocol: TCP
+  nodePort: 30390
   port: 80
 
 # pod node selector
