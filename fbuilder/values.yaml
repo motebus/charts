@@ -20,10 +20,6 @@ container:
     #extra envs
     extraEnvs: {}
 
-# motebus upstream
-mbstack:
-  upstream: gke.ypcloud.com
-
 # replication
 replicaCount: 1
 

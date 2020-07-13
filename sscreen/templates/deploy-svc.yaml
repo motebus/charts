@@ -68,6 +68,9 @@ spec:
     app: {{ .Release.Name }}-deployment
   ports:
     - protocol: {{ .Values.service.protocol }}
+{{- if eq .Values.service.type "NodePort"}}
+      nodePort: {{ .Values.service.nodePort}}
+{{- end}}
       port: {{ .Values.service.port}}
       targetPort: sscreen-port
 

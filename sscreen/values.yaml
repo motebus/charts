@@ -26,6 +26,7 @@ image:
 # service settings
 service:
   type: ClusterIP
+  nodePort: 30123
   protocol: TCP
   port: 80
 
