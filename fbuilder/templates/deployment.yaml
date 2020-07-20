@@ -52,6 +52,6 @@ spec:
             - name: MBSTACK_UPSTREAM
               value: {{.Values.MBSTACK_UPSTREAM}}
             - name: MBSTACK_WATCHLEVEL
-              value: {{.Values.MBSTACK_WATCHLEVEL}}
+              value: {{.Values.MBSTACK_WATCHLEVEL | quote}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
 {{- end}}
