@@ -22,7 +22,7 @@ spec:
       http:
         paths:
 {{- if eq .Values.USER_MODE "single" }}
-          - path: {{.Values.ingress.path}}/{{ .Values.ingress.pathName }}/(.*)
+          - path: {{.Values.ingress.path}}/{{ .Values.ingress.pathName | quote }}/(.*)
 {{- else }}
           - path: {{.Values.ingress.path}}(.*)
 {{- end}}
