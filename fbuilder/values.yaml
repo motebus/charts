@@ -66,6 +66,8 @@ STORAGE_MODE: cloud
 MBSTACK_UPSTREAM: gke.ypcloud.com
 # motebus bus mode
 MBSTACK_BUSMODE: 0
+# motebus watch level
+MBSTACK_WATCHLEVEL: 3
 
 #timezone
 timezone: Asia/Taipei
