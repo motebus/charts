@@ -61,6 +61,8 @@ spec:
               value: {{.Values.MBSTACK_BUSMODE | quote}}
             - name: MBSTACK_UPSTREAM
               value: {{.Values.MBSTACK_UPSTREAM}}
+            - name: MBSTACK_WATCHLEVEL
+              value: {{.Values.MBSTACK_WATCHLEVEL | quote}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
           volumeMounts:
             - name: motebus-tz
