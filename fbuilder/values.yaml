@@ -11,7 +11,7 @@ kind: StatefulSet
 ingress:
   host: myapps.ypcloud.com
   path: /fbuilder
-  pathName: example
+  pathName: "null"
 
 # container env settings
 container:
@@ -58,7 +58,7 @@ MCHAT_EINAME: fbuilder-example
 MCHAT_MBGWIP: 127.0.0.1
 #motechat dc
 MCHAT_DC: dc
-#fbuilder user mode
+#fbuilder user mode, "single, multi"
 USER_MODE: single
 #fbuilder mode, "local, xstorage, cloud"
 STORAGE_MODE: cloud
