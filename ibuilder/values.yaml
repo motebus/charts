@@ -56,7 +56,7 @@ nodeSelector: {}
 
 persistence:
     #Enable config persistence using PVC
-    enabled: true
+    enabled: false
     # PVC Access Mode for config volume
     accessMode: ReadWriteOnce
     # PVC Storage Class for config volume
