@@ -1,2 +1,2 @@
-jupyterURL: https://{{ .Values.ingress.host}}{{.Values.jupyter.ingress.path}}/{{.Values.jupyter.ingress.pathName}}
-mlflowURL:  https://{{ .Values.ingress.host}}{{.Values.mlflow.ingress.path}}/{{.Values.mlflow.ingress.pathName}}
+jupyterURL: https://{{ .Values.ingress.host}}{{.Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}
+mlflowURL:  https://{{ .Values.ingress.host}}{{.Values.mlflow.ingress.path}}/{{.Values.ingress.pathName}}
