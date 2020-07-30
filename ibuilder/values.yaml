@@ -44,7 +44,7 @@ image:
   repository:
     ibuilder: motebus/ibuilder:latest
   pullPolicy: 
-    ibuilder: IfNotPresent
+    ibuilder: Always
 
 # service settings
 service:
