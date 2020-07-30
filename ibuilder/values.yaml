@@ -32,7 +32,7 @@ mlflow:
 
 # container env settings
 container:
-    mountPath: /home/jovyan
+    mountPath: /home
     #extra envs
     extraEnvs: {}
 

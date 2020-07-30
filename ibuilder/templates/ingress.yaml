@@ -4,7 +4,7 @@ metadata:
   namespace: {{ .Values.namespace}}
   name: {{ .Release.Name }}
   annotations:
-    # nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: "nginx"
 {{- if .Values.enabledSslRedirect }}
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -21,11 +21,11 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
-          - path: {{.Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}
+          - path: {{.Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}/(.*)
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.jupyter.service.port}}
-          - path: {{.Values.mlflow.ingress.path}}/{{.Values.ingress.pathName}}
+          - path: {{.Values.mlflow.ingress.path}}/{{.Values.ingress.pathName}}/(.*)
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.mlflow.service.port}}
