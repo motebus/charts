@@ -21,11 +21,11 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
-          - path: {{.Values.jupyter.ingress.path}}
+          - path: {{.Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.jupyter.service.port}}
-          - path: {{.Values.mlflow.ingress.path}}
+          - path: {{.Values.mlflow.ingress.path}}/{{.Values.ingress.pathName}}
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.mlflow.service.port}}

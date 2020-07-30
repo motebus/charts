@@ -10,6 +10,7 @@ kind: StatefulSet
 # ingress
 ingress:
     host: example.com
+    pathName: account
 
 jupyter:
     container:
