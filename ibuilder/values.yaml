@@ -1,0 +1,72 @@
+# nginx-ingress-control annotation ssl redirect
+enabledSslRedirect: false
+
+# chart namespace
+namespace: default 
+
+# StatefulSet
+kind: StatefulSet
+
+# ingress
+ingress:
+    host: example.com
+
+jupyter:
+    container:
+        port: 8000
+    service:
+        port: 8000
+    ingress:
+        path: /ibuilder
+
+mlflow:
+    container:
+        port: 5000
+    service:
+        port: 5000
+    ingress:
+        path: /ibuilder/mlflow
+
+
+
+# container env settings
+container:
+    mountPath: /home/jovyan
+    #extra envs
+    extraEnvs: {}
+
+# replication
+replicaCount: 1
+
+#container image settings and pull policy
+image:
+  repository:
+    ibuilder: motebus/ibuilder:v0.0.1
+  pullPolicy: 
+    ibuilder: IfNotPresent
+
+# service settings
+service:
+  type: ClusterIP
+  protocol: TCP
+
+# pod node selector
+nodeSelector: {}
+
+persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 10Gi
+
+#timezone
+timezone: Asia/Taipei
+
+#jupyter account
+user:
+    account: jupyter
+    password: jupytersecret

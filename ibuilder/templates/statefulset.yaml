@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: {{ .Values.namespace}}
+  name: {{ .Release.Name }}
+spec:
+  serviceName: {{ .Release.Name }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deployment
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+       app: {{ .Release.Name }}-deployment
+    spec:
+{{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+{{- end }}
+      containers:
+        - name: ibuilder
+          image: {{ .Values.image.repository.ibuilder}}
+          env:
+            - name: TZ
+              value: {{ .Values.timezone}}
+            - name: ACCOUNT
+              value: {{ .Values.user.account}}
+            - name: PASSWD
+              value: {{ .Values.user.password}}
+{{- if .Values.container.extraEnvs }}
+{{ toYaml .Values.container.extraEnvs | indent 12 }}
+{{- end }}
+          ports:
+            - name: jupyter-port
+              containerPort: {{ .Values.jupyter.container.port}}
+            - name: mlflow-port
+              containerPort: {{ .Values.mlflow.container.port}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.ibuilder}}
+          volumeMounts:
+            - name: {{ .Release.Name}}-vol
+              mountPath: {{ .Values.container.mountPath}}
+            - name: ibuilder-tz
+              mountPath: /etc/localtime
+
+      volumes:
+        - name: ibuilder-tz
+          hostPath:
+            path: /etc/localtime
+{{- if not .Values.persistence.enabled }}
+        - name: {{ .Release.Name}}-vol
+          emptyDir: {}
+{{- end }}
+
+{{- if .Values.persistence.enabled}}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ .Release.Name}}-vol
+      spec:
+        accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        resources:
+            requests:
+                storage: {{ .Values.persistence.size | quote }}
+{{- end}}
