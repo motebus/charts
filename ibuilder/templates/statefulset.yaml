@@ -28,7 +28,7 @@ spec:
               value: {{ .Values.user.account}}
             - name: PASSWD
               value: {{ .Values.user.password}}
-            - name: URLPRFIX
+            - name: URLPREFIX
               value: {{ .Values.jupyter.ingress.path }}/{{.Values.ingress.pathName}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
