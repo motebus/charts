@@ -42,7 +42,7 @@ replicaCount: 1
 #container image settings and pull policy
 image:
   repository:
-    ibuilder: motebus/ibuilder:v0.0.2
+    ibuilder: motebus/ibuilder:latest
   pullPolicy: 
     ibuilder: IfNotPresent
 
