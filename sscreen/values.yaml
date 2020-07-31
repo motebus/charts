@@ -19,7 +19,7 @@ container:
 # container images
 image:
   repository:
-    motebus: motebus/motebus:v2.4.9
+    motebus: motebus/motebus:v2.5.0
     sscreen: motebus/sscreen:latest
   pullPolicy: IfNotPresent
 
