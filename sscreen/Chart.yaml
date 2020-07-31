@@ -5,7 +5,7 @@ apiVersion: v1
 name: sscreen
 # The name of the chart (required)
 
-version: v2.2.2
+version: v2.2.3
 # A SemVer range of compatible Kubernetes versions (optional)
 
 kubeVersion:
