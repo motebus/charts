@@ -30,7 +30,7 @@ spec:
           ports:
            - name: sscreen-port
              containerPort: {{ .Values.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.sscreen}}
           volumeMounts:
             - name: sscreen-tz
               mountPath: /etc/localtime
@@ -44,7 +44,7 @@ spec:
               value: {{.Values.MBSTACK_BUSMODE | quote}}
             - name: MBSTACK_UPSTREAM
               value: {{.Values.MBSTACK_UPSTREAM}}
-          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
           volumeMounts:
             - name: motebus-tz
               mountPath: /etc/localtime

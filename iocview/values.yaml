@@ -20,9 +20,11 @@ replicaCount: 1
 # container images
 image:
   repository:
-    motebus: motebus/motebus:v2.5.0
+    motebus: motebus/motebus:latest
     iocview: motebus/iocview:v2.0.7
-  pullPolicy: IfNotPresent
+  pullPolicy: 
+    motebus: Always
+    iocview: IfNotPresent
 
 # service settings
 service:

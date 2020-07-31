@@ -19,9 +19,11 @@ container:
 # container images
 image:
   repository:
-    motebus: motebus/motebus:v2.5.0
+    motebus: motebus/motebus:latest
     sscreen: motebus/sscreen:latest
-  pullPolicy: IfNotPresent
+  pullPolicy: 
+    motebus: Always
+    sscreen: Always
 
 # service settings
 service:

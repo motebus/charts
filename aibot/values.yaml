@@ -13,7 +13,7 @@ replicaCount: 1
 
 image:
   repository:
-    motebus: motebus/motebus:v2.4.9
+    motebus: motebus/motebus:latest
     aibot: motebus/aibot-yolo-gpu:latest
   pullPolicy: Always
 

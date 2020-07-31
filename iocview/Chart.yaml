@@ -5,7 +5,7 @@ apiVersion: v1
 name: iocview
 # The name of the chart (required)
 
-version: v1.2.1
+version: v1.2.2
 # A SemVer range of compatible Kubernetes versions (optional)
 
 kubeVersion:

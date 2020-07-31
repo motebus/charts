@@ -19,10 +19,10 @@ replicaCount: 1
 # container images
 image:
   repository:
-    motebus: motebus/motebus:v2.5.0
+    motebus: motebus/motebus:latest
     miki: motebus/miki:latest
   pullPolicy: 
-    motebus: IfNotPresent
+    motebus: Always
     miki: Always
 
 # service settings

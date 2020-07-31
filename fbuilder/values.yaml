@@ -26,10 +26,10 @@ replicaCount: 1
 #container image settings and pull policy
 image:
   repository:
-    motebus: motebus/motebus:v2.5.0
+    motebus: motebus/motebus:latest
     fbuilder: motebus/fbuilder:latest
   pullPolicy: 
-    motebus: IfNotPresent
+    motebus: Always
     fbuilder: Always
 
 # service settings

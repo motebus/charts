@@ -20,10 +20,10 @@ replicaCount: 1
 # docker image and pull policy
 image:
   repository:
-    motebus: motebus/motebus:v2.5.0
+    motebus: motebus/motebus:latest
     flowbot: motebus/flowbot:v1.5.1
   pullPolicy: 
-    motebus: IfNotPresent
+    motebus: Always
     flowbot: IfNotPresent
 
 # service settings
