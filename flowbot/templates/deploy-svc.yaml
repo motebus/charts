@@ -76,7 +76,7 @@ spec:
             path: /etc/localtime
 
 ---
-{{- if eq .Values.FBOT_UI "1"}}
+{{- if eq .Values.FBOT_UI | quote "1"}}
 apiVersion: v1
 kind: Service
 metadata:
