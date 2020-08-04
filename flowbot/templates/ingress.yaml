@@ -22,7 +22,7 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
-          - path: {{.Values.ingress.path}}{{ .Release.Name }}/(.*)
+          - path: {{.Values.ingress.path}}/{{ .Values.ingress.pathName }}/(.*)
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.service.port}}

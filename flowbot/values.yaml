@@ -7,7 +7,8 @@ namespace: default
 # ingress host and path
 ingress:
   host: myapps.ypcloud.com
-  path: /flowbot/
+  path: /flowbot
+  pathName: 
 
 # container env settings
 container:
@@ -21,10 +22,10 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus:latest
-    flowbot: motebus/flowbot:v1.5.1
+    flowbot: motebus/flowbot:latest
   pullPolicy: 
     motebus: Always
-    flowbot: IfNotPresent
+    flowbot: Always
 
 # service settings
 service:
