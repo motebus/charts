@@ -39,8 +39,10 @@ spec:
               value: {{ .Values.FBOT_FLOWID | quote}}
             - name: FBOT_PORT
               value: {{ .Values.FBOT_PORT | quote }}
+{{- if .Values.enabledUI }}
             - name: FBOT_UI
               value: {{ .Values.FBOT_UI | quote}}
+{{- end}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
@@ -76,7 +78,7 @@ spec:
             path: /etc/localtime
 
 ---
-{{- if eq .Values.FBOT_UI "1"}}
+{{- if .Values.enabledUI }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -90,4 +92,4 @@ spec:
     - protocol: {{ .Values.service.protocol }}
       port: {{ .Values.service.port}}
       targetPort: flowbot-port
-{{- end}}
+{{- end}} 

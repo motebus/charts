@@ -1,6 +1,9 @@
 # nginx-ingress-control annotation ssl redirect
 enabledSslRedirect: false
 
+# UI
+enabledUI: true
+
 # chart namespace
 namespace: default 
 
@@ -35,7 +38,6 @@ service:
 
 # pod node selector
 nodeSelector: {}
-
 
 # flowbot id
 FBOT_FLOWID: 99999
