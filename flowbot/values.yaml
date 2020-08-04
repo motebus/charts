@@ -44,7 +44,7 @@ FBOT_MODE: xstorage
 # flowbot port
 FBOT_PORT: 1880
 # flowbot ui
-FBOT_UI: 1
+FBOT_UI: "1"
 # motechat ei name
 MCHAT_EINAME: flowbot-example
 # motechat motebus gateway
