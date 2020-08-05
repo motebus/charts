@@ -42,7 +42,7 @@ nodeSelector: {}
 # flowbot id
 FBOT_FLOWID: 99999
 # flowbot mode
-FBOT_MODE: xstorage
+FBOT_MODE: local
 # flowbot port
 FBOT_PORT: 1880
 # flowbot ui
@@ -62,3 +62,15 @@ MBSTACK_BUSMODE: 0
 
 #timezone
 timezone: Asia/Taipei
+
+
+# persistent
+persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 1Gi

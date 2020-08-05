@@ -1,4 +1,3 @@
-{{- if eq .Values.kind "StatefulSet"}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -20,8 +19,8 @@ spec:
 {{ toYaml . | indent 8 }}
 {{- end }}
       containers:
-        - name: fbuilder
-          image: {{ .Values.image.repository.fbuilder}}
+        - name: flowbot
+          image: {{ .Values.image.repository.flowbot}}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -31,25 +30,31 @@ spec:
               value: {{ .Values.MCHAT_EINAME }}-app
             - name: MCHAT_MBGWIP
               value: {{ .Values.MCHAT_MBGWIP}}
+            - name: MCHAT_MBGWPORT
+              value: {{ .Values.MCHAT_MBGWPORT | quote}}
             - name: MCHAT_DC
               value: {{ .Values.MCHAT_DC}}
-            - name: USER_MODE
-              value: {{ .Values.USER_MODE}}
-            - name: STORAGE_MODE
-              value: {{ .Values.STORAGE_MODE}}
-            - name: PORT
-              value: {{ .Values.container.port | quote}}
+            - name: FBOT_MODE
+              value: {{ .Values.FBOT_MODE}}
+            - name: FBOT_FLOWID
+              value: {{ .Values.FBOT_FLOWID | quote}}
+            - name: FBOT_PORT
+              value: {{ .Values.FBOT_PORT | quote }}
+{{- if .Values.enabledUI }}
+            - name: FBOT_UI
+              value: {{ .Values.FBOT_UI | quote}}
+{{- end}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
-           - name: fbuilder-port
-             containerPort: {{ .Values.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
+           - name: flowbot-port
+             containerPort: {{ .Values.FBOT_PORT }}
+          imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
           volumeMounts:
             - name: {{ .Release.Name}}-vol
-              mountPath: "/data"
-            - name: fbuilder-tz
+              mountPath: /usr/src/node-red/flow
+            - name: flowbot-tz
               mountPath: /etc/localtime
 
         - name: motebus
@@ -69,7 +74,7 @@ spec:
               mountPath: /etc/localtime
 
       volumes:
-        - name: fbuilder-tz
+        - name: flowbot-tz
           hostPath:
             path: /etc/localtime
         - name: motebus-tz
@@ -90,5 +95,4 @@ spec:
         resources:
             requests:
                 storage: {{ .Values.persistence.size | quote }}
-{{- end}}
 {{- end}}
