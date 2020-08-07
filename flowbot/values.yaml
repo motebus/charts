@@ -59,6 +59,8 @@ MCHAT_MBGWPORT: "6262"
 MBSTACK_UPSTREAM: gke.ypcloud.com
 # motebus bus mode
 MBSTACK_BUSMODE: 0
+# motebus bus name
+MBSTACK_BUSNAME: 
 
 #timezone
 timezone: Asia/Taipei

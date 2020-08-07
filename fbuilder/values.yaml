@@ -4,9 +4,6 @@ enabledSslRedirect: false
 # chart namespace
 namespace: default 
 
-# Deployment, StatefulSet
-kind: StatefulSet
-
 # ingress host and path
 ingress:
   host: myapps.ypcloud.com
@@ -68,6 +65,8 @@ MBSTACK_UPSTREAM: gke.ypcloud.com
 MBSTACK_BUSMODE: 0
 # motebus watch level
 MBSTACK_WATCHLEVEL: 3
+# motebus bus name
+MBSTACK_BUSNAME: 
 
 #timezone
 timezone: Asia/Taipei

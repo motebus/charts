@@ -1,10 +1,10 @@
-{{- if eq .Values.kind "Deployment"}}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   namespace: {{ .Values.namespace}}
   name: {{ .Release.Name }}
 spec:
+  serviceName: {{ .Release.Name }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-deployment
@@ -22,6 +22,8 @@ spec:
         - name: fbuilder
           image: {{ .Values.image.repository.fbuilder}}
           env:
+            - name: TZ
+              value: {{ .Values.timezone}}
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
@@ -43,15 +45,50 @@ spec:
            - name: fbuilder-port
              containerPort: {{ .Values.container.port}}
           imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
+          volumeMounts:
+            - name: {{ .Release.Name}}-vol
+              mountPath: "/data"
+            - name: fbuilder-tz
+              mountPath: /etc/localtime
 
         - name: motebus
           image: {{ .Values.image.repository.motebus}}
           env:
+            - name: TZ
+              value: {{ .Values.timezone}}
             - name: MBSTACK_BUSMODE
               value: {{.Values.MBSTACK_BUSMODE | quote}}
             - name: MBSTACK_UPSTREAM
               value: {{.Values.MBSTACK_UPSTREAM}}
             - name: MBSTACK_WATCHLEVEL
               value: {{.Values.MBSTACK_WATCHLEVEL | quote}}
+            - name: MBSTACK_BUSNAME
+              value: {{ .Values.MBSTACK_BUSNAME}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
+          volumeMounts:
+            - name: motebus-tz
+              mountPath: /etc/localtime
+
+      volumes:
+        - name: fbuilder-tz
+          hostPath:
+            path: /etc/localtime
+        - name: motebus-tz
+          hostPath:
+            path: /etc/localtime    
+{{- if not .Values.persistence.enabled }}
+        - name: {{ .Release.Name}}-vol
+          emptyDir: {}
+{{- end }}
+
+{{- if .Values.persistence.enabled}}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ .Release.Name}}-vol
+      spec:
+        accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        resources:
+            requests:
+                storage: {{ .Values.persistence.size | quote }}
 {{- end}}
