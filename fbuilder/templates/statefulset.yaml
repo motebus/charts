@@ -27,7 +27,7 @@ spec:
             - name: SENDTIMEOUT
               value: {{ .Values.MCHAT_SENDTIMEOUT }}
             - name: WAITREPLY
-              value: {{ .Values.WAITREPLY }}
+              value: {{ .Values.MCHAT_ WAITREPLY }}
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
