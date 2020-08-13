@@ -55,6 +55,10 @@ MCHAT_EINAME: fbuilder-example
 MCHAT_MBGWIP: 127.0.0.1
 #motechat dc
 MCHAT_DC: dc
+# motechat send timeout
+MCHAT_SENDTIMEOUT: 6
+# motechat send reply timeout
+MCHAT_ WAITREPLY: 12
 #fbuilder user mode, "single, multi"
 USER_MODE: single
 #fbuilder mode, "local, xstorage, cloud"

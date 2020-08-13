@@ -25,9 +25,9 @@ spec:
             - name: TZ
               value: {{ .Values.timezone}}
             - name: SENDTIMEOUT
-              value: "6"
+              value: {{ .Values.MCHAT_SENDTIMEOUT }}
             - name: WAITREPLY
-              value: "20"
+              value: {{ .Values.WAITREPLY }}
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
