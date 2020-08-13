@@ -24,6 +24,10 @@ spec:
           env:
             - name: TZ
               value: {{ .Values.timezone}}
+            - name: SENDTIMEOUT
+              value: "6"
+            - name: WAITREPLY
+              value: "20"
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
