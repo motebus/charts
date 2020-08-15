@@ -14,7 +14,7 @@ spec:
       labels:
        app: {{ .Release.Name }}-deployment
     spec:
-      hostNetwork: true
+      # hostNetwork: true
 {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
