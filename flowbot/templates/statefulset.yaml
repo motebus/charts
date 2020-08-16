@@ -14,7 +14,7 @@ spec:
       labels:
        app: {{ .Release.Name }}-deployment
     spec:
-      dnsPolicy: "None"
+      dnsPolicy: "ClusterFirst"
       dnsConfig:
         nameservers:
           - 8.8.8.8
