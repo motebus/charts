@@ -4,6 +4,9 @@ enabledSslRedirect: false
 # chart namespace
 namespace: default 
 
+# SSL
+ssl: https
+
 # ingress host and path
 ingress:
   host: myapps.ypcloud.com

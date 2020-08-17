@@ -1,5 +1,5 @@
 {{- if eq .Values.USER_MODE "single" }}
-URL: https://{{ .Values.ingress.host}}{{.Values.ingress.path}}/{{ .Values.ingress.pathName }}/
+URL: {{ .Values.ssl}}://{{ .Values.ingress.host}}{{.Values.ingress.path}}/{{ .Values.ingress.pathName }}/
 {{- else }}
-URL: https://{{ .Values.ingress.host}}{{.Values.ingress.path}}/
+URL: {{ .Values.ssl}}://{{ .Values.ingress.host}}{{.Values.ingress.path}}/
 {{- end}}
