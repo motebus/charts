@@ -28,8 +28,6 @@ spec:
               value: {{ .Values.user.account}}
             - name: PASSWD
               value: {{ .Values.user.password}}
-            - name: BASE_URL
-              value: /{{.Values.ingress.pathName}}{{ .Values.jupyter.ingress.path}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
