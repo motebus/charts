@@ -25,7 +25,7 @@ spec:
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.jupyter.service.port}}
-          - path: {{.Values.mlflow.ingress.path}}/{{.Values.ingress.pathName}}/(.*)
+          - path: /{{.Values.ingress.pathName}}{{.Values.mlflow.ingress.path}}/(.*)
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.mlflow.service.port}}
