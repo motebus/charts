@@ -28,10 +28,10 @@ spec:
               value: {{ .Values.user.account}}
             - name: PASSWD
               value: {{ .Values.user.password}}
-            - name: URLPREFIX
+            - name: BASE_URL
               value: {{ .Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}
             - name: DEFAULT_URL
-              value: {{ .Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}
+              value: 
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
