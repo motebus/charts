@@ -30,6 +30,8 @@ spec:
               value: {{ .Values.user.password}}
             - name: URLPREFIX
               value: {{ .Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}
+            - name: DEFAULT_URL
+              value: {{ .Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
