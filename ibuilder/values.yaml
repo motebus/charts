@@ -9,8 +9,8 @@ kind: StatefulSet
 
 # ingress
 ingress:
-    host: example.com
-    pathName: account
+    host: run.ypcloud.com
+    pathName: username
 
 jupyter:
     container:
