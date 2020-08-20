@@ -37,8 +37,8 @@ spec:
               value: /ibuilder
             # - name: CUSTOM_URL
             #   value: https://{{ .Values.ingress.host}}/ibuilder/
-            # - name: DEFAULT_URL
-            #   value: /ibuilder/tree
+            - name: DEFAULT_URL
+              value: /ibuilder/lab
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
