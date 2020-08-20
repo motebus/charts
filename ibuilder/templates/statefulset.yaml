@@ -24,10 +24,10 @@ spec:
           env:
             - name: TZ
               value: {{ .Values.timezone}}
-            - name: ACCOUNT
-              value: {{ .Values.user.account}}
-            - name: PASSWD
-              value: {{ .Values.user.password}}
+            - name: JUPYTER_MODE
+              value: lab
+            - name: TOKEN
+              value: {{ .Values.user.token}}
 {{- if .Values.container.extraEnvs }}
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}

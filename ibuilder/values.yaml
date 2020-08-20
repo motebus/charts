@@ -69,5 +69,4 @@ timezone: Asia/Taipei
 
 #jupyter account
 user:
-    account: jupyter
-    password: jupytersecret
+    token: tokensecret
