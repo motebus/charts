@@ -22,7 +22,7 @@ spec:
       http:
         paths:
           # - path: {{.Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}/(.*)
-          - path: /(.*)
+          - path: /ibuilder/(.*)
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.jupyter.service.port}}
