@@ -35,8 +35,8 @@ spec:
               value: {{ .Values.user.token}}
             - name: BASE_URL
               value: /ibuilder
-            # - name: CUSTOM_URL
-            #   value: https://{{ .Values.ingress.host}}/ibuilder/
+            - name: CUSTOM_URL
+              value: https://{{ .Values.ingress.host}}/ibuilder
             # - name: DEFAULT_URL
             #   value: /ibuilder/lab
 {{- if .Values.container.extraEnvs }}
