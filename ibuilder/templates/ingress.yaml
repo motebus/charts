@@ -21,7 +21,7 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
-          - path: {{.Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}/(.*)
+          - path: /(.*)
             backend:
               serviceName: {{ .Release.Name }}
               servicePort: {{ .Values.jupyter.service.port}}
