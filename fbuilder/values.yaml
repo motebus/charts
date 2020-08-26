@@ -58,6 +58,8 @@ MCHAT_EINAME: fbuilder-example
 MCHAT_MBGWIP: 127.0.0.1
 #motechat dc
 MCHAT_DC: dc
+#motechat ioc
+MCHAT_IOC: ioc
 # motechat send timeout
 MCHAT_SENDTIMEOUT: "6"
 # motechat send reply timeout
