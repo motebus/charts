@@ -53,6 +53,8 @@ MCHAT_EINAME: flowbot-example
 MCHAT_MBGWIP: 127.0.0.1
 # motechat dc
 MCHAT_DC: dc
+# motechat ioc 
+MCHAT_IOC: ioc
 # motechat motebus gatway port
 MCHAT_MBGWPORT: "6262"
 # motebus upstream

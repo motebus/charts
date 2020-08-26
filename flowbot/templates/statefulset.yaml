@@ -39,6 +39,8 @@ spec:
               value: {{ .Values.MCHAT_MBGWPORT | quote}}
             - name: MCHAT_DC
               value: {{ .Values.MCHAT_DC}}
+            - name: MCHAT_IOC
+              value: {{ .Values.MCHAT_IOC}}
             - name: FBOT_MODE
               value: {{ .Values.FBOT_MODE}}
             - name: FBOT_FLOWID
