@@ -63,6 +63,8 @@ MBSTACK_UPSTREAM: gke.ypcloud.com
 MBSTACK_BUSMODE: 0
 # motebus bus name
 MBSTACK_BUSNAME: 
+# motebus volume
+MBSTACK_DATAPATH: /var/motebus
 
 #timezone
 timezone: Asia/Taipei

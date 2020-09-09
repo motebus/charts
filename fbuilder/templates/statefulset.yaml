@@ -59,7 +59,7 @@ spec:
           volumeMounts:
             - name: {{ .Release.Name}}-vol
               mountPath: "/data"
-            - name: fbuilder-tz
+            - name: tz
               mountPath: /etc/localtime
 
         - name: motebus
@@ -75,25 +75,26 @@ spec:
               value: {{.Values.MBSTACK_WATCHLEVEL | quote}}
             - name: MBSTACK_BUSNAME
               value: {{ .Values.MBSTACK_BUSNAME}}
+            - name: MBSTACK_DATAPATH
+              value: {{.Values.MBSTACK_DATAPATH}}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
           volumeMounts:
-            - name: motebus-tz
+            - name: motebus-vol
+              mountPath: {{.Values.MBSTACK_DATAPATH}}
+            - name: tz
               mountPath: /etc/localtime
 
       volumes:
-        - name: fbuilder-tz
+        - name: tz
           hostPath:
             path: /etc/localtime
-        - name: motebus-tz
-          hostPath:
-            path: /etc/localtime    
 {{- if not .Values.persistence.enabled }}
         - name: {{ .Release.Name}}-vol
           emptyDir: {}
 {{- end }}
 
-{{- if .Values.persistence.enabled}}
   volumeClaimTemplates:
+{{- if .Values.persistence.enabled}}
     - metadata:
         name: {{ .Release.Name}}-vol
       spec:
@@ -103,3 +104,11 @@ spec:
             requests:
                 storage: {{ .Values.persistence.size | quote }}
 {{- end}}
+    - metadata:
+        name: motebus-vol
+      spec:
+        accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        resources:
+            requests:
+                storage: 1Gi
