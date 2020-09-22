@@ -1,9 +1,6 @@
 # nginx-ingress-control annotation ssl redirect
 enabledSslRedirect: false
 
-# chart namespace
-namespace: default 
-
 # SSL
 ssl: https
 
