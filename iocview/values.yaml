@@ -21,7 +21,7 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus:latest
-    iocview: motebus/iocview:v2.0.7
+    iocview: motebus/iocview:v2.1.2
   pullPolicy: 
     motebus: Always
     iocview: IfNotPresent
@@ -29,6 +29,7 @@ image:
 # service settings
 service:
   type: ClusterIP
+  nodePort: 
   protocol: TCP
   port: 80
 
