@@ -11,5 +11,8 @@ spec:
   ports:
     - protocol: {{ .Values.service.protocol }}
       port: {{ .Values.service.port}}
+{{- if eq .Values.service.type "NodePort"}}
+      nodePort: {{ .Values.service.nodePort}}
+{{- end}}
       targetPort: flowbot-port
 {{- end}} 
