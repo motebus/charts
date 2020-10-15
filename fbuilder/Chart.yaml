@@ -6,7 +6,7 @@ name: fbuilder
 # The name of the chart (required)
 
 
-version: v1.2.25
+version: v1.2.26
 
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
