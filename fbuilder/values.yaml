@@ -6,6 +6,7 @@ ssl: https
 
 # ingress host and path
 ingress:
+  enabled: true
   host: myapps.ypcloud.com
   path: /fbuilder
   pathName: "null"
