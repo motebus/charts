@@ -40,7 +40,7 @@ spec:
              containerPort: {{ .Values.container.port}}
           imagePullPolicy: {{ .Values.image.pullPolicy.iocview}}
           volumeMounts:
-            - name: iocview-tz
+            - name: tz
               mountPath: /etc/localtime
 
         - name: motebus
@@ -56,14 +56,11 @@ spec:
               value: {{ .Values.MBSTACK_UPSTREAM }}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
           volumeMounts:
-            - name: motebus-tz
+            - name: tz
               mountPath: /etc/localtime
     
       volumes:
-        - name: iocview-tz
-          hostPath: 
-            path: /etc/localtime
-        - name: motebus-tz
+        - name: tz
           hostPath: 
             path: /etc/localtime
             
