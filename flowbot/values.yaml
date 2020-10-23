@@ -34,6 +34,7 @@ image:
 service:
   type: ClusterIP
   protocol: TCP
+  nodePort: 
   port: 80
 
 # pod node selector
