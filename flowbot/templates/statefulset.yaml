@@ -59,8 +59,6 @@ spec:
              containerPort: {{ .Values.FBOT_PORT }}
           imagePullPolicy: {{ .Values.image.pullPolicy.flowbot}}
           volumeMounts:
-            - name: {{ .Release.Name}}-vol
-              mountPath: /usr/src/node-red/flow
             - name: tz
               mountPath: /etc/localtime
 
