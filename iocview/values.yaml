@@ -22,10 +22,10 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus:latest
-    iocview: motebus/iocview:v2.1.2
+    iocview: motebus/iocview:latest
   pullPolicy: 
     motebus: Always
-    iocview: IfNotPresent
+    iocview: Always
 
 # service settings
 service:
