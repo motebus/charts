@@ -26,7 +26,7 @@ spec:
 {{- end }}
       containers:
         - name: webmms-srv
-          image: {{ .Values.image.repository.webmms}}
+          image: "{{ .Values.image.repository.webmms-srv }}:{{ .Values.image.tag.webmms-srv }}"
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -54,7 +54,7 @@ spec:
               mountPath: /etc/localtime
 
         - name: motebus
-          image: {{ .Values.image.repository.motebus}}
+          image: "{{ .Values.image.repository.motebus }}:{{ .Values.image.tag.motebus }}"
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -68,6 +68,8 @@ spec:
               value: {{ .Values.MBSTACK_BUSNAME}}
             - name: MBSTACK_DATAPATH
               value: {{.Values.MBSTACK_DATAPATH}}
+            - name: MBSTACK_IPFINDER
+              value: {{ .Values.MBSTACK_IPFINDER }}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
           volumeMounts:
             - name: motebus-vol
