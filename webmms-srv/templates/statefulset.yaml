@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  serviceName: {{ .Release.Name }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deployment
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+       app: {{ .Release.Name }}-deployment
+    spec:
+{{- if .Values.podDnsPolicy}}
+      dnsPolicy: {{ .Values.podDnsPolicy}}
+{{- end}}
+{{- if .Values.podDnsConfig}}
+      dnsConfig:
+{{ toYaml .Values.podDnsConfig | indent 8}}
+{{- end}}
+{{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+{{- end }}
+      containers:
+        - name: webmms-srv
+          image: {{ .Values.image.repository.webmms}}
+          env:
+            - name: TZ
+              value: {{ .Values.timezone}}
+            - name: SENDTIMEOUT
+              value: {{ .Values.MCHAT_SENDTIMEOUT | quote }}
+            - name: WAITREPLY
+              value: {{ .Values.MCHAT_WAITREPLY | quote}}
+            - name: MCHAT_MBGWIP
+              value: {{ .Values.MCHAT_MBGWIP}}
+            - name: MCHAT_DC
+              value: {{ .Values.MCHAT_DC}}
+            - name: MCHAT_IOC
+              value: {{ .Values.MCHAT_IOC}}
+            - name: WEBMMS_PORT
+              value: {{ .Values.container.port | quote}}
+{{- if .Values.container.extraEnvs }}
+{{ toYaml .Values.container.extraEnvs | indent 12 }}
+{{- end }}
+          ports:
+           - name: webmms-port
+             containerPort: {{ .Values.container.port}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.webmms}}
+          volumeMounts:
+            - name: tz
+              mountPath: /etc/localtime
+
+        - name: motebus
+          image: {{ .Values.image.repository.motebus}}
+          env:
+            - name: TZ
+              value: {{ .Values.timezone}}
+            - name: MBSTACK_BUSMODE
+              value: {{.Values.MBSTACK_BUSMODE | quote}}
+            - name: MBSTACK_UPSTREAM
+              value: {{.Values.MBSTACK_UPSTREAM}}
+            - name: MBSTACK_WATCHLEVEL
+              value: {{.Values.MBSTACK_WATCHLEVEL | quote}}
+            - name: MBSTACK_BUSNAME
+              value: {{ .Values.MBSTACK_BUSNAME}}
+            - name: MBSTACK_DATAPATH
+              value: {{.Values.MBSTACK_DATAPATH}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
+          volumeMounts:
+            - name: motebus-vol
+              mountPath: {{.Values.MBSTACK_DATAPATH}}
+            - name: tz
+              mountPath: /etc/localtime
+ 
+      volumes:
+        - name: tz
+          hostPath:
+            path: /etc/localtime             
+
+  volumeClaimTemplates:
+{{- if .Values.persistence.enabled}}
+    - metadata:
+        name: motebus-vol
+      spec:
+        accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        resources:
+            requests:
+                storage: {{ .Values.persistence.size | quote }}
+{{- end}}

@@ -1,0 +1,28 @@
+{{- if .Values.ingress.enabled}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}
+{{- with .Values.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+{{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+{{- end }}
+  tls:
+    - hosts:
+        - {{.Values.ingress.host}}
+      secretName: {{ .Release.Name}}-tls
+  rules:
+    #對外訪問的域名
+    - host: {{.Values.ingress.host}}
+      http:
+        paths:
+          - path: {{.Values.ingress.path}}/(.*)
+            backend:
+              serviceName: {{ .Release.Name }}
+              servicePort: {{ .Values.service.port}}
+{{- end}}

@@ -1,0 +1,78 @@
+# ingress host and path
+ingress:
+  enabled: true
+  annotation:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: "nginx"
+  tls: {}
+  host: myapps.ypcloud.com
+  path: /fbuilder
+  pathName: "null"
+
+# container env settings
+container:
+    # fbuilder port
+    port: 6000
+    #extra envs
+    extraEnvs: {}
+
+# replication
+replicaCount: 1
+
+#container image settings and pull policy
+image:
+  repository:
+    motebus: motebus/motebus:latest
+    fbuilder: motebus/fbuilder:latest
+  pullPolicy: 
+    motebus: Always
+    fbuilder: Always
+
+# service settings
+service:
+  type: ClusterIP
+  protocol: TCP
+  nodePort: 
+  port: 80
+
+# pod node selector
+nodeSelector: {}
+
+persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 1Gi
+
+#motechat motebus gateway
+MCHAT_MBGWIP: 127.0.0.1
+#motechat dc
+MCHAT_DC: dc
+#motechat ioc
+MCHAT_IOC: ioc
+# motechat send timeout
+MCHAT_SENDTIMEOUT: "6"
+# motechat send reply timeout
+MCHAT_WAITREPLY: "12"
+# motebus bus mode
+MBSTACK_BUSMODE: 0
+# motebus watch level
+MBSTACK_WATCHLEVEL: 3
+# motebus bus name
+MBSTACK_BUSNAME: 
+# motebus volume
+MBSTACK_DATAPATH: /var/motebus
+
+#timezone
+timezone: Asia/Taipei
+
+#pod DNS policy and config
+podDnsPolicy: "None"
+podDnsConfig:
+  nameserver:
+    - 8.8.8.8
+    - 8.8.4.4
