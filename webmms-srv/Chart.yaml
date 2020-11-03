@@ -6,7 +6,7 @@ name: webmms-srv
 # The name of the chart (required)
 
 
-version: v1.1.0
+version: v1.0.0
 
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
