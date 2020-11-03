@@ -11,6 +11,7 @@ ingress:
   hosts: 
     - myapps.ypcloud.com
   path: /sscreen/(.*)
+  pathType: Prefix
 
 # replication
 replicaCount: 1

@@ -13,6 +13,7 @@ ingress:
   hosts:
     - myapps.ypcloud.com
   path: /fbuilder
+  pathType: Prefix
   pathName: "username"
 
 # container env settings

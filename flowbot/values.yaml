@@ -10,6 +10,7 @@ ingress:
   hosts:
     - myapps.ypcloud.com
   path: /flowbot
+  pathType: Prefix
   pathName: "username"
 
 # container env settings

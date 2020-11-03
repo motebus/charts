@@ -10,6 +10,7 @@ ingress:
   hosts:
     - myapps.ypcloud.com
   path: /iocview/(.*)
+  pathType: Prefix
 
 # container
 container:

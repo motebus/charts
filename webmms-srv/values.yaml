@@ -10,6 +10,7 @@ ingress:
   hosts:
     - myapps.ypcloud.com
   path: /webmms/(.*)
+  pathType: Prefix
 
 # container env settings
 container:
