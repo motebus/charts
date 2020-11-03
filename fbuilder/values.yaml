@@ -42,7 +42,7 @@ service:
   type: ClusterIP
   protocol: TCP
   nodePort: 
-  port: 18880
+  port: 1880
 
 # pod node selector
 nodeSelector: {}

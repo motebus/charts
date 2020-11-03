@@ -26,7 +26,7 @@ spec:
 {{- end }}
       containers:
         - name: fbuilder
-          image: "{{ .Values.image.repository.fbuilder }}:{{ .Values.image.tag.fbuilder }}"
+          image: {{ .Values.image.repository.fbuilder }}:{{ .Values.image.tag.fbuilder }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -67,18 +67,18 @@ spec:
             - name: TZ
               value: {{ .Values.timezone}}
             - name: MBSTACK_BUSMODE
-              value: {{.Values.MBSTACK_BUSMODE | quote}}
+              value: {{ .Values.MBSTACK_BUSMODE | quote }}
             - name: MBSTACK_UPSTREAM
-              value: {{.Values.MBSTACK_UPSTREAM}}
+              value: {{ .Values.MBSTACK_UPSTREAM }}
             - name: MBSTACK_WATCHLEVEL
-              value: {{.Values.MBSTACK_WATCHLEVEL | quote}}
+              value: {{ .Values.MBSTACK_WATCHLEVEL | quote }}
             - name: MBSTACK_BUSNAME
-              value: {{ .Values.MBSTACK_BUSNAME}}
+              value: {{ .Values.MBSTACK_BUSNAME }}
             - name: MBSTACK_DATAPATH
-              value: {{.Values.MBSTACK_DATAPATH}}
+              value: {{.Values.MBSTACK_DATAPATH }}
             - name: MBSTACK_IPFINDER
               value: {{ .Values.MBSTACK_IPFINDER }}
-          imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.motebus }}
           volumeMounts:
             - name: motebus-vol
               mountPath: {{.Values.MBSTACK_DATAPATH}}
