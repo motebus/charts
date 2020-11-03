@@ -1,7 +1,14 @@
 {{- if .Values.ingress.enabled}}
-{{- if eq .Values.USER_MODE "single" }}
-URL: {{ .Values.ssl}}://{{ .Values.ingress.host}}{{.Values.ingress.path}}/{{ .Values.ingress.pathName }}/
-{{- else }}
-URL: {{ .Values.ssl}}://{{ .Values.ingress.host}}{{.Values.ingress.path}}/
-{{- end}}
+{{- $ingressPath := .Values.ingress.path -}}
+{{- $ingressPathName := .Values.ingress.pathName -}}
+{{- $ssl := .Values.ssl -}}
+    {{- if eq .Values.USER_MODE "single" }}
+        {{- range .Values.ingress.hosts }}
+        URL: {{ $ssl }}://{{ . }}{{ $ingressPath }}/{{ $ingressPathName }}/
+        {{- end }}
+    {{- else }}
+        {{- range .Values.ingress.hosts }}
+        URL: {{ $ssl }}://{{ . }}{{ $ingressPath }}/
+        {{- end }}
+    {{- end}}
 {{- end}}

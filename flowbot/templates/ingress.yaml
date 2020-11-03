@@ -1,29 +1,31 @@
-{{- if .Values.FBOT_UI }}
+{{- if .Values.ingress.enabled}}
+{{- $USER_MODE := .Values.USER_MODE -}}
+{{- $ingressPath := .Values.ingress.path -}}
+{{- $ingressPathName := .Values.ingress.pathName -}}
+{{- $servicePort := .Values.service.port -}}
+{{- $releaseName := .Release.Name -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   namespace: {{ .Values.namespace}}
   name: {{ .Release.Name }}
+{{- with .Values.ingress.annotations }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    kubernetes.io/ingress.class: "nginx"
-{{- if .Values.enabledSslRedirect }}
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-{{- else }}
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+{{ toYaml . | indent 4 }}
 {{- end }}
 spec:
+{{- if .Values.ingress.tls }}
   tls:
-    - hosts:
-        - {{.Values.ingress.host}}
-      secretName: {{ .Release.Name}}-tls
+{{ toYaml .Values.ingress.tls | indent 4 }}
+{{- end }}
   rules:
-    #對外訪問的域名
-    - host: {{.Values.ingress.host}}
+  {{- range .Values.ingress.hosts }}
+    - host: {{ . }}
       http:
         paths:
-          - path: {{.Values.ingress.path}}/{{ .Values.ingress.pathName }}/(.*)
+          - path: {{ $ingressPath }}/{{ $ingressPathName }}/(.*)
             backend:
-              serviceName: {{ .Release.Name }}
-              servicePort: {{ .Values.service.port}}
+              serviceName: {{ $releaseName }}
+              servicePort: {{ $servicePort }}
+  {{- end}}
 {{- end}}

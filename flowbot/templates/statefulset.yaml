@@ -14,18 +14,20 @@ spec:
       labels:
        app: {{ .Release.Name }}-deployment
     spec:
-      dnsPolicy: "None"
+{{- if .Values.podDnsPolicy }}
+      dnsPolicy: {{ .Values.podDnsPolicy}}
+{{- end}}
+{{- if .Values.podDnsConfig }}
       dnsConfig:
-        nameservers:
-          - 8.8.8.8
-          - 8.8.4.4
+{{ toYaml .Values.podDnsConfig | indent 8 }}
+{{- end}}
 {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
 {{- end }}
       containers:
         - name: flowbot
-          image: {{ .Values.image.repository.flowbot}}
+          image: {{ .Values.image.repository.flowbot }}:{{ .Values.image.tag.flowbot }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -77,6 +79,8 @@ spec:
               value: {{ .Values.MBSTACK_BUSNAME}}
             - name: MBSTACK_DATAPATH
               value: {{.Values.MBSTACK_DATAPATH}}
+            - name: MBSTACK_IPFINDER
+              value: {{ .Values.MBSTACK_IPFINDER | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
           volumeMounts:
             - name: motebus-vol

@@ -1,3 +1,7 @@
-{{- if .Values.enabledUI }}
-    URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}/{{ .Values.ingress.pathName }}/
-{{- end}}
+{{- if .Values.ingress.enabled }}
+{{- $ingressPath := .Values.ingress.path -}}
+{{- $ingressPathName := .Values.ingress.pathName -}}
+    {{- range .Values.ingress.hosts }}
+    URL: {{ . }}{{ $ingressPath }}/{{ $ingressPathName }}/
+    {{- end }}
+{{- end }}
