@@ -1,20 +1,23 @@
-# nginx-ingress-control annotation ssl redirect
-enabledSslRedirect: false
-
-# chart namespace
-namespace: default
 
 # ingress host and path
 ingress:
-  host: myapps.ypcloud.com
-  path: /sscreen
+  enabled: true
+  annotation:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: "nginx"
+  tls: []
+    # - host: myapps.ypcloud.com
+      # secretName: iocview-tls
+  hosts: 
+    - myapps.ypcloud.com
+  path: /sscreen/(.*)
 
 # replication
 replicaCount: 1
 
 container:
-    # container port
-    port: 8080
+  # container port
+  port: 8080
 
 # container images
 image:
@@ -44,6 +47,15 @@ MCHAT_DC: dc
 MBSTACK_UPSTREAM: gke.ypcloud.com
 # motebus bus mode
 MBSTACK_BUSMODE: 0
+#motebus ip finder
+MBSTACK_IPFINDER: "auto"
 
 #timezone
 timezone: Asia/Taipei
+
+#pod DNS policy and config
+podDnsPolicy: "None"
+podDnsConfig:
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4

@@ -1,1 +1,4 @@
-URL: {{ .Values.ingress.host}}{{.Values.ingress.path}}/
+{{- $ingressPath := .Values.ingress.path -}}
+{{- range .Values.ingress.hosts }}
+URL: {{ . }}{{ $ingressPath }}/
+{{- end}}

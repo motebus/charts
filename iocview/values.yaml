@@ -1,19 +1,20 @@
-# nginx-ingress-control annotation ssl redirect
-enabledSslRedirect: false
-
-# chart namespace
-namespace: default
-
 # ingress host and path
 ingress:
   enabled: true
-  host: myapps.ypcloud.com
-  path: /iocview
+  annotation:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: "nginx"
+  tls: []
+    # - host: myapps.ypcloud.com
+      # secretName: iocview-tls
+  hosts:
+    - myapps.ypcloud.com
+  path: /iocview/(.*)
 
 # container
 container:
-    # container port
-    port: 8083
+  # container port
+  port: 8083
 
 # replication
 replicaCount: 1
@@ -32,7 +33,7 @@ service:
   type: ClusterIP
   nodePort: 
   protocol: TCP
-  port: 80
+  port: 8083
 
 # pod node selector
 nodeSelector: {}
@@ -56,7 +57,15 @@ MBSTACK_BUSMODE: 0
 MBSTACK_BUSNAME: ioc
 #motebus upstream
 MBSTACK_UPSTREAM: gke.ypcloud.com
-
+#motebus ip finder
+MBSTACK_IPFINDER: "auto"
 
 #timezone
 timezone: Asia/Taipei
+
+#pod DNS policy and config
+podDnsPolicy: "None"
+podDnsConfig:
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4

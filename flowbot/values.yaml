@@ -1,6 +1,3 @@
-# chart namespace
-namespace: default 
-
 # ingress host and path
 ingress:
   enabled: true
