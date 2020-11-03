@@ -26,7 +26,7 @@ spec:
 {{- end }}
       containers:
         - name: webmms-srv
-          image: "{{ .Values.image.repository.webmms-srv }}:{{ .Values.image.tag.webmms-srv }}"
+          image: {{ .Values.image.repository.webmms-srv }}:{{ .Values.image.tag.webmms-srv }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -54,20 +54,20 @@ spec:
               mountPath: /etc/localtime
 
         - name: motebus
-          image: "{{ .Values.image.repository.motebus }}:{{ .Values.image.tag.motebus }}"
+          image: {{ .Values.image.repository.motebus }}:{{ .Values.image.tag.motebus }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
             - name: MBSTACK_BUSMODE
-              value: {{.Values.MBSTACK_BUSMODE | quote}}
+              value: {{ .Values.MBSTACK_BUSMODE | quote }}
             - name: MBSTACK_UPSTREAM
-              value: {{.Values.MBSTACK_UPSTREAM}}
+              value: {{ Values.MBSTACK_UPSTREAM }}
             - name: MBSTACK_WATCHLEVEL
-              value: {{.Values.MBSTACK_WATCHLEVEL | quote}}
+              value: {{ Values.MBSTACK_WATCHLEVEL | quote }}
             - name: MBSTACK_BUSNAME
-              value: {{ .Values.MBSTACK_BUSNAME}}
+              value: {{ .Values.MBSTACK_BUSNAME }}
             - name: MBSTACK_DATAPATH
-              value: {{.Values.MBSTACK_DATAPATH}}
+              value: {{ .Values.MBSTACK_DATAPATH }}
             - name: MBSTACK_IPFINDER
               value: {{ .Values.MBSTACK_IPFINDER | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy.motebus}}
