@@ -69,10 +69,12 @@ MBSTACK_BUSMODE: 0
 # motebus watch level
 MBSTACK_WATCHLEVEL: 3
 # motebus bus name
-MBSTACK_BUSNAME: 
+MBSTACK_BUSNAME: webmms
 # motebus volume
 MBSTACK_DATAPATH: /var/motebus
-# ip finder
+# motebus upstream
+MBSTACK_UPSTREAM: gke.ypcloud.com
+# motebus ip finder
 MBSTACK_IPFINDER: "auto"
 
 #timezone
