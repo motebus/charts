@@ -24,9 +24,13 @@ spec:
       nodeSelector:
 {{ toYaml . | indent 8 }}
 {{- end }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
       containers:
         - name: webmms-srv
-          image: {{ .Values.image.repository.webmms-srv }}:{{ .Values.image.tag.webmms-srv }}
+          image: {{ .Values.image.repository.webmms }}:{{ .Values.image.tag.webmms }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -48,7 +52,7 @@ spec:
           ports:
            - name: webmms-port
              containerPort: {{ .Values.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy.webmms}}
+          imagePullPolicy: {{ .Values.image.pullPolicy.webmms }}
           volumeMounts:
             - name: tz
               mountPath: /etc/localtime
@@ -61,9 +65,9 @@ spec:
             - name: MBSTACK_BUSMODE
               value: {{ .Values.MBSTACK_BUSMODE | quote }}
             - name: MBSTACK_UPSTREAM
-              value: {{ Values.MBSTACK_UPSTREAM }}
+              value: {{ .Values.MBSTACK_UPSTREAM }}
             - name: MBSTACK_WATCHLEVEL
-              value: {{ Values.MBSTACK_WATCHLEVEL | quote }}
+              value: {{ .Values.MBSTACK_WATCHLEVEL | quote }}
             - name: MBSTACK_BUSNAME
               value: {{ .Values.MBSTACK_BUSNAME }}
             - name: MBSTACK_DATAPATH

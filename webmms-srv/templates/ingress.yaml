@@ -27,6 +27,6 @@ spec:
               service:
                 name: {{ $releaseName }}
                 port:
-                  number: {{ $servicePort }
+                  number: {{ $servicePort }}
     {{- end}}
 {{- end}}

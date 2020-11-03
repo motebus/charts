@@ -25,13 +25,13 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus
-    webmms-srv: motebus/webmms-srv
+    webmms: motebus/webmms-srv
   tag:
     motebus: latest
-    webmms-srv: latest
+    webmms: latest
   pullPolicy: 
     motebus: Always
-    fbuilder: Always
+    webmms: Always
 
 # service settings
 service:
@@ -42,6 +42,7 @@ service:
 
 # pod node selector
 nodeSelector: {}
+tolerations: []
 
 persistence:
     #Enable config persistence using PVC
