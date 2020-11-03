@@ -79,6 +79,6 @@ timezone: Asia/Taipei
 #pod DNS policy and config
 podDnsPolicy: "None"
 podDnsConfig:
-  nameserver:
+  nameservers:
     - 8.8.8.8
     - 8.8.4.4

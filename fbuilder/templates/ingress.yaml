@@ -1,4 +1,9 @@
 {{- if .Values.ingress.enabled}}
+{{- $USER_MODE := .Values.USER_MODE -}}
+{{- $ingressPath := .Values.ingress.path -}}
+{{- $ingressPathName := .Values.ingress.pathName -}}
+{{- $servicePort := .Values.service.port -}}
+{{- $releaseName := .Release.Name -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -13,17 +18,17 @@ spec:
 {{ toYaml .Values.ingress.tls | indent 4 }}
 {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
+  {{- range .Values.ingress.hosts }}
     - host: {{ . }}
       http:
         paths:
-{{- if eq .Values.USER_MODE "single" }}
-          - path: {{.Values.ingress.path}}/{{ .Values.ingress.pathName }}/(.*)
+{{- if eq $USER_MODE "single" }}
+          - path: {{ $ingressPath }}/{{ $ingressPathName }}/(.*)
 {{- else }}
-          - path: {{.Values.ingress.path}}/(.*)
+          - path: {{ $ingressPath }}/(.*)
 {{- end}}
             backend:
-              serviceName: {{ .Release.Name }}
-              servicePort: {{ .Values.service.port}}
-    {{- end}}
+              serviceName: {{ $releaseName }}
+              servicePort: {{ $servicePort }}
+  {{- end}}
 {{- end}}
