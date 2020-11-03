@@ -4,11 +4,11 @@
 {{- $ssl := .Values.ssl -}}
     {{- if eq .Values.USER_MODE "single" }}
         {{- range .Values.ingress.hosts }}
-        URL: {{ $ssl }}://{{ . }}{{ $ingressPath }}/{{ $ingressPathName }}/
+URL: {{ $ssl }}://{{ . }}{{ $ingressPath }}/{{ $ingressPathName }}/
         {{- end }}
     {{- else }}
         {{- range .Values.ingress.hosts }}
-        URL: {{ $ssl }}://{{ . }}{{ $ingressPath }}/
+URL: {{ $ssl }}://{{ . }}{{ $ingressPath }}/
         {{- end }}
     {{- end}}
 {{- end}}
