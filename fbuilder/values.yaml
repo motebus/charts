@@ -7,9 +7,11 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: "nginx"
-  tls: []
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  tls:
+    []
     # - host: myapps.ypcloud.com
-      # secretName: fbuilder-tls
+    # secretName: fbuilder-tls
   hosts:
     - myapps.ypcloud.com
   path: /fbuilder
@@ -34,7 +36,7 @@ image:
   tag:
     motebus: latest
     fbuilder: latest
-  pullPolicy: 
+  pullPolicy:
     motebus: Always
     fbuilder: Always
 
@@ -42,21 +44,21 @@ image:
 service:
   type: ClusterIP
   protocol: TCP
-  nodePort: 
+  nodePort:
   port: 1880
 
 # pod node selector
 nodeSelector: {}
 
 persistence:
-    #Enable config persistence using PVC
-    enabled: true
-    # PVC Access Mode for config volume
-    accessMode: ReadWriteOnce
-    # PVC Storage Class for config volume
-    storageClass: nfs
-    # PVC Storage Request for config volume
-    size: 1Gi
+  #Enable config persistence using PVC
+  enabled: true
+  # PVC Access Mode for config volume
+  accessMode: ReadWriteOnce
+  # PVC Storage Class for config volume
+  storageClass: nfs
+  # PVC Storage Request for config volume
+  size: 1Gi
 
 #motechat ei name
 MCHAT_EINAME: fbuilder-example
@@ -81,7 +83,7 @@ MBSTACK_BUSMODE: 0
 # motebus watch level
 MBSTACK_WATCHLEVEL: 3
 # motebus bus name
-MBSTACK_BUSNAME: 
+MBSTACK_BUSNAME:
 # motebus volume
 MBSTACK_DATAPATH: /var/motebus
 # motebus ip finder
