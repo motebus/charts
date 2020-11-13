@@ -54,8 +54,7 @@ spec:
 {{ toYaml .Values.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
-           - name: fbuilder-port
-             containerPort: {{ .Values.container.port}}
+           - containerPort: {{ .Values.container.port}}
           imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
           volumeMounts:
             - name: tz

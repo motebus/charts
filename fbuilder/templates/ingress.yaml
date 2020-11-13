@@ -26,7 +26,7 @@ spec:
 {{- if eq $USER_MODE "single" }}
           - path: {{ $ingressPath }}/{{ $ingressPathName }}/(.*)
 {{- else }}
-          - path: {{ $ingressPath }}/(.*)
+          - path: {{ $ingressPath }}
 {{- end}}
             pathType: {{ $ingressPathType }}
             backend:

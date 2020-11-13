@@ -12,7 +12,7 @@ spec:
       nodePort: {{ .Values.service.nodePort}}
 {{- end}}
       port: {{ .Values.service.port}}
-      targetPort: fbuilder-port
+      targetPort: {{ .Values.container.port}}
 {{- if eq .Values.service.type "ClusterIP"}}
   clusterIP: None
 {{- end}}
