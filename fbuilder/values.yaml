@@ -4,7 +4,7 @@ ssl: https
 # ingress host and path
 ingress:
   enabled: true
-  annotation:
+  annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     kubernetes.io/ingress.class: "nginx"
