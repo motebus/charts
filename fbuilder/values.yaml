@@ -10,8 +10,9 @@ ingress:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
   tls:
     []
-    # - host: myapps.ypcloud.com
-    # secretName: fbuilder-tls
+    # - hosts:
+    #     - myapps.ypcloud.com
+    #   secretName: flowbot-tls
   hosts:
     - myapps.ypcloud.com
   path: /fbuilder

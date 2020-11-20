@@ -1,14 +1,15 @@
-
 # ingress host and path
 ingress:
   enabled: true
   annotation:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: "nginx"
-  tls: []
-    # - host: myapps.ypcloud.com
-      # secretName: iocview-tls
-  hosts: 
+  tls:
+    []
+    # - hosts:
+    #     - myapps.ypcloud.com
+    #   secretName: flowbot-tls
+  hosts:
     - myapps.ypcloud.com
   path: /sscreen/(.*)
   pathType: Prefix
@@ -25,20 +26,19 @@ image:
   repository:
     motebus: motebus/motebus:latest
     sscreen: motebus/sscreen:latest
-  pullPolicy: 
+  pullPolicy:
     motebus: Always
     sscreen: Always
 
 # service settings
 service:
   type: ClusterIP
-  nodePort: 
+  nodePort:
   protocol: TCP
   port: 80
 
 # pod node selector
 nodeSelector: {}
-
 
 # motechat motebus gateway
 MCHAT_MBGWIP: 127.0.0.1
