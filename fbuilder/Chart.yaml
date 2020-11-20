@@ -5,7 +5,7 @@ apiVersion: v1
 name: fbuilder
 # The name of the chart (required)
 
-version: v1.4.5
+version: v1.0.0
 
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
