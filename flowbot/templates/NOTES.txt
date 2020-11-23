@@ -2,6 +2,6 @@
 {{- $ingressPath := .Values.ingress.path -}}
 {{- $ingressPathName := .Values.ingress.pathName -}}
     {{- range .Values.ingress.hosts }}
-URL: {{ . }}{{ $ingressPath }}/{{ $ingressPathName }}/
+URL: {{ . }}{{ $ingressPath }}
     {{- end }}
 {{- end }}
