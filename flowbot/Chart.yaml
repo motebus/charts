@@ -5,7 +5,7 @@ apiVersion: v2
 name: flowbot
 # The name of the chart (required)
 
-version: v1.0.2
+version: v1.0.1
 # A SemVer range of compatible Kubernetes versions (optional)
 
 kubeVersion:
