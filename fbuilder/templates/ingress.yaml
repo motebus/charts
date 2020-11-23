@@ -23,11 +23,7 @@ spec:
     - host: {{ . }}
       http:
         paths:
-{{- if eq $USER_MODE "single" }}
-          - path: {{ $ingressPath }}/{{ $ingressPathName }}/(.*)
-{{- else }}
-          - path: {{ $ingressPath }}/(.*)
-{{- end}}
+          - path: {{ $ingressPath }}
             pathType: {{ $ingressPathType }}
             backend:
               service:

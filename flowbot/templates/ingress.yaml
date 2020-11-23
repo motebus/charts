@@ -23,7 +23,7 @@ spec:
     - host: {{ . }}
       http:
         paths:
-          - path: {{ $ingressPath }}/{{ $ingressPathName }}/(.*)
+          - path: {{ $ingressPath }}
             pathType: {{ $ingressPathType }}
             backend:
               service:

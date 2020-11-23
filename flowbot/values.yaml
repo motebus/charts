@@ -10,9 +10,8 @@ ingress:
     #   secretName: flowbot-tls
   hosts:
     - myapps.ypcloud.com
-  path: /flowbot
+  path: /flowbot/(.*)
   pathType: Prefix
-  pathName: "username"
 
 # container env settings
 container:

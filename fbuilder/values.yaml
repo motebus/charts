@@ -15,9 +15,8 @@ ingress:
     #   secretName: flowbot-tls
   hosts:
     - myapps.ypcloud.com
-  path: /fbuilder
+  path: /fbuilder/(.*)
   pathType: Prefix
-  pathName: "username"
 
 # container env settings
 container:
