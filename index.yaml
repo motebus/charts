@@ -3,7 +3,7 @@ entries:
   aibot:
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-11-22T19:45:04.696624751-08:00"
+    created: "2020-11-22T19:47:58.892149396-08:00"
     description: aibot
     digest: 8b2df8feb2870f964f6da9080d8a06dc6de6d33bbfc38f2a4fbdf6e9c9a2ca07
     keywords:
@@ -15,7 +15,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v0.0.4
-    created: "2020-11-22T19:45:04.68334743-08:00"
+    created: "2020-11-22T19:47:58.89150413-08:00"
     description: aibot
     digest: ca03a7b62eee72e985a68aea023707470604c3713f362e8bb1759710b2123410
     keywords:
@@ -25,23 +25,10 @@ entries:
     urls:
     - aibot-v1.0.0.tgz
     version: v1.0.0
-  flowbot:
-  - apiVersion: v2
-    appVersion: v1.6.4
-    created: "2020-11-22T19:45:04.698415611-08:00"
-    description: flowbot
-    digest: 079182c4411abaca24ce04f93202ee8831331d27426042377db5f2c2e56e5b9a
-    keywords:
-    - flowbot
-    name: flowbot
-    type: application
-    urls:
-    - flowbot-v1.0.0.tgz
-    version: v1.0.0
   iocview:
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2020-11-22T19:45:04.700332643-08:00"
+    created: "2020-11-22T19:47:58.896729711-08:00"
     description: iocview
     digest: 0c97b557cfdb984ef53519dcaef73a05565e8e437c69dcf9afad764df59c6bdb
     keywords:
@@ -54,7 +41,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-11-22T19:45:04.702153135-08:00"
+    created: "2020-11-22T19:47:58.897864202-08:00"
     description: smartscreen
     digest: 2f260aeb4cc213e0fb0c674dee6d839559d9777a90f7dacb42b62803be848b10
     keywords:
@@ -67,7 +54,7 @@ entries:
   webmms-srv:
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2020-11-22T19:45:04.713850295-08:00"
+    created: "2020-11-22T19:47:58.899299406-08:00"
     description: webmms-srv
     digest: e70d2bad65f9e226c5275b99e7e208c33d0867ed243430992ed747806d1db71a
     keywords:
@@ -77,4 +64,4 @@ entries:
     urls:
     - webmms-srv-v1.0.0.tgz
     version: v1.0.0
-generated: "2020-11-22T19:45:04.672070768-08:00"
+generated: "2020-11-22T19:47:58.890466756-08:00"
