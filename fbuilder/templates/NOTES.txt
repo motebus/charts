@@ -1,8 +1,6 @@
 {{- if .Values.ingress.enabled}}
 {{- $ingressPath := .Values.ingress.path -}}
 {{- $ingressPathName := .Values.ingress.pathName -}}
-{{- $ssl := .Values.ssl -}}
     {{- range .Values.ingress.hosts }}
-URL: {{ $ssl }}://{{ . }}{{ $ingressPath }}
+URL: {{ . }}{{ $ingressPath }}
     {{- end }}
-{{- end}}

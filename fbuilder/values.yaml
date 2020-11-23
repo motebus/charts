@@ -1,6 +1,3 @@
-# SSL
-ssl: https
-
 # ingress host and path
 ingress:
   enabled: true
