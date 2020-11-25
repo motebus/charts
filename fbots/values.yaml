@@ -1,24 +1,23 @@
 # ingress host and path
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-  tls:
-    []
+  tls: []
     # - hosts:
     #     - myapps.ypcloud.com
-    #   secretName: flowbot-tls
-  hosts:
-    - myapps.ypcloud.com
-  path: /fbuilder/(.*)
+    #   secretName: fbots-tls
+  hosts: []
+    # - myapps.ypcloud.com
+  path: /fbots/(.*)
   pathType: Prefix
 
 # container env settings
 container:
-  # fbuilder port
-  port: 18880
+  # fbots port
+  port: 1880
   #extra envs
   extraEnvs: {}
 
@@ -29,13 +28,13 @@ replicaCount: 1
 image:
   repository:
     motebus: motebus/motebus
-    fbuilder: motebus/fbuilder
+    fbots: motebus/fbots
   tag:
     motebus: latest
-    fbuilder: latest
+    fbots: v1.1.0
   pullPolicy:
     motebus: Always
-    fbuilder: Always
+    fbots: Always
 
 # service settings
 service:
@@ -58,7 +57,7 @@ persistence:
   size: 1Gi
 
 #motechat ei name
-MCHAT_EINAME: fbuilder-example
+MCHAT_EINAME: fbots-example
 #motechat motebus gateway
 MCHAT_MBGWIP: 127.0.0.1
 #motechat dc
@@ -69,10 +68,20 @@ MCHAT_IOC: ioc
 MCHAT_SENDTIMEOUT: "6"
 # motechat send reply timeout
 MCHAT_WAITREPLY: "12"
-#fbuilder user mode, "single, multi"
-USER_MODE: single
-#fbuilder mode, "local, xstorage, cloud"
-STORAGE_MODE: cloud
+# make MCHAT_EINAME = MCHAT_EINAME-MCHAT_UDID
+MCHAT_UDID: 1
+#fbots mode, "local, xstorage"
+FBOT_MODE: xstorage
+# qcode of flow
+FBOT_QCODE:
+# qname of flow
+FBOT_QNAME:
+# number of instance
+FBOT_MANY: 1
+# Make different instances have different MCHAT_EINAME and MCHAT_APPNAME (FBOT_MANY > 1)
+FBOT_MULTI: 0 
+# Make different instances have different MCHAT_APPNAME, but have same MCHAT_EINAME (FBOT_MANY > 1)
+FBOT_CLUSTER: 0
 # motebus upstream
 MBSTACK_UPSTREAM: h3.ypcloud.com
 # motebus bus mode
@@ -85,7 +94,6 @@ MBSTACK_BUSNAME:
 MBSTACK_DATAPATH: /var/motebus
 # motebus ip finder
 MBSTACK_IPFINDER: "auto"
-
 #timezone
 timezone: Asia/Taipei
 

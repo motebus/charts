@@ -4,13 +4,12 @@ ingress:
   annotation:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: "nginx"
-  tls:
-    []
+  tls: []
     # - hosts:
     #     - myapps.ypcloud.com
     #   secretName: flowbot-tls
-  hosts:
-    - myapps.ypcloud.com
+  hosts: []
+    # - myapps.ypcloud.com
   path: /sscreen/(.*)
   pathType: Prefix
 
@@ -45,7 +44,7 @@ MCHAT_MBGWIP: 127.0.0.1
 # motechat dc
 MCHAT_DC: dc
 # motebus upstream
-MBSTACK_UPSTREAM: gke.ypcloud.com
+MBSTACK_UPSTREAM: h3.ypcloud.com
 # motebus bus mode
 MBSTACK_BUSMODE: 0
 #motebus ip finder

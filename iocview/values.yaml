@@ -4,12 +4,11 @@ ingress:
   annotation:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: "nginx"
-  tls:
-    []
+  tls: []
     # - hosts:
     #     - myapps.ypcloud.com
     #   secretName: flowbot-tls
-  hosts:
+  hosts: 
     - myapps.ypcloud.com
   path: /iocview/(.*)
   pathType: Prefix
@@ -58,7 +57,7 @@ MBSTACK_BUSMODE: 0
 #motebus bus name
 MBSTACK_BUSNAME: ioc
 #motebus upstream
-MBSTACK_UPSTREAM: gke.ypcloud.com
+MBSTACK_UPSTREAM: h3.ypcloud.com
 #motebus ip finder
 MBSTACK_IPFINDER: "auto"
 

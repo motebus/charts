@@ -75,7 +75,7 @@ MBSTACK_BUSNAME: webmms
 # motebus volume
 MBSTACK_DATAPATH: /var/motebus
 # motebus upstream
-MBSTACK_UPSTREAM: gke.ypcloud.com
+MBSTACK_UPSTREAM: h3.ypcloud.com
 # motebus ip finder
 MBSTACK_IPFINDER: "auto"
 
