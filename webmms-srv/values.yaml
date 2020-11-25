@@ -32,28 +32,30 @@ MBSTACK_DATAPATH: /var/motebus
 MBSTACK_UPSTREAM: h3.ypcloud.com
 # motebus ip finder
 MBSTACK_IPFINDER: "auto"
+# motebus volume
+MBSTACK_DATAPATH: /var/motebus
 #timezone
 timezone: Asia/Taipei
 
 webmms:
-# image settings and pull policy
+  # image settings and pull policy
   image:
     repository: motebus/webmms-srv
     tag: latest
     pullPolicy: Always
-# service settings
+  # service settings
   service:
     type: ClusterIP
     protocol: TCP
     nodePort:
     port: 6000
-# container env settings
+  # container env settings
   container:
     # iocview port
     port: 6000
     #extra envs
     extraEnvs: {}
-# ingress host and path
+  # ingress host and path
   ingress:
     enabled: true
     annotations:
@@ -64,10 +66,10 @@ webmms:
       # - hosts:
       #     - myapps.ypcloud.com
       #   secretName: flowbot-tls
-  hosts:
-    - myapps.ypcloud.com
-  path: /webmms/(.*)
-  pathType: Prefix
+    hosts:
+      - myapps.ypcloud.com
+    path: /webmms/(.*)
+    pathType: Prefix
 
 motebus:
   image:

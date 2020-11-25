@@ -45,7 +45,7 @@ spec:
             - name: MCHAT_IOC
               value: {{ .Values.MCHAT_IOC}}
             - name: WEBMMS_PORT
-              value: {{ .Values.container.port | quote}}
+              value: {{ .Values.webmms.container.port | quote}}
 {{- if .Values.webmms.container.extraEnvs }}
 {{ toYaml .Values.webmms.container.extraEnvs | indent 12 }}
 {{- end }}

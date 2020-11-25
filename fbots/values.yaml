@@ -14,7 +14,7 @@ podDnsConfig:
 #motechat ei name
 MCHAT_EINAME: fbots-example
 #motechat motebus gateway
-MCHAT_MBGWIP: 127.0.0.1
+MCHAT_MBGWIP: "127.0.0.1"
 #motechat dc
 MCHAT_DC: dc
 #motechat ioc
@@ -24,9 +24,9 @@ MCHAT_SENDTIMEOUT: "6"
 # motechat send reply timeout
 MCHAT_WAITREPLY: "12"
 # make MCHAT_EINAME = MCHAT_EINAME-MCHAT_UDID
-MCHAT_UDID: 1
+MCHAT_UDID: "1"
 # motecaht log level
-MCAHT_WATCHLEVEL: 3
+MCAHT_WATCHLEVEL: "3"
 #fbots mode, "local, xstorage"
 FBOT_MODE: xstorage
 # qcode of flow
@@ -34,11 +34,11 @@ FBOT_QCODE:
 # qname of flow
 FBOT_QNAME:
 # number of instance
-FBOT_MANY: 1
+FBOT_MANY: "1"
 # set FBOT_PORT=188, will change to 18800, 18801, ... (FBOT_MANY > 1)
 FBOT_PORT: 1880
 # Make different instances have different MCHAT_EINAME and MCHAT_APPNAME (FBOT_MANY > 1)
-FBOT_MULTI: 0 
+FBOT_MULTI: 0
 # Make different instances have different MCHAT_APPNAME, but have same MCHAT_EINAME (FBOT_MANY > 1)
 FBOT_CLUSTER: 0
 # motebus upstream
@@ -57,18 +57,18 @@ MBSTACK_IPFINDER: "auto"
 timezone: Asia/Taipei
 
 fbots:
-# image settings and pull policy
+  # image settings and pull policy
   image:
     repository: motebus/fbots
     tag: v1.0.0
     pullPolicy: IfNotPresent
-# service settings
+  # service settings
   service:
     type: ClusterIP
     protocol: TCP
     nodePort:
     port: 1880
-# configuration settings 
+  # configuration settings
   container:
     # fbots port
     port: 1880
@@ -80,11 +80,13 @@ fbots:
       nginx.ingress.kubernetes.io/rewrite-target: /$1
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    tls: []
+    tls:
+      []
       # - hosts:
       #     - myapps.ypcloud.com
       #   secretName: fbots-tls
-    hosts: []
+    hosts:
+      []
       # - myapps.ypcloud.com
     path: /fbots/(.*)
     pathType: Prefix

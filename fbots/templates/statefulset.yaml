@@ -51,7 +51,7 @@ spec:
             - name: MCHAT_IOC
               value: {{ .Values.MCHAT_IOC}}
             - name: MCHAT_UDID
-              value: {{ .Values.MCHAT_UDID}}
+              value: {{ .Values.MCHAT_UDID | quote}}
             - name: FBOT_MODE
               value: {{ .Values.FBOT_MODE}}
             - name: FBOT_QCODE
@@ -59,9 +59,11 @@ spec:
             - name: FBOT_QNAME
               value: {{ .Values.FBOT_QNAME}}
             - name: FBOT_MANY
-              value: {{ .Values.FBOT_MANY}}
+              value: {{ .Values.FBOT_MANY | quote}}
             - name: FBOT_CLUSTER
-              value: {{ .Values.FBOT_CLUSTER}}
+              value: {{ .Values.FBOT_CLUSTER | quote}}
+            - name: FBOT_MULTI
+              value: {{ .Values.FBOT_MULTI | quote}}
             - name: FBOT_PORT
               value: {{ .Values.FBOT_PORT | quote}}
 {{- if .Values.fbots.container.extraEnvs }}
