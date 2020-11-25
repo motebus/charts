@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  type: {{ .Values.iocview.service.type }}
+  selector:
+    app: {{ .Release.Name }}-deployment
+  ports:
+    - protocol: {{ .Values.iocview.service.protocol }}
+{{- if eq .Values.iocview.service.type "NodePort"}}
+      nodePort: {{ .Values.iocview.service.nodePort}}
+{{- end}}
+      port: {{ .Values.iocview.service.port}}
+      targetPort: {{ .Values.iocview.container.port}}
+{{- if eq .Values.iocview.service.type "ClusterIP"}}
+  clusterIP: None
+{{- end}}

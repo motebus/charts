@@ -1,61 +1,15 @@
-# ingress host and path
-ingress:
-  enabled: true
-  annotation:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    kubernetes.io/ingress.class: "nginx"
-  tls:
-    []
-    # - hosts:
-    #     - myapps.ypcloud.com
-    #   secretName: flowbot-tls
-  hosts:
-    - myapps.ypcloud.com
-  path: /webmms/(.*)
-  pathType: Prefix
-
-# container env settings
-container:
-  port: 6000
-  #extra envs
-  extraEnvs: {}
-
 # replication
 replicaCount: 1
-
-#container image settings and pull policy
-image:
-  repository:
-    motebus: motebus/motebus
-    webmms: motebus/webmms-srv
-  tag:
-    motebus: latest
-    webmms: latest
-  pullPolicy:
-    motebus: Always
-    webmms: Always
-
-# service settings
-service:
-  type: ClusterIP
-  protocol: TCP
-  nodePort:
-  port: 6000
-
 # pod node selector
 nodeSelector: {}
+# pod toleration
 tolerations: []
-
-persistence:
-  #Enable config persistence using PVC
-  enabled: true
-  # PVC Access Mode for config volume
-  accessMode: ReadWriteOnce
-  # PVC Storage Class for config volume
-  storageClass: nfs
-  # PVC Storage Request for config volume
-  size: 1Gi
-
+#pod DNS policy and config
+podDnsPolicy: "None"
+podDnsConfig:
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
 #motechat motebus gateway
 MCHAT_MBGWIP: 127.0.0.1
 #motechat dc
@@ -78,13 +32,54 @@ MBSTACK_DATAPATH: /var/motebus
 MBSTACK_UPSTREAM: h3.ypcloud.com
 # motebus ip finder
 MBSTACK_IPFINDER: "auto"
-
 #timezone
 timezone: Asia/Taipei
 
-#pod DNS policy and config
-podDnsPolicy: "None"
-podDnsConfig:
-  nameservers:
-    - 8.8.8.8
-    - 8.8.4.4
+webmms:
+# image settings and pull policy
+  image:
+    repository: motebus/webmms-srv
+    tag: latest
+    pullPolicy: Always
+# service settings
+  service:
+    type: ClusterIP
+    protocol: TCP
+    nodePort:
+    port: 6000
+# container env settings
+  container:
+    # iocview port
+    port: 6000
+    #extra envs
+    extraEnvs: {}
+# ingress host and path
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
+      kubernetes.io/ingress.class: "nginx"
+    tls:
+      []
+      # - hosts:
+      #     - myapps.ypcloud.com
+      #   secretName: flowbot-tls
+  hosts:
+    - myapps.ypcloud.com
+  path: /webmms/(.*)
+  pathType: Prefix
+
+motebus:
+  image:
+    repository: motebus/motebus
+    tag: latest
+    pullPolicy: Always
+  persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 1Gi

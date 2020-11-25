@@ -3,16 +3,16 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.fbuilder.service.type }}
   selector:
     app: {{ .Release.Name }}-deployment
   ports:
-    - protocol: {{ .Values.service.protocol }}
-{{- if eq .Values.service.type "NodePort"}}
-      nodePort: {{ .Values.service.nodePort}}
+    - protocol: {{ .Values.fbuilder.service.protocol }}
+{{- if eq .Values.fbuilder.service.type "NodePort"}}
+      nodePort: {{ .Values.fbuilder.service.nodePort}}
 {{- end}}
-      port: {{ .Values.service.port}}
-      targetPort: {{ .Values.container.port}}
-{{- if eq .Values.service.type "ClusterIP"}}
+      port: {{ .Values.fbuilder.service.port}}
+      targetPort: {{ .Values.fbuilder.container.port}}
+{{- if eq .Values.fbuilder.service.type "ClusterIP"}}
   clusterIP: None
 {{- end}}

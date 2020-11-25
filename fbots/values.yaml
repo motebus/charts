@@ -1,60 +1,15 @@
-# ingress host and path
-ingress:
-  enabled: false
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-  tls: []
-    # - hosts:
-    #     - myapps.ypcloud.com
-    #   secretName: fbots-tls
-  hosts: []
-    # - myapps.ypcloud.com
-  path: /fbots/(.*)
-  pathType: Prefix
-
-# container env settings
-container:
-  # fbots port
-  port: 1880
-  #extra envs
-  extraEnvs: {}
-
 # replication
 replicaCount: 1
-
-#container image settings and pull policy
-image:
-  repository:
-    motebus: motebus/motebus
-    fbots: motebus/fbots
-  tag:
-    motebus: latest
-    fbots: v1.1.0
-  pullPolicy:
-    motebus: Always
-    fbots: Always
-
-# service settings
-service:
-  type: ClusterIP
-  protocol: TCP
-  nodePort:
-  port: 1880
-
 # pod node selector
 nodeSelector: {}
-
-persistence:
-  #Enable config persistence using PVC
-  enabled: true
-  # PVC Access Mode for config volume
-  accessMode: ReadWriteOnce
-  # PVC Storage Class for config volume
-  storageClass: nfs
-  # PVC Storage Request for config volume
-  size: 1Gi
+# pod toleration
+tolerations: []
+#pod DNS policy and config
+podDnsPolicy: "None"
+podDnsConfig:
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
 
 #motechat ei name
 MCHAT_EINAME: fbots-example
@@ -70,6 +25,8 @@ MCHAT_SENDTIMEOUT: "6"
 MCHAT_WAITREPLY: "12"
 # make MCHAT_EINAME = MCHAT_EINAME-MCHAT_UDID
 MCHAT_UDID: 1
+# motecaht log level
+MCAHT_WATCHLEVEL: 3
 #fbots mode, "local, xstorage"
 FBOT_MODE: xstorage
 # qcode of flow
@@ -78,6 +35,8 @@ FBOT_QCODE:
 FBOT_QNAME:
 # number of instance
 FBOT_MANY: 1
+# set FBOT_PORT=188, will change to 18800, 18801, ... (FBOT_MANY > 1)
+FBOT_PORT: 1880
 # Make different instances have different MCHAT_EINAME and MCHAT_APPNAME (FBOT_MANY > 1)
 FBOT_MULTI: 0 
 # Make different instances have different MCHAT_APPNAME, but have same MCHAT_EINAME (FBOT_MANY > 1)
@@ -97,9 +56,60 @@ MBSTACK_IPFINDER: "auto"
 #timezone
 timezone: Asia/Taipei
 
-#pod DNS policy and config
-podDnsPolicy: "None"
-podDnsConfig:
-  nameservers:
-    - 8.8.8.8
-    - 8.8.4.4
+fbots:
+# image settings and pull policy
+  image:
+    repository: motebus/fbots
+    tag: v1.0.0
+    pullPolicy: IfNotPresent
+# service settings
+  service:
+    type: ClusterIP
+    protocol: TCP
+    nodePort:
+    port: 1880
+# configuration settings 
+  container:
+    # fbots port
+    port: 1880
+    #extra envs
+    extraEnvs: {}
+  ingress:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
+      kubernetes.io/ingress.class: "nginx"
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    tls: []
+      # - hosts:
+      #     - myapps.ypcloud.com
+      #   secretName: fbots-tls
+    hosts: []
+      # - myapps.ypcloud.com
+    path: /fbots/(.*)
+    pathType: Prefix
+  persistence:
+    #Enable config persistence using PVC
+    enabled: false
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 1Gi
+    # ingress host and path
+
+motebus:
+  image:
+    repository: motebus/motebus
+    tag: latest
+    pullPolicy: Always
+  persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 1Gi

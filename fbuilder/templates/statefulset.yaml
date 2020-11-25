@@ -24,44 +24,40 @@ spec:
       nodeSelector:
 {{ toYaml . | indent 8 }}
 {{- end }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
       containers:
         - name: fbuilder
-          image: {{ .Values.image.repository.fbuilder }}:{{ .Values.image.tag.fbuilder }}
+          image: {{ .Values.fbuilder.image.repository }}:{{ .Values.fbuilder.image.tag }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
-            - name: SENDTIMEOUT
-              value: {{ .Values.MCHAT_SENDTIMEOUT | quote }}
-            - name: WAITREPLY
-              value: {{ .Values.MCHAT_WAITREPLY | quote}}
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
               value: {{ .Values.MCHAT_EINAME }}-app
             - name: MCHAT_MBGWIP
-              value: {{ .Values.MCHAT_MBGWIP}}
+              value: {{ .Values.MCHAT_MBGWIP | quote}}
+            - name: MCHAT_MBGWPORT
+              value: {{ .Values.MCHAT_MBGWPORT | quote}}
+            - name: MCAHT_WATCHLEVEL
+              value: {{ .Values.MCAHT_WATCHLEVEL | quote}}
             - name: MCHAT_DC
               value: {{ .Values.MCHAT_DC}}
-            - name: MCHAT_IOC
-              value: {{ .Values.MCHAT_IOC}}
-            - name: USER_MODE
-              value: {{ .Values.USER_MODE}}
-            - name: STORAGE_MODE
-              value: {{ .Values.STORAGE_MODE}}
-            - name: PORT
-              value: {{ .Values.container.port | quote}}
-{{- if .Values.container.extraEnvs }}
-{{ toYaml .Values.container.extraEnvs | indent 12 }}
+{{- if .Values.fbuilder.container.extraEnvs }}
+{{ toYaml .Values.fbuilder.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
-           - containerPort: {{ .Values.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy.fbuilder}}
+           - containerPort: {{ .Values.fbuilder.container.port}}
+          imagePullPolicy: {{ .Values.fbuilder.image.pullPolicy}}
           volumeMounts:
             - name: tz
               mountPath: /etc/localtime
 
         - name: motebus
-          image: "{{ .Values.image.repository.motebus }}:{{ .Values.image.tag.motebus }}"
+          image: "{{ .Values.motebus.image.repository }}:{{ .Values.motebus.image.tag }}"
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -77,24 +73,27 @@ spec:
               value: {{.Values.MBSTACK_DATAPATH }}
             - name: MBSTACK_IPFINDER
               value: {{ .Values.MBSTACK_IPFINDER | quote }}
-          imagePullPolicy: {{ .Values.image.pullPolicy.motebus }}
+          imagePullPolicy: {{ .Values.motebusimage.pullPolicy }}
           volumeMounts:
+{{- if .Values.motebus.persistence.enabled}}
             - name: motebus-vol
               mountPath: {{.Values.MBSTACK_DATAPATH}}
+{{- end}}
             - name: tz
               mountPath: /etc/localtime
- 
       volumes:
         - name: tz
           hostPath:
             path: /etc/localtime             
 
   volumeClaimTemplates:
+{{- if .Values.motebus.persistence.enabled}}
     - metadata:
         name: motebus-vol
       spec:
-        accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
-        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        accessModes:  [ {{ .Values.motebus.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.motebus.persistence.storageClass | quote }}
         resources:
             requests:
-                storage: {{ .Values.persistence.size | quote }}
+                storage: {{ .Values.motebus.persistence.size | quote }}
+{{- end}}

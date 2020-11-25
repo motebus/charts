@@ -1,6 +1,6 @@
-{{- if .Values.ingress.enabled }}
-{{- $ingressPath := .Values.ingress.path -}}
-    {{- range .Values.ingress.hosts }}
+{{- if .Values.webmms.ingress.enabled }}
+{{- $ingressPath := .Values.webmms.ingress.path -}}
+    {{- range .Values.webmms.ingress.hosts }}
     URL: {{ . }}{{ $ingressPath }}/
     {{- end }}
 {{- end }}

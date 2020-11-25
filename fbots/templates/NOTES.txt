@@ -1,6 +1,6 @@
-{{- if .Values.ingress.enabled}}
-{{- $ingressPath := .Values.ingress.path -}}
-    {{- range .Values.ingress.hosts }}
+{{- if .Values.fbots.ingress.enabled}}
+{{- $ingressPath := .Values.fbots.ingress.path -}}
+    {{- range .Values.fbots.ingress.hosts }}
 URL: {{ . }}{{ $ingressPath }}
     {{- end }}
 {{- end }}

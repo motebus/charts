@@ -3,16 +3,16 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.webmms.service.type }}
   selector:
     app: {{ .Release.Name }}-deployment
   ports:
-    - protocol: {{ .Values.service.protocol }}
-{{- if eq .Values.service.type "NodePort"}}
-      nodePort: {{ .Values.service.nodePort}}
+    - protocol: {{ .Values.webmms.service.protocol }}
+{{- if eq .Values.webmms.service.type "NodePort"}}
+      nodePort: {{ .Values.webmms.service.nodePort}}
 {{- end}}
-      port: {{ .Values.service.port}}
-      targetPort: webmms-port
-{{- if eq .Values.service.type "ClusterIP"}}
+      port: {{ .Values.webmms.service.port}}
+      targetPort: {{ .Values.webmms.container.port}}
+{{- if eq .Values.webmms.service.type "ClusterIP"}}
   clusterIP: None
 {{- end}}

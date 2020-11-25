@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  type: {{ .Values.sscreen.service.type }}
+  selector:
+    app: {{ .Release.Name }}-deployment
+  ports:
+    - protocol: {{ .Values.sscreen.service.protocol }}
+{{- if eq .Values.sscreen.service.type "NodePort"}}
+      nodePort: {{ .Values.sscreen.service.nodePort}}
+{{- end}}
+      port: {{ .Values.sscreen.service.port}}
+      targetPort: {{ .Values.sscreen.container.port}}
+{{- if eq .Values.sscreen.service.type "ClusterIP"}}
+  clusterIP: None
+{{- end}}

@@ -1,52 +1,22 @@
-# ingress host and path
-ingress:
-  enabled: true
-  annotation:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    kubernetes.io/ingress.class: "nginx"
-  tls: []
-    # - hosts:
-    #     - myapps.ypcloud.com
-    #   secretName: flowbot-tls
-  hosts: 
-    - myapps.ypcloud.com
-  path: /iocview/(.*)
-  pathType: Prefix
-
-# container
-container:
-  # container port
-  port: 8083
-
 # replication
 replicaCount: 1
-
-# container images
-image:
-  repository:
-    motebus: motebus/motebus:latest
-    iocview: motebus/iocview:latest
-  pullPolicy:
-    motebus: Always
-    iocview: Always
-
-# service settings
-service:
-  type: ClusterIP
-  nodePort:
-  protocol: TCP
-  port: 8083
-
 # pod node selector
 nodeSelector: {}
-
+# pod toleration
+tolerations: []
+#pod DNS policy and config
+podDnsPolicy: "None"
+podDnsConfig:
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
 #motechat motebus gateway
 MCHAT_MBGWIP: 127.0.0.1
 #motechat motebus gateway port
 MCHAT_MBGWPORT: 6262
 #motechat dc
 MCHAT_DC: dc
-#motechat watch level
+#motechat log level
 MCAHT_WATCHLEVEL: 1
 #motechat ei name
 MCHAT_EINAME: ioc
@@ -60,13 +30,56 @@ MBSTACK_BUSNAME: ioc
 MBSTACK_UPSTREAM: h3.ypcloud.com
 #motebus ip finder
 MBSTACK_IPFINDER: "auto"
-
+#motebus log level
+MBSTACK_WATCHLEVEL: 3
 #timezone
 timezone: Asia/Taipei
 
-#pod DNS policy and config
-podDnsPolicy: "None"
-podDnsConfig:
-  nameservers:
-    - 8.8.8.8
-    - 8.8.4.4
+iocview:
+# image settings and pull policy
+  image:
+    repository: motebus/iocview
+    tag: latest
+    pullPolicy: Always
+# service settings
+  service:
+    type: ClusterIP
+    protocol: TCP
+    nodePort:
+    port: 8083
+# container env settings
+  container:
+    # iocview port
+    port: 8083
+    #extra envs
+    extraEnvs: {}
+# ingress host and path
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
+      kubernetes.io/ingress.class: "nginx"
+    tls:
+      []
+      # - hosts:
+      #     - myapps.ypcloud.com
+      #   secretName: flowbot-tls
+  hosts:
+    - myapps.ypcloud.com
+  path: /iocview/(.*)
+  pathType: Prefix
+
+motebus:
+  image:
+    repository: motebus/motebus
+    tag: latest
+    pullPolicy: Always
+  persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 1Gi

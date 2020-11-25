@@ -1,6 +1,6 @@
-{{- if .Values.ingress.enabled }}
-{{- $ingressPath := .Values.ingress.path -}}
-    {{- range .Values.ingress.hosts }}
+{{- if .Values.sscreen.ingress.enabled }}
+{{- $ingressPath := .Values.sscreen.ingress.path -}}
+    {{- range .Values.sscreen.ingress.hosts }}
     URL: {{ . }}{{ $ingressPath }}/
     {{- end }}
 {{- end }}

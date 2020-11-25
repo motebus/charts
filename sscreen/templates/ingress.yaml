@@ -1,23 +1,23 @@
-{{- if .Values.ingress.enabled}}
-{{- $ingressPath := .Values.ingress.path -}}
-{{- $servicePort := .Values.service.port -}}
+{{- if .Values.sscreen.ingress.enabled}}
+{{- $ingressPath := .Values.sscreen.ingress.path -}}
+{{- $servicePort := .Values.sscreen.service.port -}}
 {{- $releaseName := .Release.Name -}}
-{{- $ingressPathType := .Values.ingress.pathType -}}
+{{- $ingressPathType := .Values.sscreen.ingress.pathType -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}
-{{- with .Values.ingress.annotations }}
+{{- with .Values.sscreen.ingress.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-{{- if .Values.ingress.tls }}
+{{- if .Values.sscreen.ingress.tls }}
   tls:
-{{ toYaml .Values.ingress.tls | indent 4 }}
+{{ toYaml .Values.sscreen.ingress.tls | indent 4 }}
 {{- end }}
   rules:
-  {{- range .Values.ingress.hosts }}
+  {{- range .Values.sscreen.ingress.hosts }}
     - host: {{ . }}
       http:
         paths:

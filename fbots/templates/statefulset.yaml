@@ -24,9 +24,13 @@ spec:
       nodeSelector:
 {{ toYaml . | indent 8 }}
 {{- end }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
       containers:
         - name: fbots
-          image: {{ .Values.image.repository.fbots }}:{{ .Values.image.tag.fbots }}
+          image: {{ .Values.fbots.image.repository }}:{{ .Values.fbots.image.tag }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -34,6 +38,8 @@ spec:
               value: {{ .Values.MCHAT_SENDTIMEOUT | quote }}
             - name: WAITREPLY
               value: {{ .Values.MCHAT_WAITREPLY | quote}}
+            - name: MCAHT_WATCHLEVEL
+              value: {{ .Values.MCAHT_WATCHLEVEL | quote}}
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
@@ -57,15 +63,15 @@ spec:
             - name: FBOT_CLUSTER
               value: {{ .Values.FBOT_CLUSTER}}
             - name: FBOT_PORT
-              value: {{ .Values.container.port | quote}}
-{{- if .Values.container.extraEnvs }}
-{{ toYaml .Values.container.extraEnvs | indent 12 }}
+              value: {{ .Values.FBOT_PORT | quote}}
+{{- if .Values.fbots.container.extraEnvs }}
+{{ toYaml .Values.fbots.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
-           - containerPort: {{ .Values.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy.fbots}}
+           - containerPort: {{ .Values.fbots.container.port}}
+          imagePullPolicy: {{ .Values.fbots.image.pullPolicy}}
           volumeMounts:
-{{- if .Values.persistence.enabled}}
+{{- if .Values.fbots.persistence.enabled}}
             - name: fbots-vol
               mountPath: /usr/src/node-red/data/{{ .Values.MCHAT_EINAME }}
 {{- end}}
@@ -73,7 +79,7 @@ spec:
               mountPath: /etc/localtime
 
         - name: motebus
-          image: "{{ .Values.image.repository.motebus }}:{{ .Values.image.tag.motebus }}"
+          image: "{{ .Values.motebus.image.repository }}:{{ .Values.motebus.image.tag }}"
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -89,10 +95,12 @@ spec:
               value: {{.Values.MBSTACK_DATAPATH }}
             - name: MBSTACK_IPFINDER
               value: {{ .Values.MBSTACK_IPFINDER | quote }}
-          imagePullPolicy: {{ .Values.image.pullPolicy.motebus }}
+          imagePullPolicy: {{ .Values.motebus.image.pullPolicy }}
           volumeMounts:
+{{- if .Values.motebus.persistence.enabled}}
             - name: motebus-vol
               mountPath: {{.Values.MBSTACK_DATAPATH}}
+{{- end}}
             - name: tz
               mountPath: /etc/localtime
  
@@ -102,21 +110,23 @@ spec:
             path: /etc/localtime             
 
   volumeClaimTemplates:
-{{- if .Values.persistence.enabled}}
+{{- if .Values.fbots.persistence.enabled}}
     - metadata:
         name: fbots-vol
       spec:
-        accessModes: [ {{ .Values.persistence.accessMode | quote }} ]
-        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        accessModes: [ {{ .Values.fbots.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.fbots.persistence.storageClass | quote }}
         resources:
           requests:
-            storage: {{ .Values.persistence.size | quote }}
+            storage: {{ .Values.fbots.persistence.size | quote }}
 {{- end}}
+{{- if .Values.motebus.persistence.enabled}}
     - metadata:
         name: motebus-vol
       spec:
-        accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
-        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        accessModes:  [ {{ .Values.motebus.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.motebus.persistence.storageClass | quote }}
         resources:
           requests:
-            storage: {{ .Values.persistence.size | quote }}
+            storage: {{ .Values.motebus.persistence.size | quote }}
+{{- end}}

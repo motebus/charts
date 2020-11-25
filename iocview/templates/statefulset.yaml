@@ -23,41 +23,41 @@ spec:
 {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
-{{- end }}
 {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
 {{- end }}
+{{- end }}
       containers:
-        - name: webmms-srv
-          image: {{ .Values.webmms.image.repository }}:{{ .Values.webmms.image.tag }}
+        - name: iocview
+          image: {{ .Values.iocview.image.repository }}:{{ .Values.iocview.image.tag }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
-            - name: SENDTIMEOUT
-              value: {{ .Values.MCHAT_SENDTIMEOUT | quote }}
-            - name: WAITREPLY
-              value: {{ .Values.MCHAT_WAITREPLY | quote}}
+            - name: MCHAT_EINAME
+              value: {{ .Values.MCHAT_EINAME }}
+            - name: MCHAT_APPNAME
+              value: {{ .Values.MCHAT_EINAME }}-app
             - name: MCHAT_MBGWIP
-              value: {{ .Values.MCHAT_MBGWIP}}
+              value: {{ .Values.MCHAT_MBGWIP | quote}}
+            - name: MCHAT_MBGWPORT
+              value: {{ .Values.MCHAT_MBGWPORT | quote}}
+            - name: MCAHT_WATCHLEVEL
+              value: {{ .Values.MCAHT_WATCHLEVEL | quote}}
             - name: MCHAT_DC
               value: {{ .Values.MCHAT_DC}}
-            - name: MCHAT_IOC
-              value: {{ .Values.MCHAT_IOC}}
-            - name: WEBMMS_PORT
-              value: {{ .Values.container.port | quote}}
-{{- if .Values.webmms.container.extraEnvs }}
-{{ toYaml .Values.webmms.container.extraEnvs | indent 12 }}
+{{- if .Values.iocview.container.extraEnvs }}
+{{ toYaml .Values.iocview.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
-            - containerPort: {{ .Values.webmms.container.port}}
-          imagePullPolicy: {{ .Values.webmms.image.pullPolicy }}
+           - containerPort: {{ .Values.iocview.container.port}}
+          imagePullPolicy: {{ .Values.iocview.image.pullPolicy}}
           volumeMounts:
             - name: tz
               mountPath: /etc/localtime
 
         - name: motebus
-          image: {{ .Values.motebus.image.repository }}:{{ .Values.motebus.image.tag }}
+          image: "{{ .Values.motebus.image.repository }}:{{ .Values.motebus.image.tag }}"
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -70,10 +70,10 @@ spec:
             - name: MBSTACK_BUSNAME
               value: {{ .Values.MBSTACK_BUSNAME }}
             - name: MBSTACK_DATAPATH
-              value: {{ .Values.MBSTACK_DATAPATH }}
+              value: {{.Values.MBSTACK_DATAPATH }}
             - name: MBSTACK_IPFINDER
               value: {{ .Values.MBSTACK_IPFINDER | quote }}
-          imagePullPolicy: {{ .Values.motebus.image.pullPolicy}}
+          imagePullPolicy: {{ .Values.motebusimage.pullPolicy }}
           volumeMounts:
 {{- if .Values.motebus.persistence.enabled}}
             - name: motebus-vol
@@ -81,7 +81,6 @@ spec:
 {{- end}}
             - name: tz
               mountPath: /etc/localtime
- 
       volumes:
         - name: tz
           hostPath:

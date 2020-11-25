@@ -1,61 +1,79 @@
-# ingress host and path
-ingress:
-  enabled: true
-  annotation:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    kubernetes.io/ingress.class: "nginx"
-  tls: []
-    # - hosts:
-    #     - myapps.ypcloud.com
-    #   secretName: flowbot-tls
-  hosts: []
-    # - myapps.ypcloud.com
-  path: /sscreen/(.*)
-  pathType: Prefix
-
 # replication
 replicaCount: 1
-
-container:
-  # container port
-  port: 8080
-
-# container images
-image:
-  repository:
-    motebus: motebus/motebus:latest
-    sscreen: motebus/sscreen:latest
-  pullPolicy:
-    motebus: Always
-    sscreen: Always
-
-# service settings
-service:
-  type: ClusterIP
-  nodePort:
-  protocol: TCP
-  port: 80
-
 # pod node selector
 nodeSelector: {}
-
-# motechat motebus gateway
-MCHAT_MBGWIP: 127.0.0.1
-# motechat dc
-MCHAT_DC: dc
-# motebus upstream
-MBSTACK_UPSTREAM: h3.ypcloud.com
-# motebus bus mode
-MBSTACK_BUSMODE: 0
-#motebus ip finder
-MBSTACK_IPFINDER: "auto"
-
-#timezone
-timezone: Asia/Taipei
-
+# pod toleration
+tolerations: []
 #pod DNS policy and config
 podDnsPolicy: "None"
 podDnsConfig:
   nameservers:
     - 8.8.8.8
     - 8.8.4.4
+# motechat motebus gateway
+MCHAT_MBGWIP: 127.0.0.1
+# motechat dc
+MCHAT_DC: dc
+#motechat log level
+MCAHT_WATCHLEVEL: 1
+#motebus bus mode
+MBSTACK_BUSMODE: 0
+#motebus bus name
+MBSTACK_BUSNAME: ioc
+#motebus upstream
+MBSTACK_UPSTREAM: h3.ypcloud.com
+#motebus ip finder
+MBSTACK_IPFINDER: "auto"
+#motebus log level
+MBSTACK_WATCHLEVEL: 3
+#timezone
+timezone: Asia/Taipei
+
+sscreen:
+# image settings and pull policy
+  image:
+    repository: motebus/sscreen
+    tag: latest
+    pullPolicy: Always
+# service settings
+  service:
+    type: ClusterIP
+    protocol: TCP
+    nodePort:
+    port: 8080
+# container env settings
+  container:
+    # iocview port
+    port: 8080
+    #extra envs
+    extraEnvs: {}
+# ingress host and path
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
+      kubernetes.io/ingress.class: "nginx"
+    tls:
+      []
+      # - hosts:
+      #     - myapps.ypcloud.com
+      #   secretName: flowbot-tls
+  hosts:
+    - myapps.ypcloud.com
+  path: /sscreen/(.*)
+  pathType: Prefix
+
+motebus:
+  image:
+    repository: motebus/motebus
+    tag: latest
+    pullPolicy: Always
+  persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 1Gi
