@@ -11,8 +11,10 @@ podDnsConfig:
     - 8.8.8.8
     - 8.8.4.4
 
-#motechat ei name
+#motechat einame
 MCHAT_EINAME: fbots-example
+#motechat appname
+MCHAT_APPNAME: fbots-example-app
 #motechat motebus gateway
 MCHAT_MBGWIP: "127.0.0.1"
 #motechat dc
