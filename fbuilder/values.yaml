@@ -59,8 +59,8 @@ fbuilder:
     port: 1880
   # container env settings
   container:
-    # fbuilder port
-    port: 1880
+    # cannot change fbuilder port
+    port: 18880
     #extra envs
     extraEnvs: {}
   # ingress host and path
