@@ -3,7 +3,7 @@ entries:
   fbots:
   - apiVersion: v1
     appVersion: v1.1.0
-    created: "2020-11-25T18:18:28.719320091-08:00"
+    created: "2020-11-25T18:19:16.345358091-08:00"
     description: fbots
     digest: 4d2d7d36b0e73f780169c622ae39ae6d7d45991e42ddd4cf25b80893c52b525c
     keywords:
@@ -13,10 +13,23 @@ entries:
     urls:
     - fbots-v1.0.0.tgz
     version: v1.0.0
+  fbuilder:
+  - apiVersion: v1
+    appVersion: v1.4.3
+    created: "2020-11-25T18:19:16.346812832-08:00"
+    description: fbuilder
+    digest: ee9d1f579f4abd84391d298747a8c861b884e0202eceeb20960d2da6044435ab
+    keywords:
+    - fbuilder
+    name: fbuilder
+    type: application
+    urls:
+    - fbuilder-v1.0.0.tgz
+    version: v1.0.0
   flowbot:
   - apiVersion: v2
     appVersion: v1.6.4
-    created: "2020-11-25T18:18:28.72403304-08:00"
+    created: "2020-11-25T18:19:16.349137957-08:00"
     description: flowbot
     digest: c6989e32c82602ef368bf777af8d4032b966b8cfd9451974f31bad39817ce3ee
     keywords:
@@ -28,7 +41,7 @@ entries:
     version: v1.0.1
   - apiVersion: v2
     appVersion: v1.6.4
-    created: "2020-11-25T18:18:28.721671086-08:00"
+    created: "2020-11-25T18:19:16.347999506-08:00"
     description: flowbot
     digest: 1e0b51b427d9d4e6a23c156b3caff99d660f908321acd3825d5a5fa88b3cb48a
     keywords:
@@ -41,7 +54,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2020-11-25T18:18:28.728651991-08:00"
+    created: "2020-11-25T18:19:16.351666863-08:00"
     description: iocview
     digest: 1027927ec006cac2581145724aa98a8cf022568feb92d32b4c79fefaf303afad
     keywords:
@@ -53,7 +66,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2020-11-25T18:18:28.727195941-08:00"
+    created: "2020-11-25T18:19:16.350453048-08:00"
     description: iocview
     digest: 0c97b557cfdb984ef53519dcaef73a05565e8e437c69dcf9afad764df59c6bdb
     keywords:
@@ -66,7 +79,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-11-25T18:18:28.731366814-08:00"
+    created: "2020-11-25T18:19:16.354744731-08:00"
     description: smartscreen
     digest: 9d1b1832c43ea3435f234947e5b4254d1ed9db33e479a3b8badc5c0ec87f0a58
     keywords:
@@ -78,7 +91,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2020-11-25T18:18:28.729598274-08:00"
+    created: "2020-11-25T18:19:16.352839697-08:00"
     description: smartscreen
     digest: 2f260aeb4cc213e0fb0c674dee6d839559d9777a90f7dacb42b62803be848b10
     keywords:
@@ -91,7 +104,7 @@ entries:
   webmms-srv:
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2020-11-25T18:18:28.733998515-08:00"
+    created: "2020-11-25T18:19:16.359414144-08:00"
     description: webmms-srv
     digest: 7703744c3a240e51fda69a1f4e8f0b2144724073238fb8d711030d165e96e75b
     keywords:
@@ -103,7 +116,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2020-11-25T18:18:28.7325851-08:00"
+    created: "2020-11-25T18:19:16.357076929-08:00"
     description: webmms-srv
     digest: e70d2bad65f9e226c5275b99e7e208c33d0867ed243430992ed747806d1db71a
     keywords:
@@ -113,4 +126,4 @@ entries:
     urls:
     - webmms-srv-v1.0.0.tgz
     version: v1.0.0
-generated: "2020-11-25T18:18:28.715160329-08:00"
+generated: "2020-11-25T18:19:16.343610842-08:00"
