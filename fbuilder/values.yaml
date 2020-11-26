@@ -46,24 +46,24 @@ MBSTACK_IPFINDER: "auto"
 timezone: Asia/Taipei
 
 fbuilder:
-# image settings and pull policy
+  # image settings and pull policy
   image:
     repository: motebus/fbuilder
     tag: latest
     pullPolicy: Always
-# service settings
+  # service settings
   service:
     type: ClusterIP
     protocol: TCP
     nodePort:
     port: 1880
-# container env settings
+  # container env settings
   container:
     # fbuilder port
     port: 1880
     #extra envs
     extraEnvs: {}
-# ingress host and path
+  # ingress host and path
   ingress:
     enabled: true
     annotations:
@@ -75,10 +75,10 @@ fbuilder:
       # - hosts:
       #     - myapps.ypcloud.com
       #   secretName: flowbot-tls
-  hosts:
-    - myapps.ypcloud.com
-  path: /fbuilder/(.*)
-  pathType: Prefix
+    hosts:
+      - myapps.ypcloud.com
+    path: /fbuilder/(.*)
+    pathType: Prefix
 
 motebus:
   image:

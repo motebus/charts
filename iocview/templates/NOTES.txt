@@ -1,4 +1,6 @@
-{{- $ingressPath := .Values.iocivew.ingress.path -}}
-{{- range .Values.iocivew.ingress.hosts }}
-URL: {{ . }}{{ $ingressPath }}/
-{{- end}}
+{{- if .Values.iocview.ingress.enabled}}
+{{- $ingressPath := .Values.iocview.ingress.path -}}
+    {{- range .Values.iocview.ingress.hosts }}
+URL: {{ . }}{{ $ingressPath }}
+    {{- end }}
+{{- end }}

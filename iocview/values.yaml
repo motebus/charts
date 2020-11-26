@@ -28,6 +28,8 @@ MBSTACK_BUSMODE: 0
 MBSTACK_BUSNAME: ioc
 #motebus upstream
 MBSTACK_UPSTREAM: h3.ypcloud.com
+# motebus volume
+MBSTACK_DATAPATH: /var/motebus
 #motebus ip finder
 MBSTACK_IPFINDER: "auto"
 #motebus log level
@@ -36,24 +38,24 @@ MBSTACK_WATCHLEVEL: 3
 timezone: Asia/Taipei
 
 iocview:
-# image settings and pull policy
+  # image settings and pull policy
   image:
     repository: motebus/iocview
     tag: latest
     pullPolicy: Always
-# service settings
+  # service settings
   service:
     type: ClusterIP
     protocol: TCP
     nodePort:
     port: 8083
-# container env settings
+  # container env settings
   container:
     # iocview port
     port: 8083
     #extra envs
     extraEnvs: {}
-# ingress host and path
+  # ingress host and path
   ingress:
     enabled: true
     annotations:
@@ -64,10 +66,10 @@ iocview:
       # - hosts:
       #     - myapps.ypcloud.com
       #   secretName: flowbot-tls
-  hosts:
-    - myapps.ypcloud.com
-  path: /iocview/(.*)
-  pathType: Prefix
+    hosts:
+      - myapps.ypcloud.com
+    path: /iocview/(.*)
+    pathType: Prefix
 
 motebus:
   image:

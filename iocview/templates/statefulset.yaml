@@ -73,7 +73,7 @@ spec:
               value: {{.Values.MBSTACK_DATAPATH }}
             - name: MBSTACK_IPFINDER
               value: {{ .Values.MBSTACK_IPFINDER | quote }}
-          imagePullPolicy: {{ .Values.motebusimage.pullPolicy }}
+          imagePullPolicy: {{ .Values.motebus.image.pullPolicy }}
           volumeMounts:
 {{- if .Values.motebus.persistence.enabled}}
             - name: motebus-vol
@@ -81,6 +81,7 @@ spec:
 {{- end}}
             - name: tz
               mountPath: /etc/localtime
+              
       volumes:
         - name: tz
           hostPath:

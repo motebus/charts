@@ -26,28 +26,30 @@ MBSTACK_UPSTREAM: h3.ypcloud.com
 MBSTACK_IPFINDER: "auto"
 #motebus log level
 MBSTACK_WATCHLEVEL: 3
+# motebus volume
+MBSTACK_DATAPATH: /var/motebus
 #timezone
 timezone: Asia/Taipei
 
 sscreen:
-# image settings and pull policy
+  # image settings and pull policy
   image:
     repository: motebus/sscreen
     tag: latest
     pullPolicy: Always
-# service settings
+  # service settings
   service:
     type: ClusterIP
     protocol: TCP
     nodePort:
     port: 8080
-# container env settings
+  # container env settings
   container:
     # iocview port
     port: 8080
     #extra envs
     extraEnvs: {}
-# ingress host and path
+  # ingress host and path
   ingress:
     enabled: true
     annotations:
@@ -58,10 +60,10 @@ sscreen:
       # - hosts:
       #     - myapps.ypcloud.com
       #   secretName: flowbot-tls
-  hosts:
-    - myapps.ypcloud.com
-  path: /sscreen/(.*)
-  pathType: Prefix
+    hosts:
+      - myapps.ypcloud.com
+    path: /sscreen/(.*)
+    pathType: Prefix
 
 motebus:
   image:
