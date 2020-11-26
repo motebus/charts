@@ -47,7 +47,7 @@ spec:
             - name: MCHAT_DC
               value: {{ .Values.MCHAT_DC}}
             - name: FLOW_PORT
-              value: {{ .Values.fbuilder.container.port}}
+              value: {{ .Values.fbuilder.container.port | quote}}
 {{- if .Values.fbuilder.container.extraEnvs }}
 {{ toYaml .Values.fbuilder.container.extraEnvs | indent 12 }}
 {{- end }}
