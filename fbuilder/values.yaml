@@ -12,6 +12,8 @@ podDnsConfig:
     - 8.8.4.4
 #motechat ei name
 MCHAT_EINAME: fbuilder-example
+#motechat appname
+MCHAT_APPNAME: fbuilder-example-app
 #motechat motebus gateway IP
 MCHAT_MBGWIP: 127.0.0.1
 #motechat motebus gateway port

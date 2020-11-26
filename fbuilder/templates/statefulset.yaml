@@ -37,7 +37,7 @@ spec:
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
-              value: {{ .Values.MCHAT_EINAME }}-app
+              value: {{ .Values.MCHAT_APPNAME }}
             - name: MCHAT_MBGWIP
               value: {{ .Values.MCHAT_MBGWIP | quote}}
             - name: MCHAT_MBGWPORT
