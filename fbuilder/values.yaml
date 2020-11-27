@@ -32,6 +32,8 @@ MCAHT_WATCHLEVEL: 1
 USER_MODE: single
 #fbuilder mode, "local, xstorage, cloud"
 STORAGE_MODE: cloud
+# fbuilder project enable
+FB_PROJECT_ENABLE: "1"
 # motebus upstream
 MBSTACK_UPSTREAM: h3.ypcloud.com
 # motebus bus mode

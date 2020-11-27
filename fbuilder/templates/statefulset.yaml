@@ -46,6 +46,8 @@ spec:
               value: {{ .Values.MCAHT_WATCHLEVEL | quote}}
             - name: MCHAT_DC
               value: {{ .Values.MCHAT_DC}}
+            - name: FB_PROJECT_ENABLE
+              value: {{ .Values.FB_PROJECT_ENABLE | quote}}
 {{- if .Values.fbuilder.container.extraEnvs }}
 {{ toYaml .Values.fbuilder.container.extraEnvs | indent 12 }}
 {{- end }}
