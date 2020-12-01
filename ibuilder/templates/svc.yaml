@@ -19,7 +19,7 @@ spec:
       targetPort: {{ .Values.jupyter.container.port}}
     - name: mlflow-port
       protocol: {{ .Values.mlflow.service.protocol }}
-{{- if eq .Values.mlflow.service.type "NodePort"}}
+{{- if eq .Values.jupyter.service.type "NodePort"}}
       nodePort: {{ .Values.mlflow.service.nodePort}}
 {{- end}}
       port: {{ .Values.mlflow.service.port}}
