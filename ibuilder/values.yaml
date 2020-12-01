@@ -1,72 +1,75 @@
-# nginx-ingress-control annotation ssl redirect
-enabledSslRedirect: false
-
-# chart namespace
-namespace: default 
-
-# StatefulSet
-kind: StatefulSet
-
-# ingress
-ingress:
-    host: run.ypcloud.com
-    pathName: username
-
-jupyter:
-    container:
-        port: 8000
-    service:
-        port: 8000
-    ingress:
-        path: /ibuilder/jupyter
-
-mlflow:
-    container:
-        port: 5000
-    service:
-        port: 5000
-    ingress:
-        path: /ibuilder/mlflow
-
-
-
-# container env settings
-container:
-    mountPath: /home
-    #extra envs
-    extraEnvs: {}
-
-# replication
-replicaCount: 1
-
-#container image settings and pull policy
-image:
-  repository:
-    ibuilder: motebus/ibuilder:latest
-  pullPolicy: 
-    ibuilder: Always
-
-# service settings
-service:
-  type: ClusterIP
-  protocol: TCP
-
 # pod node selector
 nodeSelector: {}
+# replication
+replicaCount: 1
+# pod toleration
+tolerations: []
+#pod DNS policy and config
+podDnsPolicy: "None"
+podDnsConfig:
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
+#timezone
+timezone: Asia/Taipei
+#
+BASE_URL: /ibuilder
 
-persistence:
+jupyter:
+  # image settings and pull policy
+  image:
+    repository: motebus/ibuilder
+    tag: latest
+    pullPolicy: Always
+  # service settings
+  service:
+    type: ClusterIP
+    protocol: TCP
+    nodePort:
+    port: 8000
+  # container env settings
+  container:
+    # cannot change fbuilder port
+    port: 8000
+    #extra envs
+    extraEnvs: {}
+  # ingress host and path
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    tls:
+      []
+      # - hosts:
+      #     - myapps.ypcloud.com
+      #   secretName: flowbot-tls
+    hosts:
+      - myapps.ypcloud.com
+    path: /ibuilder
+    pathType: Prefix
+  persistence:
     #Enable config persistence using PVC
-    enabled: false
+    enabled: true
     # PVC Access Mode for config volume
     accessMode: ReadWriteOnce
     # PVC Storage Class for config volume
     storageClass: nfs
     # PVC Storage Request for config volume
-    size: 10Gi
+    size: 1Gi
 
-#timezone
-timezone: Asia/Taipei
-
-#jupyter account
-user:
-    token: tokensecret
+mlflow:
+  service:
+    protocol: TCP
+    nodePort:
+    port: 5000
+  # container env settings
+  container:
+    # cannot change fbuilder port
+    port: 5000
+  ingress:
+    enabled: true
+    hosts:
+      - myapps.ypcloud.com
+    path: /ibuilder
+    pathType: Prefix

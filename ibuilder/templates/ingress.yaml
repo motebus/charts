@@ -1,33 +1,49 @@
-apiVersion: extensions/v1beta1
+{{- if .Values.jupyter.ingress.enabled}}
+{{- $jupyterIngressPath := .Values.jupyter.ingress.path -}}
+{{- $jupyterServicePort := .Values.jupyter.service.port -}}
+{{- $jupyterIngressPathType := .Values.jupyter.ingress.pathType -}}
+{{- $releaseName := .Release.Name -}}
+{{- $mlflowIngressPath := .Values.mlflow.ingress.path -}}
+{{- $mlflowServicePort := .Values.mlflow.service.port -}}
+{{- $mlflowIngressPathType := .Values.mlflow.ingress.pathType -}}
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: {{ .Values.namespace}}
   name: {{ .Release.Name }}
+{{- with .Values.jupyter.ingress.annotations }}
   annotations:
-    # nginx.ingress.kubernetes.io/app-root: /ibuilder
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    kubernetes.io/ingress.class: "nginx"
-{{- if .Values.enabledSslRedirect }}
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-{{- else }}
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+{{ toYaml . | indent 4 }}
 {{- end }}
 spec:
+{{- if .Values.jupyter.ingress.tls }}
   tls:
-    - hosts:
-        - {{.Values.ingress.host}}
-      secretName: {{ .Release.Name}}-tls
+{{ toYaml .Values.jupyter.ingress.tls | indent 4 }}
+{{- end }}
   rules:
-    #對外訪問的域名
-    - host: {{.Values.ingress.host}}
+  {{- range .Values.jupyter.ingress.hosts }}
+    - host: {{ . }}
       http:
         paths:
-          # - path: {{.Values.jupyter.ingress.path}}/{{.Values.ingress.pathName}}/(.*)
-          - path: /(.*)
+          - path: {{ $jupyterIngressPath }}
+            pathType: {{ $jupyterIngressPathType }}
             backend:
-              serviceName: {{ .Release.Name }}
-              servicePort: {{ .Values.jupyter.service.port}}
-          - path: {{.Values.mlflow.ingress.path}}/{{.Values.ingress.pathName}}/(.*)
+              service:
+                name: {{ $releaseName }}
+                port:
+                  number: {{ $jupyterServicePort }}
+  {{- end}}
+  {{- if .Values.mlflow.ingress.enabled}}
+  {{- range .Values.mlflow.ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
+          - path: {{ $mlflowIngressPath }}
+            pathType: {{ $mlflowIngressPathType }}
             backend:
-              serviceName: {{ .Release.Name }}
-              servicePort: {{ .Values.mlflow.service.port}}
+              service:
+                name: {{ $releaseName }}
+                port:
+                  number: {{ $mlflowServicePort }}
+  {{- end}}
+  {{- end}}
+{{- end}}

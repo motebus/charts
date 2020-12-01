@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  namespace: {{ .Values.namespace}}
   name: {{ .Release.Name }}
 spec:
   serviceName: {{ .Release.Name }}
@@ -14,63 +13,57 @@ spec:
       labels:
        app: {{ .Release.Name }}-deployment
     spec:
-      dnsPolicy: "None"
+{{- if .Values.podDnsPolicy}}
+      dnsPolicy: {{ .Values.podDnsPolicy}}
+{{- end}}
+{{- if .Values.podDnsConfig}}
       dnsConfig:
-        nameservers:
-          - 8.8.8.8
-          - 8.8.4.4
+{{ toYaml .Values.podDnsConfig | indent 8}}
+{{- end}}
 {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
 {{- end }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
       containers:
-        - name: ibuilder
-          image: {{ .Values.image.repository.ibuilder}}
+        - name: jupyter
+          image: {{ .Values.jupyter.image.repository }}:{{ .Values.jupyter.image.tag }}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
-            - name: JUPYTER_MODE
-              value: lab
-            - name: TOKEN
-              value: {{ .Values.user.token}}
             - name: BASE_URL
-              value: /ibuilder2
-            # - name: CUSTOM_URL
-            #   value: https://{{ .Values.ingress.host}}/ibuilder
-            # - name: DEFAULT_URL
-            #   value: /ibuilder/lab
-{{- if .Values.container.extraEnvs }}
-{{ toYaml .Values.container.extraEnvs | indent 12 }}
+              value: {{ .Values.BASE_URL }}
+{{- if .Values.jupyter.container.extraEnvs }}
+{{ toYaml .Values.jupyter.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
-            - name: jupyter-port
-              containerPort: {{ .Values.jupyter.container.port}}
-            - name: mlflow-port
-              containerPort: {{ .Values.mlflow.container.port}}
-          imagePullPolicy: {{ .Values.image.pullPolicy.ibuilder}}
+           - name: jupyter-port
+             containerPort: {{ .Values.jupyter.container.port}}
+           - name: mlflow-port
+             containerPort: {{ .Values.mlflow.container.port}}
+          imagePullPolicy: {{ .Values.jupyter.image.pullPolicy}}
           volumeMounts:
-            - name: {{ .Release.Name}}-vol
-              mountPath: {{ .Values.container.mountPath}}
-            - name: ibuilder-tz
+            - name: jupyter-vol
+              mountPath: /home
+            - name: tz
               mountPath: /etc/localtime
 
       volumes:
-        - name: ibuilder-tz
+        - name: tz
           hostPath:
-            path: /etc/localtime
-{{- if not .Values.persistence.enabled }}
-        - name: {{ .Release.Name}}-vol
-          emptyDir: {}
-{{- end }}
+            path: /etc/localtime             
 
-{{- if .Values.persistence.enabled}}
   volumeClaimTemplates:
+{{- if .Values.jupyter.persistence.enabled}}
     - metadata:
-        name: {{ .Release.Name}}-vol
+        name: jupyter-vol
       spec:
-        accessModes:  [ {{ .Values.persistence.accessMode | quote }} ]
-        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        accessModes:  [ {{ .Values.jupyter.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.jupyter.persistence.storageClass | quote }}
         resources:
             requests:
-                storage: {{ .Values.persistence.size | quote }}
+                storage: {{ .Values.jupyter.persistence.size | quote }}
 {{- end}}
