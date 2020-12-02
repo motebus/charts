@@ -37,7 +37,7 @@ FBOT_QCODE:
 FBOT_QNAME:
 # number of instance
 FBOT_MANY: "1"
-# ui enable
+# ui enable="1" disable="0"
 FBOT_UI: "1"
 # set FBOT_PORT=188, will change to 18800, 18801, ... (FBOT_MANY > 1)
 FBOT_PORT: 1880
