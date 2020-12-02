@@ -1,21 +1,26 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: {{ .Values.namespace}}
   name: {{ .Release.Name }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.jupyter.service.type }}
   selector:
     app: {{ .Release.Name }}-deployment
-{{- if eq .Values.service.type "ClusterIP"}}
+{{- if eq .Values.jupyter.service.type "ClusterIP"}}
   clusterIP: None
 {{- end}}
   ports:
     - name: jupyter-port
-      protocol: {{ .Values.service.protocol }}
+      protocol: {{ .Values.jupyter.service.protocol }}
+{{- if eq .Values.jupyter.service.type "NodePort"}}
+      nodePort: {{ .Values.jupyter.service.nodePort}}
+{{- end}}
       port: {{ .Values.jupyter.service.port}}
-      targetPort: jupyter-port
+      targetPort: {{ .Values.jupyter.container.port}}
     - name: mlflow-port
-      protocol: {{ .Values.service.protocol }}
+      protocol: {{ .Values.mlflow.service.protocol }}
+{{- if eq .Values.jupyter.service.type "NodePort"}}
+      nodePort: {{ .Values.mlflow.service.nodePort}}
+{{- end}}
       port: {{ .Values.mlflow.service.port}}
-      targetPort: mlflow-port
+      targetPort: {{ .Values.mlflow.container.port}}
