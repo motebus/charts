@@ -37,6 +37,8 @@ FBOT_QCODE:
 FBOT_QNAME:
 # number of instance
 FBOT_MANY: "1"
+# ui enable
+FBOT_UI: "1"
 # set FBOT_PORT=188, will change to 18800, 18801, ... (FBOT_MANY > 1)
 FBOT_PORT: 1880
 # Make different instances have different MCHAT_EINAME and MCHAT_APPNAME (FBOT_MANY > 1)

@@ -66,6 +66,8 @@ spec:
               value: {{ .Values.FBOT_MULTI | quote}}
             - name: FBOT_PORT
               value: {{ .Values.FBOT_PORT | quote}}
+            - name: FBOT_UI
+              value: {{ .Values.FBOT_UI | quote}}
 {{- if .Values.fbots.container.extraEnvs }}
 {{ toYaml .Values.fbots.container.extraEnvs | indent 12 }}
 {{- end }}
