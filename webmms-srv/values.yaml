@@ -32,8 +32,6 @@ MBSTACK_DATAPATH: /var/motebus
 MBSTACK_UPSTREAM: h3.ypcloud.com
 # motebus ip finder
 MBSTACK_IPFINDER: "auto"
-# motebus volume
-MBSTACK_DATAPATH: /var/motebus
 #timezone
 timezone: Asia/Taipei
 
@@ -84,4 +82,4 @@ motebus:
     # PVC Storage Class for config volume
     storageClass: nfs
     # PVC Storage Request for config volume
-    size: 1Gi
+    size: 100Mi

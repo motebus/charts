@@ -102,7 +102,7 @@ fbots:
     # PVC Storage Class for config volume
     storageClass: nfs
     # PVC Storage Request for config volume
-    size: 1Gi
+    size: 100Mi
     # ingress host and path
 
 motebus:
@@ -118,4 +118,4 @@ motebus:
     # PVC Storage Class for config volume
     storageClass: nfs
     # PVC Storage Request for config volume
-    size: 1Gi
+    size: 100Mi
