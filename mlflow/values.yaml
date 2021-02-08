@@ -1,0 +1,55 @@
+# pod node selector
+nodeSelector: {}
+# replication
+replicaCount: 1
+# pod toleration
+tolerations: []
+# pod DNS policy and config
+
+# podDnsPolicy: "None"
+# podDnsConfig:
+#   nameservers:
+#     - 8.8.8.8
+#     - 8.8.4.4
+
+# timezone
+timezone: Asia/Taipei
+# s3 endpoint url
+MLFLOW_S3_ENDPOINT_URL: https://cos.twcc.ai
+# aws acces key
+AWS_ACCESS_KEY_ID:
+# aws secret key
+AWS_SECRET_ACCESS_KEY:
+# postgql mysql or mssql db url
+DB_URI:
+# s3 uri "s3:bucket"
+ARTIFACT_URI:
+
+image:
+  repository: motebus/mlflow
+  tag: latest
+  pullPolicy: Always
+# service settings
+service:
+  type: ClusterIP
+  protocol: TCP
+  nodePort:
+  port: 5000
+# container env settings
+container:
+  #extra envs
+  extraEnvs: {}
+# ingress host and path
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "kong"
+  tls:
+    []
+    # - hosts:
+    #     - myapps.ypcloud.com
+    #   secretName: mlflow-tls
+  hosts:
+    - ai-mkt.nchc.org.tw
+  path: /mlflow/(.*)
+  pathType: Prefix
