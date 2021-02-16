@@ -12,7 +12,7 @@ spec:
       nodePort: {{ .Values.service.nodePort}}
 {{- end}}
       port: {{ .Values.service.port}}
-      targetPort: {{ .Values.container.port}}
+      targetPort: {{ .Values.service.port}}
 {{- if eq .Values.service.type "ClusterIP"}}
   clusterIP: None
 {{- end}}
