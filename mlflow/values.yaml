@@ -61,7 +61,7 @@ ingress:
 db:
   image:
     repository: mysql/mysql-server
-    tag: 8.0
+    tag: 8.0.23
     pullPolicy: Always
   persistence:
     #Enable config persistence using PVC
