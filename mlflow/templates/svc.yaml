@@ -13,3 +13,6 @@ spec:
 {{- end}}
       port: {{ .Values.service.port}}
       targetPort: {{ .Values.container.port}}
+{{- if eq .Values.service.type "ClusterIP"}}
+  clusterIP: None
+{{- end}}

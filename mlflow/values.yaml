@@ -12,18 +12,22 @@ tolerations: []
 #     - 8.8.8.8
 #     - 8.8.4.4
 
-# timezone
-timezone: Asia/Taipei
 # s3 endpoint url
 MLFLOW_S3_ENDPOINT_URL: https://cos.twcc.ai
 # aws acces key
 AWS_ACCESS_KEY_ID:
 # aws secret key
 AWS_SECRET_ACCESS_KEY:
-# postgql mysql or mssql db url
-DB_URI:
-# s3 uri "s3:bucket"
-ARTIFACT_URI:
+# mysql db uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@localhost:3306/${MYSQL_DATABASE}
+DB_URI: mysql+pymysql://mlflowuser:fKe14EK8aM@localhost:3306/mlflowdb
+# s3 uri "s3://bucket"
+ARTIFACT_URI: s3://mlflow
+
+MYSQL_DATABASE: mlflowdb
+MYSQL_USER: mlflowuser
+MYSQL_PASSWORD: fKe14EK8aM
+MYSQL_ROOT_PASSWORD: Mde3nAC5kL
+MYSQL_DATAPATH: /var/lib/mysql
 
 image:
   repository: motebus/mlflow
@@ -53,3 +57,18 @@ ingress:
     - ai-mkt.nchc.org.tw
   path: /mlflow/(.*)
   pathType: Prefix
+
+db:
+  image:
+    repository: mysql/mysql-server
+    tag: 8.0
+    pullPolicy: Always
+  persistence:
+    #Enable config persistence using PVC
+    enabled: true
+    # PVC Access Mode for config volume
+    accessMode: ReadWriteOnce
+    # PVC Storage Class for config volume
+    storageClass: nfs
+    # PVC Storage Request for config volume
+    size: 5Gi
