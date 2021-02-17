@@ -1,23 +1,23 @@
-{{- if .Values.ingress.enabled}}
-{{- $ingressPath := .Values.ingress.path -}}
-{{- $servicePort := .Values.service.port -}}
+{{- if .Values.nginx.ingress.enabled}}
+{{- $ingressPath := .Values.nginx.ingress.path -}}
+{{- $servicePort := .Values.nginx.service.port -}}
 {{- $releaseName := .Release.Name -}}
-{{- $ingressPathType := .Values.ingress.pathType -}}
+{{- $ingressPathType := .Values.nginx.ingress.pathType -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}
-{{- with .Values.ingress.annotations }}
+{{- with .Values.nginx.ingress.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-{{- if .Values.ingress.tls }}
+{{- if .Values.nginx.ingress.tls }}
   tls:
-{{ toYaml .Values.ingress.tls | indent 4 }}
+{{ toYaml .Values.nginx.ingress.tls | indent 4 }}
 {{- end }}
   rules:
-  {{- range .Values.ingress.hosts }}
+  {{- range .Values.nginx.ingress.hosts }}
     - host: {{ . }}
       http:
         paths:

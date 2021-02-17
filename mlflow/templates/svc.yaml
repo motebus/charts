@@ -3,16 +3,16 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.nginx.service.type }}
   selector:
     app: {{ .Release.Name }}-deployment
   ports:
-    - protocol: {{ .Values.service.protocol }}
-{{- if eq .Values.service.type "NodePort"}}
-      nodePort: {{ .Values.service.nodePort}}
+    - protocol: {{ .Values.nginx.service.protocol }}
+{{- if eq .Values.nginx.service.type "NodePort"}}
+      nodePort: {{ .Values.nginx.service.nodePort}}
 {{- end}}
-      port: {{ .Values.service.port}}
-      targetPort: {{ .Values.service.port}}
-{{- if eq .Values.service.type "ClusterIP"}}
+      port: {{ .Values.nginx.service.port}}
+      targetPort: {{ .Values.nginx.service.port}}
+{{- if eq .Values.nginx.service.type "ClusterIP"}}
   clusterIP: None
 {{- end}}

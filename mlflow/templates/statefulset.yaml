@@ -30,10 +30,8 @@ spec:
 {{- end }}
       containers:
         - name: mlflow
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          image: {{ .Values.mlflow.image.repository }}:{{ .Values.mlflow.image.tag }}
           env:
-            - name: TZ
-              value: {{ .Values.timezone}}
             - name: MLFLOW_S3_ENDPOINT_URL
               value: {{ .Values.MLFLOW_S3_ENDPOINT_URL }}
             - name: AWS_ACCESS_KEY_ID
@@ -44,12 +42,19 @@ spec:
               value: {{ .Values.DB_URI }}
             - name: ARTIFACT_URI
               value: {{ .Values.ARTIFACT_URI }}
-{{- if .Values.container.extraEnvs }}
-{{ toYaml .Values.container.extraEnvs | indent 12 }}
+{{- if .Values.mlflow.container.extraEnvs }}
+{{ toYaml .Values.mlflow.container.extraEnvs | indent 12 }}
+{{- end }}
+          imagePullPolicy: {{ .Values.mlflow.image.pullPolicy}}
+
+        - name: nginx
+          image: {{ .Values.nginx.image.repository }}:{{ .Values.nginx.image.tag }}
+{{- if .Values.nginx.container.extraEnvs }}
+{{ toYaml .Values.nginx.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
-           - containerPort: 5000
-          imagePullPolicy: {{ .Values.image.pullPolicy}}
+           - containerPort: 80
+          imagePullPolicy: {{ .Values.nginx.image.pullPolicy}}
 
         - name: mysql
           image: {{ .Values.db.image.repository }}:{{ .Values.db.image.tag }}
