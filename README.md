@@ -8,31 +8,18 @@ helm package aibot/ fbuilder/ flowbot/ sscreen/
 $ helm repo add mpodman https://motebus.github.io/charts/
 
 
-# Test this out
-
-Here is an inline mermaid file
-
 ```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-    W-->D;
-    E-->S;
-    D-->T;
-```
+graph LR
 
-Goal: comment out the above, insert image ref
+A(Start)
 
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-    W-->D;
-    E-->Z;
+A --> B[Look for an item]
+
+B --> C{Did you find it?}
+C -->|Yes| D(Stop looking)
+C -->|No| E{Do you need it?}
+E -->|Yes| B
+E -->|No| D
 ```
 
   ```mermaid
