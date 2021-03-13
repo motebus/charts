@@ -32,22 +32,28 @@ spec:
         - name: jupyter
           image: {{ .Values.jupyter.image.repository }}:{{ .Values.jupyter.image.tag }}
           env:
-            - name: TZ
-              value: {{ .Values.timezone}}
-            - name: BASE_URL
-              value: {{ .Values.BASE_URL }}
+            - name: username
+              value: {{.Values.USERNAME}}
+            - name: token
+              value: {{.Values.TOKEN}}
+            - name: MLFLOW_S3_ENDPOINT_URL
+              value: {{.Values.MLFLOW_S3_ENDPOINT_URL}}
+            - name: AWS_ACCESS_KEY_ID
+              value: {{.Values.AWS_ACCESS_KEY_ID}}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{.Values.AWS_SECRET_ACCESS_KEY}}
+            - name: MLFLOW_TRACKING_URI
+              value: {{.Values.MLFLOW_TRACKING_URI}}
 {{- if .Values.jupyter.container.extraEnvs }}
 {{ toYaml .Values.jupyter.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
            - name: jupyter-port
-             containerPort: {{ .Values.jupyter.container.port}}
-           - name: mlflow-port
-             containerPort: {{ .Values.mlflow.container.port}}
+             containerPort: 8888
           imagePullPolicy: {{ .Values.jupyter.image.pullPolicy}}
           volumeMounts:
             - name: jupyter-vol
-              mountPath: /home
+              mountPath: /home/{{.Values.USERNAME}}
             - name: tz
               mountPath: /etc/localtime
 

@@ -10,16 +10,20 @@ podDnsConfig:
   nameservers:
     - 8.8.8.8
     - 8.8.4.4
-#timezone
 timezone: Asia/Taipei
-#
-BASE_URL: /ibuilder
+
+USERNAME: 
+TOKEN: 
+MLFLOW_S3_ENDPOINT_URL: 
+AWS_ACCESS_KEY_ID: 
+AWS_SECRET_ACCESS_KEY: 
+MLFLOW_TRACKING_URI: 
 
 jupyter:
   # image settings and pull policy
   image:
     repository: motebus/ibuilder
-    tag: latest
+    tag: v1.0.0
     pullPolicy: Always
   # service settings
   service:
@@ -29,16 +33,13 @@ jupyter:
     port: 8000
   # container env settings
   container:
-    # cannot change fbuilder port
-    port: 8000
     #extra envs
     extraEnvs: {}
   # ingress host and path
   ingress:
     enabled: true
     annotations:
-      kubernetes.io/ingress.class: "nginx"
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      kubernetes.io/ingress.class: "kong"
     tls:
       []
       # - hosts:
@@ -56,20 +57,4 @@ jupyter:
     # PVC Storage Class for config volume
     storageClass: nfs
     # PVC Storage Request for config volume
-    size: 1Gi
-
-mlflow:
-  service:
-    protocol: TCP
-    nodePort:
-    port: 5000
-  # container env settings
-  container:
-    # cannot change fbuilder port
-    port: 5000
-  ingress:
-    enabled: true
-    hosts:
-      - myapps.ypcloud.com
-    path: /ibuilder
-    pathType: Prefix
+    size: 5Gi

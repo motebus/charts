@@ -6,12 +6,12 @@ name: ibuilder
 # The name of the chart (required)
 
 
-version: v0.0.9
+version: v1.0.0
 
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
 
-description: jupyterhub and mlflow
+description: jupyter
 # - A single-sentence description of this project (optional)
 
 type: application
@@ -44,7 +44,7 @@ keywords:
 #     url: A URL for the maintainer (optional for each maintainer)
 # icon: A URL to an SVG or PNG image to be used as an icon (optional).
 
-appVersion: v0.0.1
+appVersion: v1.0.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
 #  The version of the app that this contains (optional). This needn't be SemVer.
