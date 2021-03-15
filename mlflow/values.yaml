@@ -13,7 +13,7 @@ tolerations: []
 #     - 8.8.4.4
 
 # s3 endpoint url
-MLFLOW_S3_ENDPOINT_URL: https://cos.twcc.ai
+MLFLOW_S3_ENDPOINT_URL: 
 # aws acces key
 AWS_ACCESS_KEY_ID:
 # aws secret key
@@ -21,7 +21,7 @@ AWS_SECRET_ACCESS_KEY:
 # mysql db uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@localhost:3306/${MYSQL_DATABASE}
 DB_URI: mysql+pymysql://mlflowuser:fKe14EK8aM@localhost:3306/mlflowdb
 # s3 uri "s3://bucket"
-ARTIFACT_URI: s3://mlflow
+ARTIFACT_URI: s3://default
 
 MYSQL_DATABASE: mlflowdb
 MYSQL_USER: mlflowuser
@@ -59,6 +59,7 @@ nginx:
     enabled: true
     annotations:
       kubernetes.io/ingress.class: "kong"
+      konghq.com/strip-path: "true"
     tls:
       []
       # - hosts:
