@@ -32,9 +32,9 @@ spec:
         - name: jupyter
           image: {{ .Values.jupyter.image.repository }}:{{ .Values.jupyter.image.tag }}
           env:
-            - name: username
+            - name: USERNAME
               value: {{.Values.USERNAME}}
-            - name: token
+            - name: TOKEN
               value: {{.Values.TOKEN}}
             - name: MLFLOW_S3_ENDPOINT_URL
               value: {{.Values.MLFLOW_S3_ENDPOINT_URL}}
