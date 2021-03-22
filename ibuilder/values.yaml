@@ -12,8 +12,10 @@ podDnsConfig:
     - 8.8.4.4
 timezone: Asia/Taipei
 
-NB_USER: 
+NB_USER: jovyan
 NB_TOKEN: 
+NB_IP: 0.0.0.0
+NB_PORT: 8888
 MLFLOW_S3_ENDPOINT_URL: 
 AWS_ACCESS_KEY_ID: 
 AWS_SECRET_ACCESS_KEY: 

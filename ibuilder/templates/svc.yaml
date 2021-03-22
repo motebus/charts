@@ -16,4 +16,4 @@ spec:
       nodePort: {{ .Values.jupyter.service.nodePort}}
 {{- end}}
       port: {{ .Values.jupyter.service.port}}
-      targetPort: {{ .Values.jupyter.container.port}}
+      targetPort: {{ .Values.NB_PORT}}
