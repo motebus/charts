@@ -39,7 +39,7 @@ spec:
             - name: NB_IP
               value: {{.Values.NB_IP}}
             - name: NB_PORT
-              value: {{.Values.NB_PORT}}
+              value: {{.Values.NB_PORT | quote}}
             - name: MLFLOW_S3_ENDPOINT_URL
               value: {{.Values.MLFLOW_S3_ENDPOINT_URL}}
             - name: AWS_ACCESS_KEY_ID
