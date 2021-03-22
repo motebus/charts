@@ -12,8 +12,8 @@ podDnsConfig:
     - 8.8.4.4
 timezone: Asia/Taipei
 
-USERNAME: 
-TOKEN: 
+NB_USER: 
+NB_TOKEN: 
 MLFLOW_S3_ENDPOINT_URL: 
 AWS_ACCESS_KEY_ID: 
 AWS_SECRET_ACCESS_KEY: 
