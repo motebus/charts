@@ -18,8 +18,8 @@ MLFLOW_S3_ENDPOINT_URL:
 AWS_ACCESS_KEY_ID:
 # aws secret key
 AWS_SECRET_ACCESS_KEY:
-# mysql db uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@localhost:3306/${MYSQL_DATABASE}
-DB_URI: mysql+pymysql://mlflowuser:fKe14EK8aM@localhost:3306/mlflowdb
+# mysql db uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@127.0.0.1:3306/${MYSQL_DATABASE}
+DB_URI: mysql+pymysql://mlflowuser:fKe14EK8aM@127.0.0.1:3306/mlflowdb
 # s3 uri "s3://bucket"
 ARTIFACT_URI: s3://default
 
