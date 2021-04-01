@@ -38,7 +38,8 @@ mlflow:
   container:
     #extra envs
     extraEnvs: {}
-    command: []
+    command: ["/bin/sh"]
+    args: ["-c", "mlflow server --backend-store-uri $(DB_URI) --default-artifact-root $(ARTIFACT_URI) --host 0.0.0.0 --port 5000; mlflow db upgrade $(DB_URI)"]
 
 nginx:
   image:
