@@ -38,7 +38,7 @@ mlflow:
   container:
     #extra envs
     extraEnvs: {}
-    command: mlflow db upgrade mysql+pymysql://mlflowuser:fKe14EK8aM@127.0.0.1:3306/mlflowdb
+    command: []
 
 nginx:
   image:
