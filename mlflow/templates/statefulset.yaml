@@ -42,8 +42,6 @@ spec:
               value: {{ .Values.DB_URI }}
             - name: ARTIFACT_URI
               value: {{ .Values.ARTIFACT_URI }}
-          command: {{ .Values.mlflow.container.command}}
-          args: {{ .Values.mlflow.container.args}}
 {{- if .Values.mlflow.container.extraEnvs }}
 {{ toYaml .Values.mlflow.container.extraEnvs | indent 12 }}
 {{- end }}
