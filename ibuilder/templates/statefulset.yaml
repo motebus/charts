@@ -55,7 +55,7 @@ spec:
 {{- end }}
           ports:
            - name: jupyter-port
-             containerPort: 8888
+             containerPort: {{ .Values.NB_PORT}}
           command: {{ .Values.jupyter.container.command}}
           imagePullPolicy: {{ .Values.jupyter.image.pullPolicy}}
           volumeMounts:
