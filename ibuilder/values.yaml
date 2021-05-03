@@ -39,7 +39,7 @@ jupyter:
   container:
     #extra envs
     extraEnvs: {}
-    command: 
+    command: []
   # ingress host and path
   ingress:
     enabled: true
