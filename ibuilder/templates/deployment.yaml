@@ -58,11 +58,12 @@ spec:
              containerPort: {{ .Values.NB_PORT}}
           command: {{ .Values.jupyter.container.command}}
           imagePullPolicy: {{ .Values.jupyter.image.pullPolicy}}
+          volumeMounts:
             - name: tz
               mountPath: /etc/localtime
 
       volumes:
         - name: tz
           hostPath:
-            path: /etc/localtime             
+            path: /etc/localtime
 {{- end }}
