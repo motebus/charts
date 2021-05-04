@@ -13,15 +13,20 @@ podDnsConfig:
     - 8.8.4.4
 timezone: Asia/Taipei
 
-NB_USER: jujue
+NB_USER: 
 NB_TOKEN: 
 NB_IP: 0.0.0.0
 NB_PORT: 8888
 NB_BASE_URL: "/"
-MLFLOW_S3_ENDPOINT_URL: 
-AWS_ACCESS_KEY_ID: 
-AWS_SECRET_ACCESS_KEY: 
-MLFLOW_TRACKING_URI: 
+JUPYTER_ENABLE_LAB: "yes"
+CHOWN_HOME: "yes"
+CHOWN_HOME_OPTS: "-R"
+GRANT_SUDO: "yes"
+RESTARTABLE: "yes"
+MLFLOW_S3_ENDPOINT_URL: https://cos.twcc.ai
+AWS_ACCESS_KEY_ID: QQV0EC2S038W29QMK1VV
+AWS_SECRET_ACCESS_KEY: EDV54sny8Mez1YrIqB5hQpgSNrpMKMFutlQyRhFw
+MLFLOW_TRACKING_URI: https://ai-labs.nchc.org.tw/mlflow/3255f1fc9799abeb097b6b7c56bef98a/
 
 jupyter:
   # image settings and pull policy
@@ -39,7 +44,16 @@ jupyter:
   container:
     #extra envs
     extraEnvs: {}
-    command: []
+    command: 
+      - mlflow
+      - models
+      - serve
+      - -m
+      - s3://0ea2e731-2a38-46dd-a920-3c97de8c4b43/0/003692cee6fb4d4a86dd161ea7dbeef3/artifacts/wine-model
+      - -p
+      - 8888
+      - -h
+      - 0.0.0.0
   # ingress host and path
   ingress:
     enabled: true
