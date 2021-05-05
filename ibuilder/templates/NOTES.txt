@@ -1,6 +1,12 @@
 {{- if .Values.jupyter.ingress.enabled}}
 {{- $jupyterIngressPath := .Values.jupyter.ingress.path -}}
     {{- range .Values.jupyter.ingress.hosts }}
-URL: {{ . }}{{ $jupyterIngressPath }}
+jupyter URL: {{ . }}{{ $jupyterIngressPath }}
+    {{- end }}
+{{- end }}
+{{- if eq .Values.kind "Deployment"}}
+{{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
+    {{- range .Values.swagger.ingress.hosts }}
+swagger URL: {{ . }}{{ $swaggerIngressPath }}
     {{- end }}
 {{- end }}

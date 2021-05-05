@@ -13,6 +13,7 @@ podDnsConfig:
     - 8.8.4.4
 timezone: Asia/Taipei
 
+## jupyter
 NB_USER: 
 NB_TOKEN: 
 NB_IP: 0.0.0.0
@@ -23,10 +24,19 @@ CHOWN_HOME: "yes"
 CHOWN_HOME_OPTS: "-R"
 GRANT_SUDO: "yes"
 RESTARTABLE: "yes"
-MLFLOW_S3_ENDPOINT_URL: https://cos.twcc.ai
-AWS_ACCESS_KEY_ID: QQV0EC2S038W29QMK1VV
-AWS_SECRET_ACCESS_KEY: EDV54sny8Mez1YrIqB5hQpgSNrpMKMFutlQyRhFw
-MLFLOW_TRACKING_URI: https://ai-labs.nchc.org.tw/mlflow/3255f1fc9799abeb097b6b7c56bef98a/
+MLFLOW_S3_ENDPOINT_URL: 
+AWS_ACCESS_KEY_ID: 
+AWS_SECRET_ACCESS_KEY: 
+MLFLOW_TRACKING_URI: 
+## swagger-ui
+MINIO_S3_ENDPOINT:
+MINIO_S3_PORT: 
+MINIO_S3_USESSL:
+MINIO_S3_ACCESSKEY:
+MINIO_S3_SECRETKEY:
+MINIO_S3_BUCKET:
+MINIO_S3_OBJECT:
+SERVICE_PORT: 3000
 
 jupyter:
   # image settings and pull policy
@@ -44,24 +54,14 @@ jupyter:
   container:
     #extra envs
     extraEnvs: {}
-    command: 
-      - mlflow
-      - models
-      - serve
-      - -m
-      - s3://0ea2e731-2a38-46dd-a920-3c97de8c4b43/0/003692cee6fb4d4a86dd161ea7dbeef3/artifacts/wine-model
-      - -p
-      - 8888
-      - -h
-      - 0.0.0.0
+    command: []
   # ingress host and path
   ingress:
     enabled: true
     annotations:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
-    tls:
-      []
+    tls: []
       # - hosts:
       #     - myapps.ypcloud.com
       #   secretName: flowbot-tls
@@ -78,3 +78,35 @@ jupyter:
     storageClass: nfs
     # PVC Storage Request for config volume
     size: 5Gi
+
+swagger:
+  # image settings and pull policy
+  image:
+    repository: motebus/swagger-ui
+    tag: v1.0.0
+    pullPolicy: Always
+  # service settings
+  service:
+    type: ClusterIP
+    protocol: TCP
+    nodePort:
+    port: 3000
+  # container env settings
+  container:
+    #extra envs
+    extraEnvs: {}
+    command: []
+  # ingress host and path
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "kong"
+      konghq.com/strip-path: "true"
+    tls: []
+      # - hosts:
+      #     - myapps.ypcloud.com
+      #   secretName: flowbot-tls
+    hosts:
+      - myapps.ypcloud.com
+    path: /model
+    pathType: Prefix

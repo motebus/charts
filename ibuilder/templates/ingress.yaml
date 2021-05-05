@@ -2,6 +2,9 @@
 {{- $jupyterIngressPath := .Values.jupyter.ingress.path -}}
 {{- $jupyterServicePort := .Values.jupyter.service.port -}}
 {{- $jupyterIngressPathType := .Values.jupyter.ingress.pathType -}}
+{{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
+{{- $swaggerServicePort := .Values.swagger.service.port -}}
+{{- $swaggerIngressPathType := .Values.swagger.ingress.pathType -}}
 {{- $releaseName := .Release.Name -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -28,5 +31,19 @@ spec:
                 name: {{ $releaseName }}
                 port:
                   number: {{ $jupyterServicePort }}
+  {{- end}}
+  {{- if eq .Values.kind "Deployment"}}
+    {{- range .Values.jupyter.ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
+          - path: {{ $swaggerIngressPath }}
+            pathType: {{ $swaggerServicePort }}
+            backend:
+              service:
+                name: swagger
+                port:
+                  number: {{ $swaggerIngressPathType }}
+    {{- end}}
   {{- end}}
 {{- end}}

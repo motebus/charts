@@ -17,3 +17,12 @@ spec:
 {{- end}}
       port: {{ .Values.jupyter.service.port}}
       targetPort: {{ .Values.NB_PORT}}
+{{- if eq .Values.kind "Deployment"}}
+    - name: swagger-port
+      protocol: {{ .Values.swagger.service.protocol }}
+{{- if eq .Values.swagger.service.type "NodePort"}}
+      nodePort: {{ .Values.swagger.service.nodePort}}
+{{- end}}
+      port: {{ .Values.swagger.service.port}}
+      targetPort: {{ .Values.SERVICE_PORT}}
+{{- end}}
