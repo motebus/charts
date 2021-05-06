@@ -17,7 +17,7 @@ spec:
 {{- end}}
       port: {{ .Values.jupyter.service.port}}
       targetPort: {{ .Values.NB_PORT}}
-{{- if eq .Values.kind "Deployment"}}
+{{- if .Values.swagger.enabled}}
     - name: swagger-port
       protocol: {{ .Values.swagger.service.protocol }}
 {{- if eq .Values.swagger.service.type "NodePort"}}

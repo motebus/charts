@@ -4,7 +4,7 @@
 jupyter URL: {{ . }}{{ $jupyterIngressPath }}
     {{- end }}
 {{- end }}
-{{- if eq .Values.kind "Deployment"}}
+{{- if .Values.swagger.enabled}}
 {{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
     {{- range .Values.swagger.ingress.hosts }}
 swagger URL: {{ . }}{{ $swaggerIngressPath }}

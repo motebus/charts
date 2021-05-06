@@ -32,7 +32,7 @@ spec:
                 port:
                   number: {{ $jupyterServicePort }}
   {{- end}}
-  {{- if eq .Values.kind "Deployment"}}
+  {{- if .Values.swagger.enabled}}
     {{- range .Values.jupyter.ingress.hosts }}
     - host: {{ . }}
       http:
