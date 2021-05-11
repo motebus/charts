@@ -38,12 +38,12 @@ spec:
       http:
         paths:
           - path: {{ $swaggerIngressPath }}
-            pathType: {{ $swaggerServicePort }}
+            pathType: {{ $swaggerIngressPathType }}
             backend:
               service:
                 name: swagger
                 port:
-                  number: {{ $swaggerIngressPathType }}
+                  number: {{ $swaggerServicePort }}
     {{- end}}
   {{- end}}
 {{- end}}
