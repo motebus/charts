@@ -87,9 +87,9 @@ spec:
             - name: SWAGGER_DESC
               value: {{.Values.SWAGGER_DESC}}
             - name: SWAGGER_HOST
-              value: {{.Values.SWAGGER_HOST | quote}}
+              value: {{.Values.SWAGGER_HOST}}
             - name: SWAGGER_PATH
-              value: {{.Values.SWAGGER_PATH | quote}}
+              value: {{.Values.SWAGGER_PATH}}
   {{- if .Values.swagger.container.extraEnvs }}
   {{ toYaml .Values.swagger.container.extraEnvs | indent 12 }}
   {{- end }}
