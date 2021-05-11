@@ -77,33 +77,33 @@ spec:
               mountPath: /etc/localtime
 
 {{- if .Values.swagger.enabled}}
-          - name: swagger-ui
-            image: {{ .Values.swagger.image.repository }}:{{ .Values.swagger.image.tag }}
-            env:
-              - name: SWAGGER_EXAMPLE_URL
-                value: {{.Values.SWAGGER_EXAMPLE_URL}}
-              - name: SWAGGER_TITLE
-                value: {{.Values.SWAGGER_TITLE}}
-              - name: SWAGGER_DESC
-                value: {{.Values.SWAGGER_DESC}}
-              - name: SWAGGER_HOST
-                value: {{.Values.SWAGGER_HOST | quote}}
-              - name: SWAGGER_PATH
-                value: {{.Values.SWAGGER_PATH | quote}}
+        - name: swagger-ui
+          image: {{ .Values.swagger.image.repository }}:{{ .Values.swagger.image.tag }}
+          env:
+            - name: SWAGGER_EXAMPLE_URL
+              value: {{.Values.SWAGGER_EXAMPLE_URL}}
+            - name: SWAGGER_TITLE
+              value: {{.Values.SWAGGER_TITLE}}
+            - name: SWAGGER_DESC
+              value: {{.Values.SWAGGER_DESC}}
+            - name: SWAGGER_HOST
+              value: {{.Values.SWAGGER_HOST | quote}}
+            - name: SWAGGER_PATH
+              value: {{.Values.SWAGGER_PATH | quote}}
   {{- if .Values.swagger.container.extraEnvs }}
   {{ toYaml .Values.swagger.container.extraEnvs | indent 12 }}
   {{- end }}
-            ports:
-              - name: swagger-port
-                containerPort: 3000
-            command: 
-            {{- range .Values.swagger.container.command }}
-            - {{ . | quote }}
-            {{- end}}
-            imagePullPolicy: {{ .Values.swagger.image.pullPolicy}}
-            volumeMounts:
-              - name: tz
-                mountPath: /etc/localtime
+          ports:
+            - name: swagger-port
+              containerPort: 3000
+          command: 
+          {{- range .Values.swagger.container.command }}
+          - {{ . | quote }}
+          {{- end}}
+          imagePullPolicy: {{ .Values.swagger.image.pullPolicy}}
+          volumeMounts:
+            - name: tz
+              mountPath: /etc/localtime
 {{- end}}
       volumes:
         - name: tz
