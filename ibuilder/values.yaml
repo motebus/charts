@@ -58,6 +58,7 @@ jupyter:
     annotations:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
+      konghq.com/override: "https-only"
     tls: []
       # - hosts:
       #     - myapps.ypcloud.com
@@ -100,6 +101,7 @@ swagger:
     annotations:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
+      konghq.com/override: "https-only"
     tls: []
       # - hosts:
       #     - myapps.ypcloud.com

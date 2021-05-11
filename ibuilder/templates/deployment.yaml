@@ -94,8 +94,8 @@ spec:
   {{ toYaml .Values.swagger.container.extraEnvs | indent 12 }}
   {{- end }}
             ports:
-            - name: swagger-port
-              containerPort: 3000
+              - name: swagger-port
+                containerPort: 3000
             command: 
             {{- range .Values.swagger.container.command }}
             - {{ . | quote }}
