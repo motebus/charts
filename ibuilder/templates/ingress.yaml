@@ -33,7 +33,7 @@ spec:
                   number: {{ $jupyterServicePort }}
   {{- end}}
   {{- if .Values.swagger.enabled}}
-    {{- range .Values.jupyter.ingress.hosts }}
+    {{- range .Values.swagger.ingress.hosts }}
     - host: {{ . }}
       http:
         paths:

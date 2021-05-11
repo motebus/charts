@@ -97,7 +97,6 @@ swagger:
     command: []
   # ingress host and path
   ingress:
-    enabled: true
     annotations:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
