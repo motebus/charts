@@ -97,15 +97,5 @@ swagger:
     command: []
   # ingress host and path
   ingress:
-    annotations:
-      kubernetes.io/ingress.class: "kong"
-      konghq.com/strip-path: "true"
-      konghq.com/override: "https-only"
-    tls: []
-      # - hosts:
-      #     - myapps.ypcloud.com
-      #   secretName: flowbot-tls
-    hosts:
-      - myapps.ypcloud.com
     path: /model
     pathType: Prefix
