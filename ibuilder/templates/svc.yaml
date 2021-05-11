@@ -24,5 +24,5 @@ spec:
       nodePort: {{ .Values.swagger.service.nodePort}}
 {{- end}}
       port: {{ .Values.swagger.service.port}}
-      targetPort: {{ .Values.SERVICE_PORT}}
+      targetPort: 3000
 {{- end}}

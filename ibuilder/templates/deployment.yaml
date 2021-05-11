@@ -80,28 +80,22 @@ spec:
           - name: swagger-ui
             image: {{ .Values.swagger.image.repository }}:{{ .Values.swagger.image.tag }}
             env:
-              - name: MINIO_S3_ENDPOINT
-                value: {{.Values.MINIO_S3_ENDPOINT}}
-              - name: MINIO_S3_PORT
-                value: {{.Values.MINIO_S3_PORT}}
-              - name: MINIO_S3_USESSL
-                value: {{.Values.MINIO_S3_USESSL}}
-              - name: MINIO_S3_ACCESSKEY
-                value: {{.Values.MINIO_S3_ACCESSKEY | quote}}
-              - name: MINIO_S3_SECRETKEY
-                value: {{.Values.MINIO_S3_SECRETKEY | quote}}
-              - name: MINIO_S3_BUCKET
-                value: {{.Values.MINIO_S3_BUCKET | quote}}
-              - name: MINIO_S3_OBJECT
-                value: {{.Values.MINIO_S3_OBJECT | quote}}
-              - name: SERVICE_PORT
-                value: {{.Values.SERVICE_PORT | quote}}
+              - name: SWAGGER_EXAMPLE_URL
+                value: {{.Values.SWAGGER_EXAMPLE_URL}}
+              - name: SWAGGER_TITLE
+                value: {{.Values.SWAGGER_TITLE}}
+              - name: SWAGGER_DESC
+                value: {{.Values.SWAGGER_DESC}}
+              - name: SWAGGER_HOST
+                value: {{.Values.SWAGGER_HOST | quote}}
+              - name: SWAGGER_PATH
+                value: {{.Values.SWAGGER_PATH | quote}}
   {{- if .Values.swagger.container.extraEnvs }}
   {{ toYaml .Values.swagger.container.extraEnvs | indent 12 }}
   {{- end }}
             ports:
             - name: swagger-port
-              containerPort: {{ .Values.MINIO_S3_PORT}}
+              containerPort: 3000
             command: 
             {{- range .Values.swagger.container.command }}
             - {{ . | quote }}
