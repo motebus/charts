@@ -37,7 +37,7 @@ spec:
             pathType: {{ $swaggerIngressPathType }}
             backend:
               service:
-                name: swagger
+                name: {{ $releaseName }}
                 port:
                   number: {{ $swaggerServicePort }}
           {{- end}}
