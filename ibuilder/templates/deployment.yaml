@@ -79,16 +79,20 @@ spec:
         - name: swagger-ui
           image: {{ .Values.swagger.image.repository }}:{{ .Values.swagger.image.tag }}
           env:
-            - name: SWAGGER_EXAMPLE_URL
-              value: {{.Values.SWAGGER_EXAMPLE_URL}}
-            - name: SWAGGER_TITLE
-              value: {{.Values.SWAGGER_TITLE | quote}}
-            - name: SWAGGER_DESC
-              value: {{.Values.SWAGGER_DESC | quote}}
-            - name: SWAGGER_HOST
-              value: {{.Values.SWAGGER_HOST}}
-            - name: SWAGGER_PATH
-              value: {{.Values.SWAGGER_PATH}}
+            - name: MINIO_S3_OBJECT
+              value: {{.Values.MINIO_S3_OBJECT}}
+            - name: MINIO_S3_ENDPOINT
+              value: {{.Values.MINIO_S3_ENDPOINT}}
+            - name: MINIO_S3_PORT
+              value: {{.Values.MINIO_S3_PORT | quote}}
+            - name: MINIO_S3_USESSL
+              value: {{.Values.MINIO_S3_USESSL}}
+            - name: MINIO_S3_ACCESSKEY
+              value: {{.Values.MINIO_S3_ACCESSKEY}}
+            - name: MINIO_S3_SECRETKEY
+              value: {{.Values.MINIO_S3_SECRETKEY}}
+            - name: MINIO_S3_BUCKET
+              value: {{.Values.MINIO_S3_BUCKET}}
   {{- if .Values.swagger.container.extraEnvs }}
   {{ toYaml .Values.swagger.container.extraEnvs | indent 12 }}
   {{- end }}
