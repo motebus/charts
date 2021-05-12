@@ -76,7 +76,6 @@ spec:
             - name: tz
               mountPath: /etc/localtime
 
-{{- if .Values.swagger.enabled}}
         - name: swagger-ui
           image: {{ .Values.swagger.image.repository }}:{{ .Values.swagger.image.tag }}
           env:
@@ -104,7 +103,7 @@ spec:
           volumeMounts:
             - name: tz
               mountPath: /etc/localtime
-{{- end}}
+
       volumes:
         - name: tz
           hostPath:
