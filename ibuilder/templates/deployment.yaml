@@ -82,9 +82,9 @@ spec:
             - name: SWAGGER_EXAMPLE_URL
               value: {{.Values.SWAGGER_EXAMPLE_URL}}
             - name: SWAGGER_TITLE
-              value: {{.Values.SWAGGER_TITLE}}
+              value: {{.Values.SWAGGER_TITLE | quote}}
             - name: SWAGGER_DESC
-              value: {{.Values.SWAGGER_DESC}}
+              value: {{.Values.SWAGGER_DESC | quote}}
             - name: SWAGGER_HOST
               value: {{.Values.SWAGGER_HOST}}
             - name: SWAGGER_PATH

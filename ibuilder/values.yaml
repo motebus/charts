@@ -94,7 +94,3 @@ swagger:
     #extra envs
     extraEnvs: {}
     command: []
-  # ingress host and path
-  ingress:
-    path: /model
-    pathType: Prefix
