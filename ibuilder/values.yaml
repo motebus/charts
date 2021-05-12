@@ -96,3 +96,8 @@ swagger:
     #extra envs
     extraEnvs: {}
     command: []
+  ingress:
+    hosts:
+      - myapps.ypcloud.com
+    path: /ibuilder
+    pathType: Prefix
