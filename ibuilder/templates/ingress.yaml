@@ -13,7 +13,6 @@ metadata:
   name: {{ .Release.Name }}
 {{- with .Values.jupyter.ingress.annotations }}
   annotations:
-    konghq.com/plugins: http-log-{{ .Release.Name }}
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:

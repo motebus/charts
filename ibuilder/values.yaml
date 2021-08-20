@@ -61,6 +61,7 @@ jupyter:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
       konghq.com/override: "https-only"
+      konghq.com/plugins: "{{ .Release.Name }}-http-log"
     tls: []
       # - hosts:
       #     - myapps.ypcloud.com
