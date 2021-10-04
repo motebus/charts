@@ -1,15 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-jupyter
+{{- with .Values.jupyter.service.annotations }}
   annotations:
-    konghq.com/plugins: rate-limiting
+{{ toYaml . | indent 4 }}
+{{- end }}
 spec:
   type: {{ .Values.jupyter.service.type }}
   selector:
     app: {{ .Release.Name }}-deployment
 {{- if eq .Values.jupyter.service.type "ClusterIP"}}
-  clusterIP: None
+  clusterIP: {{ .Values.jupyter.service.clusterIP}}
 {{- end}}
   ports:
     - name: jupyter-port
@@ -19,7 +21,19 @@ spec:
 {{- end}}
       port: {{ .Values.jupyter.service.port}}
       targetPort: {{ .Values.NB_PORT}}
-{{- if eq .Values.kind "Deployment"}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-swagger
+spec:
+  type: {{ .Values.swagger.service.type }}
+  selector:
+    app: {{ .Release.Name }}-deployment
+{{- if eq .Values.swagger.service.type "ClusterIP"}}
+  clusterIP: {{ .Values.swagger.service.clusterIP}}
+{{- end}}
+  ports:
     - name: swagger-port
       protocol: {{ .Values.swagger.service.protocol }}
 {{- if eq .Values.swagger.service.type "NodePort"}}
@@ -27,4 +41,3 @@ spec:
 {{- end}}
       port: {{ .Values.swagger.service.port}}
       targetPort: 3000
-{{- end}}

@@ -2,15 +2,11 @@
 {{- $jupyterIngressPath := .Values.jupyter.ingress.path -}}
 {{- $jupyterServicePort := .Values.jupyter.service.port -}}
 {{- $jupyterIngressPathType := .Values.jupyter.ingress.pathType -}}
-{{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
-{{- $swaggerServicePort := .Values.swagger.service.port -}}
-{{- $swaggerIngressPathType := .Values.swagger.ingress.pathType -}}
-{{- $kind := .Values.kind -}}
 {{- $releaseName := .Release.Name -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-jupyter
 {{- with .Values.jupyter.ingress.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
@@ -29,17 +25,41 @@ spec:
             pathType: {{ $jupyterIngressPathType }}
             backend:
               service:
-                name: {{ $releaseName }}
+                name: {{ $releaseName }}-jupyter
                 port:
                   number: {{ $jupyterServicePort }}
-          {{- if eq $kind "Deployment"}}
+  {{- end}}
+{{- end}}
+---
+{{- if .Values.swagger.ingress.enabled}}
+{{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
+{{- $swaggerServicePort := .Values.swagger.service.port -}}
+{{- $swaggerIngressPathType := .Values.swagger.ingress.pathType -}}
+{{- $releaseName := .Release.Name -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-swagger
+{{- with .Values.swagger.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+{{- if .Values.swagger.ingress.tls }}
+  tls:
+{{ toYaml .Values.swagger.ingress.tls | indent 4 }}
+{{- end }}
+  rules:
+  {{- range .Values.swagger.ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
           - path: {{ $swaggerIngressPath }}
             pathType: {{ $swaggerIngressPathType }}
             backend:
               service:
-                name: {{ $releaseName }}
+                name: {{ $releaseName }}-swagger
                 port:
                   number: {{ $swaggerServicePort }}
-          {{- end}}
   {{- end}}
 {{- end}}

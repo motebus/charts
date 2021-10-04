@@ -4,3 +4,9 @@
 URL: {{ . }}{{ $jupyterIngressPath }}
     {{- end }}
 {{- end }}
+{{- if .Values.swagger.ingress.enabled}}
+{{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
+    {{- range .Values.swagger.ingress.hosts }}
+URL: {{ . }}{{ $swaggerIngressPath }}
+    {{- end }}
+{{- end }}

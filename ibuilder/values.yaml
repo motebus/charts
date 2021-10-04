@@ -49,6 +49,9 @@ jupyter:
     protocol: TCP
     nodePort:
     port: 8000
+    clusterIP: None
+    annotations:
+      konghq.com/plugins: rate-limiting, http-log
   # container env settings
   container:
     #extra envs
@@ -61,7 +64,6 @@ jupyter:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
       konghq.com/override: "https-only"
-      konghq.com/plugins: "http-log"
     tls: []
       # - hosts:
       #     - myapps.ypcloud.com
@@ -81,6 +83,7 @@ jupyter:
     size: 5Gi
 
 swagger:
+  enabled: false
   # image settings and pull policy
   image:
     repository: motebus/swagger-autogen
@@ -92,6 +95,7 @@ swagger:
     protocol: TCP
     nodePort:
     port: 3000
+    clusterIP:
   # container env settings
   container:
     #extra envs
@@ -102,3 +106,8 @@ swagger:
       - myapps.ypcloud.com
     path: /ibuilder
     pathType: Prefix
+    tls: []
+    annotations:
+      kubernetes.io/ingress.class: "kong"
+      konghq.com/strip-path: "true"
+      konghq.com/override: "https-only"
