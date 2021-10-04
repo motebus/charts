@@ -83,6 +83,7 @@ jupyter:
     size: 5Gi
 
 swagger:
+  enabled: false
   # image settings and pull policy
   image:
     repository: motebus/swagger-autogen

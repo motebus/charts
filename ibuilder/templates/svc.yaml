@@ -22,6 +22,7 @@ spec:
       port: {{ .Values.jupyter.service.port}}
       targetPort: {{ .Values.NB_PORT}}
 ---
+{{- if .Values.swagger.enabled}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -41,3 +42,4 @@ spec:
 {{- end}}
       port: {{ .Values.swagger.service.port}}
       targetPort: 3000
+{{- end}}
