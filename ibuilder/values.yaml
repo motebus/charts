@@ -83,7 +83,6 @@ jupyter:
     size: 5Gi
 
 swagger:
-  enabled: false
   # image settings and pull policy
   image:
     repository: motebus/swagger-autogen
@@ -102,6 +101,7 @@ swagger:
     extraEnvs: {}
     command: []
   ingress:
+    enabled: false
     hosts:
       - myapps.ypcloud.com
     path: /ibuilder
