@@ -51,7 +51,7 @@ jupyter:
     port: 8000
     clusterIP: None
     annotations:
-      konghq.com/plugins: rate-limiting, http-log
+      konghq.com/plugins: rate-limiting, http-log, key-auth
   # container env settings
   container:
     #extra envs
