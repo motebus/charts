@@ -58,37 +58,6 @@ mlflow:
     path: /mlflow/(.*)
     pathType: Prefix  
 
-nginx:
-  image:
-    repository: motebus/nginx
-    tag: v1.0.0
-    pullPolicy: Always
-  # service settings
-  service:
-    type: ClusterIP
-    protocol: TCP
-    nodePort:
-    port: 80
-  # container env settings
-  container:
-    #extra envs
-    extraEnvs: {}
-  # ingress host and path
-  ingress:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: "kong"
-      konghq.com/strip-path: "true"
-    tls:
-      []
-      # - hosts:
-      #     - myapps.ypcloud.com
-      #   secretName: mlflow-tls
-    hosts:
-      - ai-mkt.nchc.org.tw
-    path: /mlflow/(.*)
-    pathType: Prefix
-
 db:
   image:
     repository: mysql/mysql-server
