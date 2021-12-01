@@ -38,6 +38,25 @@ mlflow:
   container:
     #extra envs
     extraEnvs: {}
+  service:
+    type: ClusterIP
+    protocol: TCP
+    nodePort:
+    port: 5000
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "kong"
+      konghq.com/strip-path: "true"
+    tls:
+      []
+      # - hosts:
+      #     - myapps.ypcloud.com
+      #   secretName: mlflow-tls
+    hosts:
+      - ai-mkt.nchc.org.tw
+    path: /mlflow/(.*)
+    pathType: Prefix  
 
 nginx:
   image:

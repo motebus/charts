@@ -3,16 +3,16 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
 spec:
-  type: {{ .Values.nginx.service.type }}
+  type: {{ .Values.mlflow.service.type }}
   selector:
     app: {{ .Release.Name }}-deployment
   ports:
-    - protocol: {{ .Values.nginx.service.protocol }}
-{{- if eq .Values.nginx.service.type "NodePort"}}
-      nodePort: {{ .Values.nginx.service.nodePort}}
+    - protocol: {{ .Values.mlflow.service.protocol }}
+{{- if eq .Values.mlflow.service.type "NodePort"}}
+      nodePort: {{ .Values.mlflow.service.nodePort}}
 {{- end}}
-      port: {{ .Values.nginx.service.port}}
-      targetPort: {{ .Values.nginx.service.port}}
-{{- if eq .Values.nginx.service.type "ClusterIP"}}
+      port: {{ .Values.mlflow.service.port}}
+      targetPort: {{ .Values.mlflow.service.port}}
+{{- if eq .Values.mlflow.service.type "ClusterIP"}}
   clusterIP: None
 {{- end}}

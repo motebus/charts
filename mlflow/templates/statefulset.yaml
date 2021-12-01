@@ -45,6 +45,8 @@ spec:
 {{- if .Values.mlflow.container.extraEnvs }}
 {{ toYaml .Values.mlflow.container.extraEnvs | indent 12 }}
 {{- end }}
+          ports:
+           - containerPort: 5000
           imagePullPolicy: {{ .Values.mlflow.image.pullPolicy}}
 
         - name: nginx
