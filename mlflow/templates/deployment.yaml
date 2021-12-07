@@ -1,9 +1,8 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: {{ .Release.Name }}
 spec:
-  serviceName: {{ .Release.Name }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-deployment
@@ -48,31 +47,3 @@ spec:
           ports:
            - containerPort: 5000
           imagePullPolicy: {{ .Values.mlflow.image.pullPolicy}}
-
-        - name: mysql
-          image: {{ .Values.db.image.repository }}:{{ .Values.db.image.tag }}
-          env:
-            - name: MYSQL_DATABASE
-              value: {{.Values.MYSQL_DATABASE | quote}}
-            - name: MYSQL_USER
-              value: {{ .Values.MYSQL_USER}}
-            - name: MYSQL_PASSWORD
-              value: {{.Values.MYSQL_PASSWORD}}
-            - name: MYSQL_ROOT_PASSWORD
-              value: {{ .Values.MYSQL_ROOT_PASSWORD | quote }}
-          imagePullPolicy: {{ .Values.db.image.pullPolicy}}
-          volumeMounts:
-            - name: db-vol
-              mountPath: {{.Values.MYSQL_DATAPATH}}
-
-  volumeClaimTemplates:
-{{- if .Values.db.persistence.enabled}}
-    - metadata:
-        name: db-vol
-      spec:
-        accessModes:  [ {{ .Values.db.persistence.accessMode | quote }} ]
-        storageClassName: {{ .Values.db.persistence.storageClass | quote }}
-        resources:
-            requests:
-                storage: 5Gi
-{{- end}}    

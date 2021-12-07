@@ -23,12 +23,6 @@ DB_URI: mysql+pymysql://mlflowuser:fKe14EK8aM@127.0.0.1:3306/mlflowdb
 # s3 uri "s3://bucket"
 ARTIFACT_URI: s3://default
 
-MYSQL_DATABASE: mlflowdb
-MYSQL_USER: mlflowuser
-MYSQL_PASSWORD: fKe14EK8aM
-MYSQL_ROOT_PASSWORD: Mde3nAC5kL
-MYSQL_DATAPATH: /var/lib/mysql
-
 mlflow:
   image:
     repository: motebus/mlflow
@@ -57,18 +51,3 @@ mlflow:
       - ai-mkt.nchc.org.tw
     path: /mlflow/(.*)
     pathType: Prefix  
-
-db:
-  image:
-    repository: mysql/mysql-server
-    tag: 8.0.23
-    pullPolicy: Always
-  persistence:
-    #Enable config persistence using PVC
-    enabled: true
-    # PVC Access Mode for config volume
-    accessMode: ReadWriteOnce
-    # PVC Storage Class for config volume
-    storageClass: nfs
-    # PVC Storage Request for config volume
-    size: 5Gi
