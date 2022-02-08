@@ -7,7 +7,7 @@ name: fbots
 
 version: v1.0.1
 
-kubeVersion: v1.23.1
+kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
 
 description: fbots
