@@ -118,7 +118,7 @@ spec:
     - metadata:
         name: fbots-vol
       spec:
-        accessModes: [ {{ .Values.fbots.persistence.accessMode | quote }} ]
+        accessModes: {{ .Values.fbots.persistence.accessMode | quote }} 
         storageClassName: {{ .Values.fbots.persistence.storageClass | quote }}
         resources:
           requests:
@@ -128,7 +128,7 @@ spec:
     - metadata:
         name: motebus-vol
       spec:
-        accessModes:  [ {{ .Values.motebus.persistence.accessMode | quote }} ]
+        accessModes:  {{ .Values.motebus.persistence.accessMode | quote }} 
         storageClassName: {{ .Values.motebus.persistence.storageClass | quote }}
         resources:
           requests:
