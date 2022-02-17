@@ -13,72 +13,72 @@ spec:
       labels:
        app: {{ .Release.Name }}-deployment
     spec:
-{{- if .Values.podDnsPolicy}}
-      dnsPolicy: {{ .Values.podDnsPolicy}}
-{{- end}}
-{{- if .Values.podDnsConfig}}
+{{ if .Values.podDnsPolicy }}
+      dnsPolicy: {{ .Values.podDnsPolicy }}
+{{ end}}
+{{ if .Values.podDnsConfig }}
       dnsConfig:
-{{ toYaml .Values.podDnsConfig | indent 8}}
-{{- end}}
-{{- with .Values.nodeSelector }}
+{{ toYaml .Values.podDnsConfig | indent 8 }}
+{{ end}}
+{{ with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
-{{- end }}
-{{- with .Values.tolerations }}
+{{ end }}
+{{ with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
-{{- end }}
+{{ end }}
       containers:
         - name: fbots
           image: {{ .Values.fbots.image.repository }}:{{ .Values.fbots.image.tag }}
           env:
             - name: TZ
-              value: {{ .Values.timezone}}
+              value: {{ .Values.timezone }}
             - name: SENDTIMEOUT
               value: {{ .Values.MCHAT_SENDTIMEOUT | quote }}
             - name: WAITREPLY
-              value: {{ .Values.MCHAT_WAITREPLY | quote}}
+              value: {{ .Values.MCHAT_WAITREPLY | quote }}
             - name: MCAHT_WATCHLEVEL
-              value: {{ .Values.MCAHT_WATCHLEVEL | quote}}
+              value: {{ .Values.MCAHT_WATCHLEVEL | quote }}
             - name: MCHAT_EINAME
               value: {{ .Values.MCHAT_EINAME }}
             - name: MCHAT_APPNAME
               value: {{ .Values.MCHAT_APPNAME }}
             - name: MCHAT_MBGWIP
-              value: {{ .Values.MCHAT_MBGWIP}}
+              value: {{ .Values.MCHAT_MBGWIP }}
             - name: MCHAT_DC
-              value: {{ .Values.MCHAT_DC}}
+              value: {{ .Values.MCHAT_DC }}
             - name: MCHAT_IOC
-              value: {{ .Values.MCHAT_IOC}}
+              value: {{ .Values.MCHAT_IOC }}
             - name: MCHAT_UDID
-              value: {{ .Values.MCHAT_UDID | quote}}
+              value: {{ .Values.MCHAT_UDID | quote }}
             - name: FBOT_MODE
-              value: {{ .Values.FBOT_MODE}}
+              value: {{ .Values.FBOT_MODE }}
             - name: FBOT_QCODE
-              value: {{ .Values.FBOT_QCODE}}
+              value: {{ .Values.FBOT_QCODE }}
             - name: FBOT_QNAME
-              value: {{ .Values.FBOT_QNAME}}
+              value: {{ .Values.FBOT_QNAME }}
             - name: FBOT_MANY
-              value: {{ .Values.FBOT_MANY | quote}}
+              value: {{ .Values.FBOT_MANY | quote }}
             - name: FBOT_CLUSTER
-              value: {{ .Values.FBOT_CLUSTER | quote}}
+              value: {{ .Values.FBOT_CLUSTER | quote }}
             - name: FBOT_MULTI
-              value: {{ .Values.FBOT_MULTI | quote}}
+              value: {{ .Values.FBOT_MULTI | quote }}
             - name: FBOT_PORT
-              value: {{ .Values.FBOT_PORT | quote}}
+              value: {{ .Values.FBOT_PORT | quote }}
             - name: FBOT_UI
-              value: {{ .Values.FBOT_UI | quote}}
-{{- if .Values.fbots.container.extraEnvs }}
+              value: {{ .Values.FBOT_UI | quote }}
+{{ if .Values.fbots.container.extraEnvs }}
 {{ toYaml .Values.fbots.container.extraEnvs | indent 12 }}
-{{- end }}
+{{ end }}
           ports:
-           - containerPort: {{ .Values.fbots.container.port}}
-          imagePullPolicy: {{ .Values.fbots.image.pullPolicy}}
+           - containerPort: {{ .Values.fbots.container.port }}
+          imagePullPolicy: {{ .Values.fbots.image.pullPolicy }}
           volumeMounts:
-{{- if .Values.fbots.persistence.enabled}}
+{{ if .Values.fbots.persistence.enabled }}
             - name: fbots-vol
               mountPath: /usr/src/node-red/data/{{ .Values.MCHAT_EINAME }}
-{{- end}}
+{{ end }}
             - name: tz
               mountPath: /etc/localtime
 
@@ -86,7 +86,7 @@ spec:
           image: "{{ .Values.motebus.image.repository }}:{{ .Values.motebus.image.tag }}"
           env:
             - name: TZ
-              value: {{ .Values.timezone}}
+              value: {{ .Values.timezone }}
             - name: MBSTACK_BUSMODE
               value: {{ .Values.MBSTACK_BUSMODE | quote }}
             - name: MBSTACK_UPSTREAM
@@ -101,10 +101,10 @@ spec:
               value: {{ .Values.MBSTACK_IPFINDER | quote }}
           imagePullPolicy: {{ .Values.motebus.image.pullPolicy }}
           volumeMounts:
-{{- if .Values.motebus.persistence.enabled}}
+{{ if .Values.motebus.persistence.enabled }}
             - name: motebus-vol
-              mountPath: {{.Values.MBSTACK_DATAPATH}}
-{{- end}}
+              mountPath: {{ .Values.MBSTACK_DATAPATH }}
+{{ end }}
             - name: tz
               mountPath: /etc/localtime
  
@@ -114,7 +114,7 @@ spec:
             path: /etc/localtime             
 
   volumeClaimTemplates:
-{{- if .Values.fbots.persistence.enabled}}
+{{ if .Values.fbots.persistence.enabled }}
     - metadata:
         name: fbots-vol
       spec:
@@ -123,8 +123,8 @@ spec:
         resources:
           requests:
             storage: {{ .Values.fbots.persistence.size | quote }}
-{{- end}}
-{{- if .Values.motebus.persistence.enabled}}
+{{ end }}
+{{ if .Values.motebus.persistence.enabled }}
     - metadata:
         name: motebus-vol
       spec:
@@ -133,4 +133,4 @@ spec:
         resources:
           requests:
             storage: {{ .Values.motebus.persistence.size | quote }}
-{{- end}}
+{{ end }}

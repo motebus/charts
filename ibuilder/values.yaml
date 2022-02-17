@@ -14,8 +14,8 @@ podDnsConfig:
 timezone: Asia/Taipei
 
 ## jupyter
-NB_USER: 
-NB_TOKEN: 
+NB_USER:
+NB_TOKEN:
 NB_IP: 0.0.0.0
 NB_PORT: 8888
 NB_BASE_URL: "/"
@@ -24,10 +24,10 @@ CHOWN_HOME: "yes"
 CHOWN_HOME_OPTS: "-R"
 GRANT_SUDO: "yes"
 RESTARTABLE: "yes"
-MLFLOW_S3_ENDPOINT_URL: 
-AWS_ACCESS_KEY_ID: 
-AWS_SECRET_ACCESS_KEY: 
-MLFLOW_TRACKING_URI: 
+MLFLOW_S3_ENDPOINT_URL:
+AWS_ACCESS_KEY_ID:
+AWS_SECRET_ACCESS_KEY:
+MLFLOW_TRACKING_URI:
 ## swagger-autogen
 MINIO_S3_BUCKET:
 MINIO_S3_OBJECT:
@@ -42,7 +42,7 @@ jupyter:
   image:
     repository: motebus/ibuilder
     tag: v1.0.0
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
   # service settings
   service:
     type: ClusterIP
@@ -64,7 +64,8 @@ jupyter:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
       konghq.com/override: "https-only"
-    tls: []
+    tls:
+      []
       # - hosts:
       #     - myapps.ypcloud.com
       #   secretName: flowbot-tls
@@ -87,8 +88,8 @@ swagger:
   # image settings and pull policy
   image:
     repository: motebus/swagger-autogen
-    tag: latest
-    pullPolicy: Always
+    tag: v1.0.0
+    pullPolicy: IfNotPresent
   # service settings
   service:
     type: ClusterIP

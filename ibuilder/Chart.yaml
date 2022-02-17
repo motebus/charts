@@ -5,8 +5,7 @@ apiVersion: v2
 name: ibuilder
 # The name of the chart (required)
 
-
-version: v1.1.7
+version: v1.1.8
 
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)

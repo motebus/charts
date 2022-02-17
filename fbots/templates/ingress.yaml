@@ -1,23 +1,23 @@
-{{- if .Values.fbots.ingress.enabled}}
-{{- $ingressPath := .Values.fbots.ingress.path -}}
-{{- $servicePort := .Values.fbots.service.port -}}
-{{- $releaseName := .Release.Name -}}
-{{- $ingressPathType := .Values.fbots.ingress.pathType -}}
+{{ if .Values.fbots.ingress.enabled }}
+{{ $ingressPath := .Values.fbots.ingress.path }}
+{{ $servicePort := .Values.fbots.service.port }}
+{{ $releaseName := .Release.Name }}
+{{ $ingressPathType := .Values.fbots.ingress.pathType }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}
-{{- with .Values.fbots.ingress.annotations }}
+{{ with .Values.fbots.ingress.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
-{{- end }}
+{{ end }}
 spec:
-{{- if .Values.fbots.ingress.tls }}
+{{ if .Values.fbots.ingress.tls }}
   tls:
 {{ toYaml .Values.fbots.ingress.tls | indent 4 }}
-{{- end }}
+{{ end }}
   rules:
-  {{- range .Values.fbots.ingress.hosts }}
+  {{ range .Values.fbots.ingress.hosts }}
     - host: {{ . }}
       http:
         paths:
@@ -28,5 +28,5 @@ spec:
                 name: {{ $releaseName }}
                 port:
                   number: {{ $servicePort }}
-  {{- end}}
-{{- end}}
+  {{ end }}
+{{ end }}
