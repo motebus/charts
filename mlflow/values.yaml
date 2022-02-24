@@ -13,7 +13,7 @@ tolerations: []
 #     - 8.8.4.4
 
 # s3 endpoint url
-MLFLOW_S3_ENDPOINT_URL: 
+MLFLOW_S3_ENDPOINT_URL:
 # aws acces key
 AWS_ACCESS_KEY_ID:
 # aws secret key
@@ -27,7 +27,7 @@ mlflow:
   image:
     repository: motebus/mlflow
     tag: v1.0.0
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
   # container env settings
   container:
     #extra envs
@@ -50,4 +50,4 @@ mlflow:
     hosts:
       - ai-mkt.nchc.org.tw
     path: /mlflow/(.*)
-    pathType: Prefix  
+    pathType: Prefix
