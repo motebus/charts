@@ -47,3 +47,6 @@ spec:
           ports:
            - containerPort: 5000
           imagePullPolicy: {{ .Values.mlflow.image.pullPolicy}}
+          {{- if .Values.mlflow.resources }}
+          resources: {{- toYaml .Values.mlflow.resources | nindent 12 }}
+          {{- end }}

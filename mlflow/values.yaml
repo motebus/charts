@@ -51,3 +51,10 @@ mlflow:
       - ai-mkt.nchc.org.tw
     path: /mlflow/(.*)
     pathType: Prefix
+  resource:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+    limits:
+      memory: 512Mi
+      cpu: 250m
