@@ -72,6 +72,9 @@ spec:
            - {{ . | quote }}
           {{- end}}
           imagePullPolicy: {{ .Values.jupyter.image.pullPolicy}}
+          {{- if .Values.jupyter.resources }}
+          resources: {{- toYaml .Values.jupyter.resources | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: tz
               mountPath: /etc/localtime
@@ -104,6 +107,9 @@ spec:
           - {{ . | quote }}
           {{- end}}
           imagePullPolicy: {{ .Values.swagger.image.pullPolicy}}
+          {{- if .Values.swagger.resources }}
+          resources: {{- toYaml .Values.swagger.resources | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: tz
               mountPath: /etc/localtime

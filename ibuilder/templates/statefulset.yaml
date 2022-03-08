@@ -73,6 +73,9 @@ spec:
            - {{ . | quote }}
           {{- end}}
           imagePullPolicy: {{ .Values.jupyter.image.pullPolicy}}
+          {{- if .Values.jupyter.resources }}
+          resources: {{- toYaml .Values.jupyter.resources | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: jupyter-vol
               mountPath: /home/{{.Values.NB_USER}}

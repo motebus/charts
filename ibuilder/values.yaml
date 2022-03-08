@@ -82,7 +82,13 @@ jupyter:
     storageClass: nfs
     # PVC Storage Request for config volume
     size: 5Gi
-
+  resource:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+    limits:
+      memory: 512Mi
+      cpu: 250m
 swagger:
   enabled: false
   # image settings and pull policy
@@ -113,3 +119,10 @@ swagger:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
       konghq.com/override: "https-only"
+  resource:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+    limits:
+      memory: 512Mi
+      cpu: 250m
