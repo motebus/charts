@@ -102,7 +102,7 @@ swagger:
     protocol: TCP
     nodePort:
     port: 3000
-    clusterIP:
+    clusterIP: None
   # container env settings
   container:
     #extra envs
