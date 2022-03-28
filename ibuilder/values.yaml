@@ -63,7 +63,8 @@ jupyter:
     annotations:
       kubernetes.io/ingress.class: "kong"
       konghq.com/strip-path: "true"
-      konghq.com/override: "https-only"
+      konghq.com/protocols: "https"
+      konghq.com/https-redirect-status-code: "301"
     tls:
       []
       # - hosts:
