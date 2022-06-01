@@ -45,18 +45,8 @@ FBOT_PORT: 1880
 FBOT_MULTI: 0
 # Make different instances have different MCHAT_APPNAME, but have same MCHAT_EINAME (FBOT_MANY > 1)
 FBOT_CLUSTER: 0
-# motebus upstream
-MBSTACK_UPSTREAM: h3.ypcloud.com
-# motebus bus mode
-MBSTACK_BUSMODE: 0
-# motebus watch level
-MBSTACK_WATCHLEVEL: 3
-# motebus bus name
-MBSTACK_BUSNAME:
-# motebus volume
-MBSTACK_DATAPATH: /var/motebus
-# motebus ip finder
-MBSTACK_IPFINDER: "auto"
+FBOT_QDATA:
+FBOT_OID:
 #timezone
 timezone: Asia/Taipei
 
@@ -104,18 +94,3 @@ fbots:
     # PVC Storage Request for config volume
     size: 100Mi
     # ingress host and path
-
-motebus:
-  image:
-    repository: motebus/motebus
-    tag: v2.6.0
-    pullPolicy: IfNotPresent
-  persistence:
-    #Enable config persistence using PVC
-    enabled: true
-    # PVC Access Mode for config volume
-    accessMode: ["ReadWriteOnce"]
-    # PVC Storage Class for config volume
-    storageClass: nfs
-    # PVC Storage Request for config volume
-    size: 100Mi

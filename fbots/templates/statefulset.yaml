@@ -68,6 +68,10 @@ spec:
               value: {{ .Values.FBOT_PORT | quote }}
             - name: FBOT_UI
               value: {{ .Values.FBOT_UI | quote }}
+            - name: FBOT_QDATA
+              value: {{ .Values.FBOT_QDATA | quote }}
+            - name: FBOT_OID
+              value: {{ .Values.FBOT_OID | quote }}
 {{ if .Values.fbots.container.extraEnvs }}
 {{ toYaml .Values.fbots.container.extraEnvs | indent 12 }}
 {{ end }}
@@ -78,32 +82,6 @@ spec:
 {{ if .Values.fbots.persistence.enabled }}
             - name: fbots-vol
               mountPath: /usr/src/node-red/data/{{ .Values.MCHAT_EINAME }}
-{{ end }}
-            - name: tz
-              mountPath: /etc/localtime
-
-        - name: motebus
-          image: "{{ .Values.motebus.image.repository }}:{{ .Values.motebus.image.tag }}"
-          env:
-            - name: TZ
-              value: {{ .Values.timezone }}
-            - name: MBSTACK_BUSMODE
-              value: {{ .Values.MBSTACK_BUSMODE | quote }}
-            - name: MBSTACK_UPSTREAM
-              value: {{ .Values.MBSTACK_UPSTREAM }}
-            - name: MBSTACK_WATCHLEVEL
-              value: {{ .Values.MBSTACK_WATCHLEVEL | quote }}
-            - name: MBSTACK_BUSNAME
-              value: {{ .Values.MBSTACK_BUSNAME }}
-            - name: MBSTACK_DATAPATH
-              value: {{.Values.MBSTACK_DATAPATH }}
-            - name: MBSTACK_IPFINDER
-              value: {{ .Values.MBSTACK_IPFINDER | quote }}
-          imagePullPolicy: {{ .Values.motebus.image.pullPolicy }}
-          volumeMounts:
-{{ if .Values.motebus.persistence.enabled }}
-            - name: motebus-vol
-              mountPath: {{ .Values.MBSTACK_DATAPATH }}
 {{ end }}
             - name: tz
               mountPath: /etc/localtime
@@ -118,19 +96,10 @@ spec:
     - metadata:
         name: fbots-vol
       spec:
-        accessModes: {{ .Values.fbots.persistence.accessMode | quote }} 
+        accessModes: 
+          - {{ default "ReadWriteOnce" .Values.fbots.persistence.accessMode | quote }} 
         storageClassName: {{ .Values.fbots.persistence.storageClass | quote }}
         resources:
           requests:
             storage: {{ .Values.fbots.persistence.size | quote }}
-{{ end }}
-{{ if .Values.motebus.persistence.enabled }}
-    - metadata:
-        name: motebus-vol
-      spec:
-        accessModes:  {{ .Values.motebus.persistence.accessMode | quote }} 
-        storageClassName: {{ .Values.motebus.persistence.storageClass | quote }}
-        resources:
-          requests:
-            storage: {{ .Values.motebus.persistence.size | quote }}
 {{ end }}
