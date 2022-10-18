@@ -31,3 +31,4 @@ helm repo list
 ```
 helm search repo {{repo-name}}
 ```
+update 2
