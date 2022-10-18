@@ -28,3 +28,5 @@ chmod 700 get_helm.sh
 helm version
 helm repo add stable https://kubernetes-charts.storage.googleapis.com
 ```
+
+update
