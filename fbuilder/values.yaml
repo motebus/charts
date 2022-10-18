@@ -1,3 +1,4 @@
+kind: Deployment
 # pod node selector
 nodeSelector: {}
 # replication
@@ -10,16 +11,32 @@ podDnsConfig:
   nameservers:
     - 8.8.8.8
     - 8.8.4.4
-#motechat ei name
-MCHAT_EINAME: fbuilder-example
-#motechat appname
-MCHAT_APPNAME: fbuilder-example-app
+
+NODE_ENV: production
+#fbuilder user mode, "single, multi"
+USER_MODE: single
+#fbuilder mode, "local, xstorage, cloud"
+STORAGE_MODE: cloud
+# fbuilder project enable
+FB_PROJECT_ENABLE: "1"
+FB_QOCIMAN: ">p33/qbix/qociman-app"
+FB_OBJSTORE: ">svc/objstore"
+FB_QMAN_DDN: ">svc/qman"
+FB_ACCOUNT_MODE: "sso"
+FB_ACCOUNT_URL: "https://account.ypcloud.com/auth/profile"
+FB_ACCOUNT_LOGIN: "https://account.ypcloud.com/auth/verify/?ReturnURL=https://flowbuilder.ypcloud.com/auth/strategy/callback"
+FB_ACCOUNT_LOGOUT: "https://account.ypcloud.com/auth/logout/?ReturnURL=https://flowbuilder.ypcloud.com"
+
+#motechat dc
+MCHAT_DC: dc
 #motechat motebus gateway IP
 MCHAT_MBGWIP: 127.0.0.1
 #motechat motebus gateway port
 MCHAT_MBGWPORT: 6888
-#motechat dc
-MCHAT_DC: dc
+#motechat appname
+MCHAT_APPNAME: fbuilder-example-app
+#motechat ei name
+MCHAT_EINAME: fbuilder-example
 #motechat ioc
 MCHAT_IOC: ioc
 #motechat send timeout
@@ -28,24 +45,7 @@ MCHAT_SENDTIMEOUT: "6"
 MCHAT_WAITREPLY: "12"
 #motechat log level
 MCAHT_WATCHLEVEL: 1
-#fbuilder user mode, "single, multi"
-USER_MODE: single
-#fbuilder mode, "local, xstorage, cloud"
-STORAGE_MODE: cloud
-# fbuilder project enable
-FB_PROJECT_ENABLE: "1"
-# motebus upstream
-MBSTACK_UPSTREAM: h3.ypcloud.com
-# motebus bus mode
-MBSTACK_BUSMODE: 0
-# motebus watch level
-MBSTACK_WATCHLEVEL: 3
-# motebus bus name
-MBSTACK_BUSNAME:
-# motebus volume
-MBSTACK_DATAPATH: /var/motebus
-# motebus ip finder
-MBSTACK_IPFINDER: "auto"
+
 #timezone
 timezone: Asia/Taipei
 
@@ -71,9 +71,13 @@ fbuilder:
   ingress:
     enabled: true
     annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /$1
-      kubernetes.io/ingress.class: "nginx"
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      kubernetes.io/ingress.class: "kong"
+      konghq.com/strip-path: "true"
+      konghq.com/protocols: "https"
+      konghq.com/https-redirect-status-code: "301"
+#      nginx.ingress.kubernetes.io/rewrite-target: /$1
+#      kubernetes.io/ingress.class: "nginx"
+#      nginx.ingress.kubernetes.io/ssl-redirect: "false"
     tls:
       []
       # - hosts:
@@ -81,20 +85,6 @@ fbuilder:
       #   secretName: flowbot-tls
     hosts:
       - myapps.ypcloud.com
-    path: /fbuilder/(.*)
+    path: /fbuilder
+#    path: /fbuilder/(.*)
     pathType: Prefix
-
-motebus:
-  image:
-    repository: motebus/motebus
-    tag: latest
-    pullPolicy: Always
-  persistence:
-    #Enable config persistence using PVC
-    enabled: true
-    # PVC Access Mode for config volume
-    accessMode: ReadWriteOnce
-    # PVC Storage Class for config volume
-    storageClass: nfs
-    # PVC Storage Request for config volume
-    size: 100Mi

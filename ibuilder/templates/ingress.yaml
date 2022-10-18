@@ -30,36 +30,3 @@ spec:
                   number: {{ $jupyterServicePort }}
   {{- end}}
 {{- end}}
----
-{{- if .Values.swagger.ingress.enabled}}
-{{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
-{{- $swaggerServicePort := .Values.swagger.service.port -}}
-{{- $swaggerIngressPathType := .Values.swagger.ingress.pathType -}}
-{{- $releaseName := .Release.Name -}}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: {{ .Release.Name }}-swagger
-{{- with .Values.swagger.ingress.annotations }}
-  annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
-spec:
-{{- if .Values.swagger.ingress.tls }}
-  tls:
-{{ toYaml .Values.swagger.ingress.tls | indent 4 }}
-{{- end }}
-  rules:
-  {{- range .Values.swagger.ingress.hosts }}
-    - host: {{ . }}
-      http:
-        paths:
-          - path: {{ $swaggerIngressPath }}
-            pathType: {{ $swaggerIngressPathType }}
-            backend:
-              service:
-                name: {{ $releaseName }}-swagger
-                port:
-                  number: {{ $swaggerServicePort }}
-  {{- end}}
-{{- end}}

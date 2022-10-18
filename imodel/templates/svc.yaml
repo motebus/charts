@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-jupyter
+{{- with .Values.jupyter.service.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  type: {{ .Values.jupyter.service.type }}
+  selector:
+    app: {{ .Release.Name }}-deployment
+{{- if eq .Values.jupyter.service.type "ClusterIP"}}
+  clusterIP: {{ .Values.jupyter.service.clusterIP}}
+{{- end}}
+  ports:
+    - name: jupyter-port
+      protocol: {{ .Values.jupyter.service.protocol }}
+{{- if eq .Values.jupyter.service.type "NodePort"}}
+      nodePort: {{ .Values.jupyter.service.nodePort}}
+{{- end}}
+      port: {{ .Values.jupyter.service.port}}
+      targetPort: {{ .Values.NB_PORT}}
+---
+{{- if .Values.swagger.enabled}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-swagger
+spec:
+  type: {{ .Values.swagger.service.type }}
+  selector:
+    app: {{ .Release.Name }}-deployment
+{{- if eq .Values.swagger.service.type "ClusterIP"}}
+  clusterIP: {{ .Values.swagger.service.clusterIP}}
+{{- end}}
+  ports:
+    - name: swagger-port
+      protocol: {{ .Values.swagger.service.protocol }}
+{{- if eq .Values.swagger.service.type "NodePort"}}
+      nodePort: {{ .Values.swagger.service.nodePort}}
+{{- end}}
+      port: {{ .Values.swagger.service.port}}
+      targetPort: 3000
+{{- end}}

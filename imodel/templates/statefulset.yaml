@@ -1,9 +1,10 @@
-{{- if eq .Values.kind "Deployment"}}
+{{- if eq .Values.kind "StatefulSet"}}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ .Release.Name }}
 spec:
+  serviceName: {{ .Release.Name }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-deployment
@@ -76,11 +77,25 @@ spec:
           resources: {{- toYaml .Values.jupyter.resources | nindent 12 }}
           {{- end }}
           volumeMounts:
+            - name: jupyter-vol
+              mountPath: /home/{{.Values.NB_USER}}
             - name: tz
               mountPath: /etc/localtime
 
       volumes:
         - name: tz
           hostPath:
-            path: /etc/localtime
-{{- end }}
+            path: /etc/localtime             
+
+  volumeClaimTemplates:
+{{- if .Values.jupyter.persistence.enabled}}
+    - metadata:
+        name: jupyter-vol
+      spec:
+        accessModes:  [ {{ .Values.jupyter.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.jupyter.persistence.storageClass | quote }}
+        resources:
+            requests:
+                storage: {{ .Values.jupyter.persistence.size | quote }}
+{{- end}}
+{{- end}}

@@ -28,13 +28,21 @@ MLFLOW_S3_ENDPOINT_URL:
 AWS_ACCESS_KEY_ID:
 AWS_SECRET_ACCESS_KEY:
 MLFLOW_TRACKING_URI:
+## swagger-autogen
+MINIO_S3_BUCKET:
+MINIO_S3_OBJECT:
+MINIO_S3_ENDPOINT:
+MINIO_S3_PORT:
+MINIO_S3_USESSL:
+MINIO_S3_ACCESSKEY:
+MINIO_S3_SECRETKEY:
 
 jupyter:
   # image settings and pull policy
   image:
     repository: motebus/ibuilder
-    tag: 3.0.3
-    pullPolicy: Always
+    tag: v1.0.0
+    pullPolicy: IfNotPresent
   # service settings
   service:
     type: ClusterIP
@@ -64,7 +72,7 @@ jupyter:
       #   secretName: flowbot-tls
     hosts:
       - myapps.ypcloud.com
-    path: /ibuilder
+    path: /model
     pathType: Prefix
   persistence:
     #Enable config persistence using PVC
@@ -82,3 +90,40 @@ jupyter:
     limits:
       memory: 3Gi
       cpu: 500m
+swagger:
+  enabled: false
+  # image settings and pull policy
+  image:
+    repository: motebus/swagger-autogen
+    tag: v1.0.0
+    pullPolicy: IfNotPresent
+  # service settings
+  service:
+    type: ClusterIP
+    protocol: TCP
+    nodePort:
+    port: 3000
+    clusterIP: None
+  # container env settings
+  container:
+    #extra envs
+    extraEnvs: {}
+    command: []
+  ingress:
+    enabled: false
+    hosts:
+      - myapps.ypcloud.com
+    path: /model
+    pathType: Prefix
+    tls: []
+    annotations:
+      kubernetes.io/ingress.class: "kong"
+      konghq.com/strip-path: "true"
+      konghq.com/override: "https-only"
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+    limits:
+      memory: 512Mi
+      cpu: 250m

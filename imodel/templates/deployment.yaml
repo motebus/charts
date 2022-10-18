@@ -79,6 +79,41 @@ spec:
             - name: tz
               mountPath: /etc/localtime
 
+        - name: swagger-ui
+          image: {{ .Values.swagger.image.repository }}:{{ .Values.swagger.image.tag }}
+          env:
+            - name: MINIO_S3_OBJECT
+              value: {{.Values.MINIO_S3_OBJECT}}
+            - name: MINIO_S3_ENDPOINT
+              value: {{.Values.MINIO_S3_ENDPOINT}}
+            - name: MINIO_S3_PORT
+              value: {{.Values.MINIO_S3_PORT | quote}}
+            - name: MINIO_S3_USESSL
+              value: {{.Values.MINIO_S3_USESSL | quote}}
+            - name: MINIO_S3_ACCESSKEY
+              value: {{.Values.MINIO_S3_ACCESSKEY}}
+            - name: MINIO_S3_SECRETKEY
+              value: {{.Values.MINIO_S3_SECRETKEY}}
+            - name: MINIO_S3_BUCKET
+              value: {{.Values.MINIO_S3_BUCKET}}
+  {{- if .Values.swagger.container.extraEnvs }}
+  {{ toYaml .Values.swagger.container.extraEnvs | indent 12 }}
+  {{- end }}
+          ports:
+            - name: swagger-port
+              containerPort: 3000
+          command: 
+          {{- range .Values.swagger.container.command }}
+          - {{ . | quote }}
+          {{- end}}
+          imagePullPolicy: {{ .Values.swagger.image.pullPolicy}}
+          {{- if .Values.swagger.resources }}
+          resources: {{- toYaml .Values.swagger.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: tz
+              mountPath: /etc/localtime
+
       volumes:
         - name: tz
           hostPath:

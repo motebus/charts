@@ -1,0 +1,12 @@
+{{- if .Values.jupyter.ingress.enabled}}
+{{- $jupyterIngressPath := .Values.jupyter.ingress.path -}}
+    {{- range .Values.jupyter.ingress.hosts }}
+URL: {{ . }}{{ $jupyterIngressPath }}
+    {{- end }}
+{{- end }}
+{{- if .Values.swagger.ingress.enabled}}
+{{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
+    {{- range .Values.swagger.ingress.hosts }}
+URL: {{ . }}{{ $swaggerIngressPath }}
+    {{- end }}
+{{- end }}

@@ -1,10 +1,9 @@
-{{- if eq .Values.kind "StatefulSet"}}
+{{- if eq .Values.kind "Deployment"}}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: {{ .Release.Name }}
 spec:
-  serviceName: {{ .Release.Name }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-deployment
@@ -32,7 +31,6 @@ spec:
       containers:
         - name: fbuilder
           image: {{ .Values.fbuilder.image.repository }}:{{ .Values.fbuilder.image.tag }}
-          workingDir: /home/{{.Values.NB_USER}}
           env:
             - name: TZ
               value: {{ .Values.timezone}}
@@ -87,5 +85,5 @@ spec:
       volumes:
         - name: tz
           hostPath:
-            path: /etc/localtime             
-{{- end}}
+            path: /etc/localtime
+{{- end }}
