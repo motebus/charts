@@ -3,7 +3,7 @@ entries:
   fbots:
   - apiVersion: v1
     appVersion: v1.5.0
-    created: "2022-10-18T17:02:37.597372343+08:00"
+    created: "2022-10-18T18:25:37.430941969+08:00"
     description: fbots
     digest: d87507dd96243d3d5cbc916b8f4cae461c2e2e3d30b1eabc6acb19dc174d878e
     keywords:
@@ -15,7 +15,7 @@ entries:
     version: v1.1.0
   - apiVersion: v1
     appVersion: v1.5.0
-    created: "2022-10-18T17:02:37.596627864+08:00"
+    created: "2022-10-18T18:25:37.430074537+08:00"
     description: fbots
     digest: 841763442ab3239c6c2975b752b4cae433fad6d3a6e2f1d72202c3d72f13bcd2
     keywords:
@@ -27,7 +27,7 @@ entries:
     version: v1.0.2
   - apiVersion: v1
     appVersion: v1.5.0
-    created: "2022-10-18T17:02:37.595681094+08:00"
+    created: "2022-10-18T18:25:37.429132829+08:00"
     description: fbots
     digest: 2267a1b7b00eba09c7bbf01d036e0924a0cc4b66f51107b56fc34ff6efc6a070
     keywords:
@@ -39,7 +39,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v1.1.0
-    created: "2022-10-18T17:02:37.594718196+08:00"
+    created: "2022-10-18T18:25:37.428130598+08:00"
     description: fbots
     digest: c189f01f76fa84a8ac62703f586c64355e7d0aca7ad3ef5220e15623d892a5a3
     keywords:
@@ -49,10 +49,23 @@ entries:
     urls:
     - fbots-v1.0.0.tgz
     version: v1.0.0
+  fbuilder:
+  - apiVersion: v2
+    appVersion: v1.0.4
+    created: "2022-10-18T18:25:37.431889303+08:00"
+    description: fbuilder
+    digest: 0c40c22d06154a96a8d0a314d42f5ee743bc1194516db5557ec5cd4f62ca9e3b
+    keywords:
+    - fbuilder
+    name: fbuilder
+    type: application
+    urls:
+    - fbuilder-v1.0.4.tgz
+    version: v1.0.4
   ibuilder:
   - apiVersion: v2
     appVersion: v1.2.3
-    created: "2022-10-18T17:02:37.59821681+08:00"
+    created: "2022-10-18T18:25:37.432879185+08:00"
     description: jupyter
     digest: d7038249eef179ad9e8ac3deeb357e289e2cffe119f52cde3e7e3674f193bf03
     keywords:
@@ -65,7 +78,7 @@ entries:
   imodel:
   - apiVersion: v2
     appVersion: v1.0.0
-    created: "2022-10-18T17:02:37.599331115+08:00"
+    created: "2022-10-18T18:25:37.43409744+08:00"
     description: jupyter
     digest: 9bdc114ff8cb68e8a64da86463a86d62aad486ecf6680d635bc510c7c25f5ea2
     keywords:
@@ -78,7 +91,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2022-10-18T17:02:37.60144735+08:00"
+    created: "2022-10-18T18:25:37.43642657+08:00"
     description: iocview
     digest: a83de3989155e3e1295a77acbb6240e103e8e482dc8344c8719950862bb5b3c3
     keywords:
@@ -90,7 +103,7 @@ entries:
     version: v1.0.2
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2022-10-18T17:02:37.600660216+08:00"
+    created: "2022-10-18T18:25:37.43559645+08:00"
     description: iocview
     digest: 1027927ec006cac2581145724aa98a8cf022568feb92d32b4c79fefaf303afad
     keywords:
@@ -102,7 +115,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2022-10-18T17:02:37.5999358+08:00"
+    created: "2022-10-18T18:25:37.434780063+08:00"
     description: iocview
     digest: 0c97b557cfdb984ef53519dcaef73a05565e8e437c69dcf9afad764df59c6bdb
     keywords:
@@ -115,7 +128,7 @@ entries:
   mlflow:
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2022-10-18T17:02:37.606764908+08:00"
+    created: "2022-10-18T18:25:37.442373853+08:00"
     description: mlflow
     digest: b10c73b8f1cf48b302161c0f49b5608ff8184e0e1a30de75888bb7d640d43ec3
     keywords:
@@ -127,7 +140,7 @@ entries:
     version: v1.0.6
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2022-10-18T17:02:37.605573767+08:00"
+    created: "2022-10-18T18:25:37.441810953+08:00"
     description: mlflow
     digest: 73c1613f27bb6a6feed426951bca87df9cc0b7d20067ddc2327ae4aaaeeb150a
     keywords:
@@ -139,7 +152,7 @@ entries:
     version: v1.0.5
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2022-10-18T17:02:37.604357388+08:00"
+    created: "2022-10-18T18:25:37.440105807+08:00"
     description: mlflow
     digest: 0cae142096f4188cf0b7deb6ae4e3745c2227ac906208a491a81f844713a9755
     keywords:
@@ -151,7 +164,7 @@ entries:
     version: v1.0.4
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2022-10-18T17:02:37.60370684+08:00"
+    created: "2022-10-18T18:25:37.439537302+08:00"
     description: mlflow
     digest: 7ba00811e5211ff163822b42e1d6d900a68011b2d686da870e33fa5ee255d78b
     keywords:
@@ -163,7 +176,7 @@ entries:
     version: v1.0.3
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2022-10-18T17:02:37.60307658+08:00"
+    created: "2022-10-18T18:25:37.438933467+08:00"
     description: mlflow
     digest: 37159ccdbf1690a06c04827259d1473dddd1da0500765cd197c5ed4c656d03ed
     keywords:
@@ -175,7 +188,7 @@ entries:
     version: v1.0.2
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2022-10-18T17:02:37.602587793+08:00"
+    created: "2022-10-18T18:25:37.438304952+08:00"
     description: mlflow
     digest: b725ec6fd78b26c1f9938341c9825ec3f64dc412ccea34ce0514b198c8e8751d
     keywords:
@@ -187,7 +200,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2022-10-18T17:02:37.602029112+08:00"
+    created: "2022-10-18T18:25:37.437546051+08:00"
     description: mlflow
     digest: 535b034c6e7d15df0f52eaa18fd6be637552ede6ce4037caed18c2f605417d70
     keywords:
@@ -200,7 +213,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2022-10-18T17:02:37.608035046+08:00"
+    created: "2022-10-18T18:25:37.443956475+08:00"
     description: smartscreen
     digest: 3ec4ffca55de46a68f07ccd24cccb9436e8e7563ac9a08b07be7775cda04960d
     keywords:
@@ -212,7 +225,7 @@ entries:
     version: v1.0.2
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2022-10-18T17:02:37.607595748+08:00"
+    created: "2022-10-18T18:25:37.443508188+08:00"
     description: smartscreen
     digest: 9d1b1832c43ea3435f234947e5b4254d1ed9db33e479a3b8badc5c0ec87f0a58
     keywords:
@@ -224,7 +237,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2022-10-18T17:02:37.607140848+08:00"
+    created: "2022-10-18T18:25:37.442868253+08:00"
     description: smartscreen
     digest: 2f260aeb4cc213e0fb0c674dee6d839559d9777a90f7dacb42b62803be848b10
     keywords:
@@ -237,7 +250,7 @@ entries:
   webmms-srv:
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2022-10-18T17:02:37.609357205+08:00"
+    created: "2022-10-18T18:25:37.445502052+08:00"
     description: webmms-srv
     digest: a9d6ee8223ff9014f7e6a2d120062490b1f941164eba77993dfc6183d7919f02
     keywords:
@@ -249,7 +262,7 @@ entries:
     version: v1.0.2
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2022-10-18T17:02:37.60893385+08:00"
+    created: "2022-10-18T18:25:37.445028713+08:00"
     description: webmms-srv
     digest: 7703744c3a240e51fda69a1f4e8f0b2144724073238fb8d711030d165e96e75b
     keywords:
@@ -261,7 +274,7 @@ entries:
     version: v1.0.1
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2022-10-18T17:02:37.608489699+08:00"
+    created: "2022-10-18T18:25:37.444385779+08:00"
     description: webmms-srv
     digest: e70d2bad65f9e226c5275b99e7e208c33d0867ed243430992ed747806d1db71a
     keywords:
@@ -271,4 +284,4 @@ entries:
     urls:
     - webmms-srv-v1.0.0.tgz
     version: v1.0.0
-generated: "2022-10-18T17:02:37.593309862+08:00"
+generated: "2022-10-18T18:25:37.426154054+08:00"
