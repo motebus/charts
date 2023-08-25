@@ -1,0 +1,101 @@
+{{- if eq .Values.kind "Deployment"}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deployment
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+       app: {{ .Release.Name }}-deployment
+    spec:
+{{- if .Values.podDnsPolicy}}
+      dnsPolicy: {{ .Values.podDnsPolicy}}
+{{- end}}
+{{- if .Values.podDnsConfig}}
+      dnsConfig:
+{{ toYaml .Values.podDnsConfig | indent 8}}
+{{- end}}
+{{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+{{- end }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
+      containers:
+        - name: imodel
+          image: {{ .Values.imodel.image.repository }}:{{ .Values.imodel.image.tag }}
+          workingDir: /home/{{.Values.NB_USER}}
+          env:
+            - name: MLFLOW_S3_ENDPOINT_URL
+              value: {{.Values.MLFLOW_S3_ENDPOINT_URL}}
+            - name: AWS_ACCESS_KEY_ID
+              value: {{.Values.AWS_ACCESS_KEY_ID}}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{.Values.AWS_SECRET_ACCESS_KEY}}
+            - name: MODEL_URI
+              value: {{.Values.MODEL_URI}}
+{{- if .Values.imodel.container.extraEnvs }}
+{{ toYaml .Values.imodel.container.extraEnvs | indent 12 }}
+{{- end }}
+          ports:
+           - name: imodel-port
+             containerPort: 5000
+          command: 
+          {{- range .Values.imodel.container.command }}
+           - {{ . | quote }}
+          {{- end}}
+          imagePullPolicy: {{ .Values.imodel.image.pullPolicy}}
+          {{- if .Values.imodel.resources }}
+          resources: {{- toYaml .Values.imodel.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: tz
+              mountPath: /etc/localtime
+
+        - name: swagger-ui
+          image: {{ .Values.swagger.image.repository }}:{{ .Values.swagger.image.tag }}
+          env:
+            - name: MINIO_S3_OBJECT
+              value: {{.Values.MINIO_S3_OBJECT}}
+            - name: MINIO_S3_ENDPOINT
+              value: {{.Values.MINIO_S3_ENDPOINT}}
+            - name: MINIO_S3_PORT
+              value: {{.Values.MINIO_S3_PORT | quote}}
+            - name: MINIO_S3_USESSL
+              value: {{.Values.MINIO_S3_USESSL | quote}}
+            - name: MINIO_S3_ACCESSKEY
+              value: {{.Values.MINIO_S3_ACCESSKEY}}
+            - name: MINIO_S3_SECRETKEY
+              value: {{.Values.MINIO_S3_SECRETKEY}}
+            - name: MINIO_S3_BUCKET
+              value: {{.Values.MINIO_S3_BUCKET}}
+  {{- if .Values.swagger.container.extraEnvs }}
+  {{ toYaml .Values.swagger.container.extraEnvs | indent 12 }}
+  {{- end }}
+          ports:
+            - name: swagger-port
+              containerPort: 3000
+          command: 
+          {{- range .Values.swagger.container.command }}
+          - {{ . | quote }}
+          {{- end}}
+          imagePullPolicy: {{ .Values.swagger.image.pullPolicy}}
+          {{- if .Values.swagger.resources }}
+          resources: {{- toYaml .Values.swagger.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: tz
+              mountPath: /etc/localtime
+
+      volumes:
+        - name: tz
+          hostPath:
+            path: /etc/localtime
+{{- end }}

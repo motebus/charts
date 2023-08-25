@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deployment
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+       app: {{ .Release.Name }}-deployment
+    spec:
+{{- if .Values.podDnsPolicy}}
+      dnsPolicy: {{ .Values.podDnsPolicy}}
+{{- end}}
+{{- if .Values.podDnsConfig}}
+      dnsConfig:
+{{ toYaml .Values.podDnsConfig | indent 8}}
+{{- end}}
+{{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+{{- end }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
+      containers:
+        - name: mlflow
+          image: {{ .Values.mlflow.image.repository }}:{{ .Values.mlflow.image.tag }}
+          env:
+            - name: MLFLOW_S3_ENDPOINT_URL
+              value: {{ .Values.MLFLOW_S3_ENDPOINT_URL }}
+            - name: AWS_ACCESS_KEY_ID
+              value: {{ .Values.AWS_ACCESS_KEY_ID }}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{ .Values.AWS_SECRET_ACCESS_KEY }}
+            - name: DB_URI
+              value: {{ .Values.DB_URI }}
+            - name: ARTIFACT_URI
+              value: {{ .Values.ARTIFACT_URI }}
+{{- if .Values.mlflow.container.extraEnvs }}
+{{ toYaml .Values.mlflow.container.extraEnvs | indent 12 }}
+{{- end }}
+          ports:
+           - containerPort: 5000
+          imagePullPolicy: {{ .Values.mlflow.image.pullPolicy}}
+          {{- if .Values.mlflow.resources }}
+          resources: {{- toYaml .Values.mlflow.resources | nindent 12 }}
+          {{- end }}

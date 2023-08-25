@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  type: {{ .Values.mlflow.service.type }}
+  selector:
+    app: {{ .Release.Name }}-deployment
+  ports:
+    - protocol: {{ .Values.mlflow.service.protocol }}
+{{- if eq .Values.mlflow.service.type "NodePort"}}
+      nodePort: {{ .Values.mlflow.service.nodePort}}
+{{- end}}
+      port: {{ .Values.mlflow.service.port}}
+      targetPort: {{ .Values.mlflow.service.port}}
+{{- if eq .Values.mlflow.service.type "ClusterIP"}}
+  clusterIP: None
+{{- end}}

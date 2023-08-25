@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-imodel
+{{- with .Values.imodel.service.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  type: {{ .Values.imodel.service.type }}
+  selector:
+    app: {{ .Release.Name }}-deployment
+{{- if eq .Values.imodel.service.type "ClusterIP"}}
+  clusterIP: {{ .Values.imodel.service.clusterIP}}
+{{- end}}
+  ports:
+    - name: imodel-port
+      protocol: {{ .Values.imodel.service.protocol }}
+{{- if eq .Values.imodel.service.type "NodePort"}}
+      nodePort: {{ .Values.imodel.service.nodePort}}
+{{- end}}
+      port: {{ .Values.imodel.service.port}}
+      targetPort: 5000
+---
+{{- if .Values.swagger.enabled}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-swagger
+spec:
+  type: {{ .Values.swagger.service.type }}
+  selector:
+    app: {{ .Release.Name }}-deployment
+{{- if eq .Values.swagger.service.type "ClusterIP"}}
+  clusterIP: {{ .Values.swagger.service.clusterIP}}
+{{- end}}
+  ports:
+    - name: swagger-port
+      protocol: {{ .Values.swagger.service.protocol }}
+{{- if eq .Values.swagger.service.type "NodePort"}}
+      nodePort: {{ .Values.swagger.service.nodePort}}
+{{- end}}
+      port: {{ .Values.swagger.service.port}}
+      targetPort: 3000
+{{- end}}

@@ -1,0 +1,6 @@
+{{- if .Values.mlflow.ingress.enabled}}
+{{- $ingressPath := .Values.mlflow.ingress.path -}}
+    {{- range .Values.mlflow.ingress.hosts }}
+URL: {{ . }}{{ $ingressPath }}
+    {{- end }}
+{{- end }}

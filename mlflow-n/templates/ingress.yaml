@@ -1,0 +1,32 @@
+{{- if .Values.mlflow.ingress.enabled}}
+{{- $ingressPath := .Values.mlflow.ingress.path -}}
+{{- $servicePort := .Values.mlflow.service.port -}}
+{{- $releaseName := .Release.Name -}}
+{{- $ingressPathType := .Values.mlflow.ingress.pathType -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}
+{{- with .Values.mlflow.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+{{- if .Values.mlflow.ingress.tls }}
+  tls:
+{{ toYaml .Values.mlflow.ingress.tls | indent 4 }}
+{{- end }}
+  rules:
+  {{- range .Values.mlflow.ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
+          - path: {{ $ingressPath }}
+            pathType: {{ $ingressPathType }}
+            backend:
+              service:
+                name: {{ $releaseName }}
+                port:
+                  number: {{ $servicePort }}
+  {{- end}}
+{{- end}}
