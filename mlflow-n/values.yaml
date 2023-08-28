@@ -19,9 +19,11 @@ AWS_ACCESS_KEY_ID:
 # aws secret key
 AWS_SECRET_ACCESS_KEY:
 # mysql db uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@127.0.0.1:3306/${MYSQL_DATABASE}
-DB_URI: mysql+pymysql://mlflowuser:fKe14EK8aM@127.0.0.1:3306/mlflowdb
+DB_URI:
 # s3 uri "s3://bucket"
-ARTIFACT_URI: s3://default
+ARTIFACT_URI:
+# mlflow ui path
+MLFLOW_STATIC_PREFIX:
 
 mlflow:
   image:
@@ -41,8 +43,6 @@ mlflow:
     enabled: true
     annotations:
       kubernetes.io/ingress.class: "nginx"
-      nginx.ingress.kubernetes.io/use-regex: "true"
-      nginx.ingress.kubernetes.io/rewrite-target: /$2
     tls:
       []
       # - hosts:
@@ -50,7 +50,7 @@ mlflow:
       #   secretName: mlflow-tls
     hosts:
       - ai-market.nchc.org.tw
-    path: /mlflow/(.*)
+    path: /mlflow
     pathType: Prefix
   resources:
     requests:

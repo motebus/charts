@@ -41,6 +41,8 @@ spec:
               value: {{ .Values.DB_URI }}
             - name: ARTIFACT_URI
               value: {{ .Values.ARTIFACT_URI }}
+            - name: MLFLOW_STATIC_PREFIX
+              value: {{ .Values.MLFLOW_STATIC_PREFIX }}
 {{- if .Values.mlflow.container.extraEnvs }}
 {{ toYaml .Values.mlflow.container.extraEnvs | indent 12 }}
 {{- end }}
