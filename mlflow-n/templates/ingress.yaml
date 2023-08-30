@@ -7,26 +7,51 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}
-{{- with .Values.mlflow.ingress.annotations }}
   annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
+    kubernetes.io/ingress.class: nginx
 spec:
-{{- if .Values.mlflow.ingress.tls }}
+{{- if .Values.mlflow.ingress.https }}
   tls:
-{{ toYaml .Values.mlflow.ingress.tls | indent 4 }}
+    - hosts:
+      - {{ .Values.mlflow.ingress.hostName }}
+      secretName: {{ .Values.mlflow.ingress.hostName }}-tls
 {{- end }}
   rules:
-  {{- range .Values.mlflow.ingress.hosts }}
-    - host: {{ . }}
+    - host: {{ .Values.mlflow.ingress.hostName }}
       http:
         paths:
           - path: {{ $ingressPath }}
-            pathType: {{ $ingressPathType }}
+            pathType: Prefix
             backend:
               service:
                 name: {{ $releaseName }}
                 port:
                   number: {{ $servicePort }}
-  {{- end}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-api
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /api/$2
+spec:
+{{- if .Values.mlflow.ingress.https }}
+  tls:
+    - hosts:
+      - {{ .Values.mlflow.ingress.hostName }}
+      secretName: {{ .Values.mlflow.ingress.hostName }}-tls
+{{- end }}
+  rules:
+    - host: {{ .Values.mlflow.ingress.hostName }}
+      http:
+        paths:
+          - path: {{ $ingressPath }}/api(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $releaseName }}
+                port:
+                  number: {{ $servicePort }}
 {{- end}}

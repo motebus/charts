@@ -41,16 +41,9 @@ mlflow:
     port: 5000
   ingress:
     enabled: true
-    annotations:
-      kubernetes.io/ingress.class: "nginx"
-    tls:
-      - hosts:
-        - apps.ypcloud.com
-        secretName: apps.ypcloud.com-tls
-    hosts:
-      - apps.ypcloud.com
+    hostName: apps.ypcloud.com
+    https: true
     path: /mlflow
-    pathType: Prefix
   resources:
     requests:
       memory: 512Mi
