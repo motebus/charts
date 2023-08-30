@@ -1,4 +1,4 @@
-kind: StatefulSet
+kind: Deployment
 # pod node selector
 nodeSelector: {}
 # replication
@@ -13,21 +13,11 @@ podDnsConfig:
     - 8.8.4.4
 timezone: Asia/Taipei
 
-## jupyter
-NB_USER:
-NB_TOKEN:
-NB_IP: 0.0.0.0
-NB_PORT: 8888
-NB_BASE_URL: "/"
-JUPYTER_ENABLE_LAB: "yes"
-CHOWN_HOME: "yes"
-CHOWN_HOME_OPTS: "-R"
-GRANT_SUDO: "yes"
-RESTARTABLE: "yes"
+## imodel
 MLFLOW_S3_ENDPOINT_URL:
 AWS_ACCESS_KEY_ID:
 AWS_SECRET_ACCESS_KEY:
-MLFLOW_TRACKING_URI:
+MODEL_URI:
 ## swagger-autogen
 MINIO_S3_BUCKET:
 MINIO_S3_OBJECT:
@@ -37,18 +27,18 @@ MINIO_S3_USESSL:
 MINIO_S3_ACCESSKEY:
 MINIO_S3_SECRETKEY:
 
-jupyter:
+imodel:
   # image settings and pull policy
   image:
-    repository: motebus/ibuilder
-    tag: v1.0.0
+    repository: motebus/imodel
+    tag: 1.0.0
     pullPolicy: IfNotPresent
   # service settings
   service:
     type: ClusterIP
     protocol: TCP
     nodePort:
-    port: 8000
+    port: 5000
     clusterIP: None
     annotations:
       konghq.com/plugins: rate-limiting, http-log, key-auth
@@ -94,7 +84,7 @@ swagger:
   enabled: false
   # image settings and pull policy
   image:
-    repository: motebus/swagger-autogen
+    repository: motebus/swagger
     tag: v1.0.0
     pullPolicy: IfNotPresent
   # service settings

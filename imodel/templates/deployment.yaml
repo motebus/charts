@@ -29,51 +29,31 @@ spec:
 {{ toYaml . | indent 8 }}
 {{- end }}
       containers:
-        - name: jupyter
-          image: {{ .Values.jupyter.image.repository }}:{{ .Values.jupyter.image.tag }}
+        - name: imodel
+          image: {{ .Values.imodel.image.repository }}:{{ .Values.imodel.image.tag }}
           workingDir: /home/{{.Values.NB_USER}}
           env:
-            - name: NB_USER
-              value: {{.Values.NB_USER}}
-            - name: NB_TOKEN
-              value: {{.Values.NB_TOKEN}}
-            - name: NB_IP
-              value: {{.Values.NB_IP}}
-            - name: NB_PORT
-              value: {{.Values.NB_PORT | quote}}
-            - name: NB_BASE_URL
-              value: {{.Values.NB_BASE_URL | quote}}
-            - name: JUPYTER_ENABLE_LAB
-              value: {{.Values.JUPYTER_ENABLE_LAB | quote}}
-            - name: CHOWN_HOME
-              value: {{.Values.CHOWN_HOME | quote}}
-            - name: CHOWN_HOME_OPTS
-              value: {{.Values.CHOWN_HOME_OPTS}}
-            - name: GRANT_SUDO
-              value: {{.Values.GRANT_SUDO | quote}}
-            - name: RESTARTABLE
-              value: {{.Values.RESTARTABLE | quote}}
             - name: MLFLOW_S3_ENDPOINT_URL
               value: {{.Values.MLFLOW_S3_ENDPOINT_URL}}
             - name: AWS_ACCESS_KEY_ID
               value: {{.Values.AWS_ACCESS_KEY_ID}}
             - name: AWS_SECRET_ACCESS_KEY
               value: {{.Values.AWS_SECRET_ACCESS_KEY}}
-            - name: MLFLOW_TRACKING_URI
-              value: {{.Values.MLFLOW_TRACKING_URI}}
-{{- if .Values.jupyter.container.extraEnvs }}
-{{ toYaml .Values.jupyter.container.extraEnvs | indent 12 }}
+            - name: MODEL_URI
+              value: {{.Values.MODEL_URI}}
+{{- if .Values.imodel.container.extraEnvs }}
+{{ toYaml .Values.imodel.container.extraEnvs | indent 12 }}
 {{- end }}
           ports:
-           - name: jupyter-port
-             containerPort: {{ .Values.NB_PORT}}
+           - name: imodel-port
+             containerPort: 5000
           command: 
-          {{- range .Values.jupyter.container.command }}
+          {{- range .Values.imodel.container.command }}
            - {{ . | quote }}
           {{- end}}
-          imagePullPolicy: {{ .Values.jupyter.image.pullPolicy}}
-          {{- if .Values.jupyter.resources }}
-          resources: {{- toYaml .Values.jupyter.resources | nindent 12 }}
+          imagePullPolicy: {{ .Values.imodel.image.pullPolicy}}
+          {{- if .Values.imodel.resources }}
+          resources: {{- toYaml .Values.imodel.resources | nindent 12 }}
           {{- end }}
           volumeMounts:
             - name: tz

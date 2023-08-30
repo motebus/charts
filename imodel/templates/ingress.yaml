@@ -1,33 +1,33 @@
-{{- if .Values.jupyter.ingress.enabled}}
-{{- $jupyterIngressPath := .Values.jupyter.ingress.path -}}
-{{- $jupyterServicePort := .Values.jupyter.service.port -}}
-{{- $jupyterIngressPathType := .Values.jupyter.ingress.pathType -}}
+{{- if .Values.imodel.ingress.enabled}}
+{{- $imodelIngressPath := .Values.imodel.ingress.path -}}
+{{- $imodelServicePort := .Values.imodel.service.port -}}
+{{- $imodelIngressPathType := .Values.imodel.ingress.pathType -}}
 {{- $releaseName := .Release.Name -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-jupyter
-{{- with .Values.jupyter.ingress.annotations }}
+  name: {{ .Release.Name }}-imodel
+{{- with .Values.imodel.ingress.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-{{- if .Values.jupyter.ingress.tls }}
+{{- if .Values.imodel.ingress.tls }}
   tls:
-{{ toYaml .Values.jupyter.ingress.tls | indent 4 }}
+{{ toYaml .Values.imodel.ingress.tls | indent 4 }}
 {{- end }}
   rules:
-  {{- range .Values.jupyter.ingress.hosts }}
+  {{- range .Values.imodel.ingress.hosts }}
     - host: {{ . }}
       http:
         paths:
-          - path: {{ $jupyterIngressPath }}
-            pathType: {{ $jupyterIngressPathType }}
+          - path: {{ $imodelIngressPath }}
+            pathType: {{ $imodelIngressPathType }}
             backend:
               service:
-                name: {{ $releaseName }}-jupyter
+                name: {{ $releaseName }}-imodel
                 port:
-                  number: {{ $jupyterServicePort }}
+                  number: {{ $imodelServicePort }}
   {{- end}}
 {{- end}}
 ---

@@ -1,26 +1,26 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-jupyter
-{{- with .Values.jupyter.service.annotations }}
+  name: {{ .Release.Name }}-imodel
+{{- with .Values.imodel.service.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-  type: {{ .Values.jupyter.service.type }}
+  type: {{ .Values.imodel.service.type }}
   selector:
     app: {{ .Release.Name }}-deployment
-{{- if eq .Values.jupyter.service.type "ClusterIP"}}
-  clusterIP: {{ .Values.jupyter.service.clusterIP}}
+{{- if eq .Values.imodel.service.type "ClusterIP"}}
+  clusterIP: {{ .Values.imodel.service.clusterIP}}
 {{- end}}
   ports:
-    - name: jupyter-port
-      protocol: {{ .Values.jupyter.service.protocol }}
-{{- if eq .Values.jupyter.service.type "NodePort"}}
-      nodePort: {{ .Values.jupyter.service.nodePort}}
+    - name: imodel-port
+      protocol: {{ .Values.imodel.service.protocol }}
+{{- if eq .Values.imodel.service.type "NodePort"}}
+      nodePort: {{ .Values.imodel.service.nodePort}}
 {{- end}}
-      port: {{ .Values.jupyter.service.port}}
-      targetPort: {{ .Values.NB_PORT}}
+      port: {{ .Values.imodel.service.port}}
+      targetPort: 5000
 ---
 {{- if .Values.swagger.enabled}}
 apiVersion: v1

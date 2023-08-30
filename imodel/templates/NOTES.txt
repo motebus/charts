@@ -1,7 +1,7 @@
-{{- if .Values.jupyter.ingress.enabled}}
-{{- $jupyterIngressPath := .Values.jupyter.ingress.path -}}
-    {{- range .Values.jupyter.ingress.hosts }}
-URL: {{ . }}{{ $jupyterIngressPath }}
+{{- if .Values.imodel.ingress.enabled}}
+{{- $imodelIngressPath := .Values.imodel.ingress.path -}}
+    {{- range .Values.imodel.ingress.hosts }}
+URL: {{ . }}{{ $imodelIngressPath }}
     {{- end }}
 {{- end }}
 {{- if .Values.swagger.ingress.enabled}}

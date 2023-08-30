@@ -2,7 +2,7 @@ apiVersion: v2
 #The chart API version (required)
 #The apiVersion field should be v2 for Helm charts that require at least Helm 3
 
-name: imodel
+name: imodel-n
 # The name of the chart (required)
 
 version: 2.0.1
