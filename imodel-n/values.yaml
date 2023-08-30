@@ -13,6 +13,9 @@ podDnsConfig:
     - 8.8.4.4
 timezone: Asia/Taipei
 
+hostName: myapps.ypcloud.com
+https: true
+
 ## imodel
 MLFLOW_S3_ENDPOINT_URL:
 AWS_ACCESS_KEY_ID:
@@ -50,19 +53,7 @@ imodel:
   # ingress host and path
   ingress:
     enabled: true
-    annotations:
-      kubernetes.io/ingress.class: "nginx"
-      nginx.ingress.kubernetes.io/use-regex: "true"
-      nginx.ingress.kubernetes.io/rewrite-target: /$2
-    tls:
-      []
-      # - hosts:
-      #     - myapps.ypcloud.com
-      #   secretName: flowbot-tls
-    hosts:
-      - myapps.ypcloud.com
     path: /model
-    pathType: Prefix
   persistence:
     #Enable config persistence using PVC
     enabled: true
@@ -80,7 +71,7 @@ imodel:
       memory: 3Gi
       cpu: 500m
 swagger:
-  enabled: false
+  enabled: true
   # image settings and pull policy
   image:
     repository: motebus/swagger
@@ -99,16 +90,8 @@ swagger:
     extraEnvs: {}
     command: []
   ingress:
-    enabled: false
-    hosts:
-      - myapps.ypcloud.com
+    enabled: true
     path: /model
-    pathType: Prefix
-    tls: []
-    annotations:
-      kubernetes.io/ingress.class: "nginx"
-      nginx.ingress.kubernetes.io/use-regex: "true"
-      nginx.ingress.kubernetes.io/rewrite-target: /$2
   resources:
     requests:
       memory: 256Mi
