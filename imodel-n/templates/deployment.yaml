@@ -41,6 +41,8 @@ spec:
               value: {{.Values.AWS_SECRET_ACCESS_KEY}}
             - name: MODEL_URI
               value: {{.Values.MODEL_URI}}
+            - name: API_TOKEN
+              value: {{.Values.API_TOKEN}}
 {{- if .Values.imodel.container.extraEnvs }}
 {{ toYaml .Values.imodel.container.extraEnvs | indent 12 }}
 {{- end }}
