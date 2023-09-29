@@ -15,6 +15,7 @@ timezone: Asia/Taipei
 
 hostName: myapps.ypcloud.com
 https: true
+ingressClassName: nginx
 
 ## imodel
 MLFLOW_S3_ENDPOINT_URL:

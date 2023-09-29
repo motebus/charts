@@ -7,15 +7,16 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-imodel
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: "{{ .Values.ingressClassName }}"
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
+  ingressClassName: {{ .Values.ingressClassName }}
 {{- if .Values.https }}
   tls:
     - hosts:
       - {{ .Values.hostName }}
-      secretName: {{ .Values.hostName }}-tls
+#      secretName: {{ .Values.hostName }}-tls
 {{- end }}
   rules:
     - host: {{ .Values.hostName }}
@@ -39,15 +40,16 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-swagger
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: "{{ .Values.ingressClassName }}"
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
+  ingressClassName: {{ .Values.ingressClassName }}
 {{- if .Values.https }}
   tls:
     - hosts:
       - {{ .Values.hostName }}
-      secretName: {{ .Values.hostName }}-tls
+#      secretName: {{ .Values.hostName }}-tls
 {{- end }}
   rules:
     - host: {{ .Values.hostName }}
