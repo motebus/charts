@@ -13,25 +13,27 @@ podDnsConfig:
     - 8.8.4.4
 timezone: Asia/Taipei
 
+hostName: myapps.ypcloud.com
+https: true
+ingressClassName: nginx
+
 ## imodel
+API_TOKEN:
 MLFLOW_S3_ENDPOINT_URL:
 AWS_ACCESS_KEY_ID:
 AWS_SECRET_ACCESS_KEY:
 MODEL_URI:
-## swagger-autogen
-MINIO_S3_BUCKET:
-MINIO_S3_OBJECT:
-MINIO_S3_ENDPOINT:
-MINIO_S3_PORT:
-MINIO_S3_USESSL:
-MINIO_S3_ACCESSKEY:
-MINIO_S3_SECRETKEY:
+SWAGGER_ENDPOINT_URL:
+SWAGGER_ACCESSKEY:
+SWAGGER_SECRETKEY:
+SWAGGER_BUCKET:
+SWAGGER_OBJECT:
 
 imodel:
   # image settings and pull policy
   image:
     repository: motebus/imodel
-    tag: 1.0.0
+    tag: 1.3.5
     pullPolicy: IfNotPresent
   # service settings
   service:
@@ -41,7 +43,6 @@ imodel:
     port: 5000
     clusterIP: None
     annotations:
-      konghq.com/plugins: rate-limiting, http-log, key-auth
   # container env settings
   container:
     #extra envs
@@ -50,20 +51,8 @@ imodel:
   # ingress host and path
   ingress:
     enabled: true
-    annotations:
-      kubernetes.io/ingress.class: "kong"
-      konghq.com/strip-path: "true"
-      konghq.com/protocols: "https"
-      konghq.com/https-redirect-status-code: "301"
-    tls:
-      []
-      # - hosts:
-      #     - myapps.ypcloud.com
-      #   secretName: flowbot-tls
-    hosts:
-      - myapps.ypcloud.com
+    rewritePath: false
     path: /model
-    pathType: Prefix
   persistence:
     #Enable config persistence using PVC
     enabled: true
@@ -80,40 +69,3 @@ imodel:
     limits:
       memory: 3Gi
       cpu: 500m
-swagger:
-  enabled: false
-  # image settings and pull policy
-  image:
-    repository: motebus/swagger
-    tag: v1.0.0
-    pullPolicy: IfNotPresent
-  # service settings
-  service:
-    type: ClusterIP
-    protocol: TCP
-    nodePort:
-    port: 3000
-    clusterIP: None
-  # container env settings
-  container:
-    #extra envs
-    extraEnvs: {}
-    command: []
-  ingress:
-    enabled: false
-    hosts:
-      - myapps.ypcloud.com
-    path: /model
-    pathType: Prefix
-    tls: []
-    annotations:
-      kubernetes.io/ingress.class: "kong"
-      konghq.com/strip-path: "true"
-      konghq.com/override: "https-only"
-  resources:
-    requests:
-      memory: 256Mi
-      cpu: 100m
-    limits:
-      memory: 512Mi
-      cpu: 250m

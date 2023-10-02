@@ -21,25 +21,3 @@ spec:
 {{- end}}
       port: {{ .Values.imodel.service.port}}
       targetPort: 5000
----
-{{- if .Values.swagger.enabled}}
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Release.Name }}-swagger
-spec:
-  type: {{ .Values.swagger.service.type }}
-  selector:
-    app: {{ .Release.Name }}-deployment
-{{- if eq .Values.swagger.service.type "ClusterIP"}}
-  clusterIP: {{ .Values.swagger.service.clusterIP}}
-{{- end}}
-  ports:
-    - name: swagger-port
-      protocol: {{ .Values.swagger.service.protocol }}
-{{- if eq .Values.swagger.service.type "NodePort"}}
-      nodePort: {{ .Values.swagger.service.nodePort}}
-{{- end}}
-      port: {{ .Values.swagger.service.port}}
-      targetPort: 3000
-{{- end}}

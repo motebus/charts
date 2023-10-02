@@ -1,65 +1,34 @@
 {{- if .Values.imodel.ingress.enabled}}
 {{- $imodelIngressPath := .Values.imodel.ingress.path -}}
 {{- $imodelServicePort := .Values.imodel.service.port -}}
-{{- $imodelIngressPathType := .Values.imodel.ingress.pathType -}}
 {{- $releaseName := .Release.Name -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}-imodel
-{{- with .Values.imodel.ingress.annotations }}
   annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
+    kubernetes.io/ingress.class: "{{ .Values.ingressClassName }}"
+  {{- if .Values.imodel.ingress.rewritePath }}
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  {{- end }}
 spec:
-{{- if .Values.imodel.ingress.tls }}
+  ingressClassName: {{ .Values.ingressClassName }}
+{{- if .Values.https }}
   tls:
-{{ toYaml .Values.imodel.ingress.tls | indent 4 }}
+    - hosts:
+      - {{ .Values.hostName }}
+#      secretName: {{ .Values.hostName }}-tls
 {{- end }}
   rules:
-  {{- range .Values.imodel.ingress.hosts }}
-    - host: {{ . }}
+    - host: {{ .Values.hostName }}
       http:
         paths:
           - path: {{ $imodelIngressPath }}
-            pathType: {{ $imodelIngressPathType }}
+            pathType: Prefix
             backend:
               service:
                 name: {{ $releaseName }}-imodel
                 port:
                   number: {{ $imodelServicePort }}
-  {{- end}}
-{{- end}}
----
-{{- if .Values.swagger.ingress.enabled}}
-{{- $swaggerIngressPath := .Values.swagger.ingress.path -}}
-{{- $swaggerServicePort := .Values.swagger.service.port -}}
-{{- $swaggerIngressPathType := .Values.swagger.ingress.pathType -}}
-{{- $releaseName := .Release.Name -}}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: {{ .Release.Name }}-swagger
-{{- with .Values.swagger.ingress.annotations }}
-  annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
-spec:
-{{- if .Values.swagger.ingress.tls }}
-  tls:
-{{ toYaml .Values.swagger.ingress.tls | indent 4 }}
-{{- end }}
-  rules:
-  {{- range .Values.swagger.ingress.hosts }}
-    - host: {{ . }}
-      http:
-        paths:
-          - path: {{ $swaggerIngressPath }}
-            pathType: {{ $swaggerIngressPathType }}
-            backend:
-              service:
-                name: {{ $releaseName }}-swagger
-                port:
-                  number: {{ $swaggerServicePort }}
-  {{- end}}
 {{- end}}
