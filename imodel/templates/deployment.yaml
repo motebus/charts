@@ -35,6 +35,8 @@ spec:
           env:
             - name: API_TOKEN
               value: {{.Values.API_TOKEN}}
+            - name: BASE_URL
+              value: {{.Values.BASE_URL}}
             - name: MLFLOW_S3_ENDPOINT_URL
               value: {{.Values.MLFLOW_S3_ENDPOINT_URL}}
             - name: AWS_ACCESS_KEY_ID
@@ -43,16 +45,8 @@ spec:
               value: {{.Values.AWS_SECRET_ACCESS_KEY}}
             - name: MODEL_URI
               value: {{.Values.MODEL_URI}}
-            - name: SWAGGER_ENDPOINT_URL
-              value: {{.Values.SWAGGER_ENDPOINT_URL}}
-            - name: SWAGGER_ACCESSKEY
-              value: {{.Values.SWAGGER_ACCESSKEY}}
-            - name: SWAGGER_SECRETKEY
-              value: {{.Values.SWAGGER_SECRETKEY}}
-            - name: SWAGGER_BUCKET
-              value: {{.Values.SWAGGER_BUCKET}}
-            - name: SWAGGER_OBJECT
-              value: {{.Values.SWAGGER_OBJECT}}
+            - name: SWAGGER_URI
+              value: {{.Values.SWAGGER_URI}}
 {{- if .Values.imodel.container.extraEnvs }}
 {{ toYaml .Values.imodel.container.extraEnvs | indent 12 }}
 {{- end }}
