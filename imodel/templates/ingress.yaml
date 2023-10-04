@@ -13,7 +13,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
   {{- end }}
 spec:
-{{- if .Values.addSpecIngressClassName }}}
+{{- if .Values.addSpecIngressClassName }}
   ingressClassName: {{ .Values.ingressClassName }}
 {{- end }}
 {{- if .Values.https }}
