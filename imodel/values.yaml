@@ -16,6 +16,7 @@ timezone: Asia/Taipei
 hostName: myapps.ypcloud.com
 https: true
 ingressClassName: nginx
+addSpecIngressClassName: true
 
 ## imodel
 API_TOKEN:
