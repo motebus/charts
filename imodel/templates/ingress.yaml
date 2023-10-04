@@ -7,15 +7,13 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-imodel
   annotations:
-    kubernetes.io/ingress.class: "{{ .Values.ingressClassName }}"
+#    kubernetes.io/ingress.class: "{{ .Values.ingressClassName }}"
   {{- if .Values.imodel.ingress.rewritePath }}
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
   {{- end }}
 spec:
-{{- if .Values.addSpecIngressClassName }}
   ingressClassName: {{ .Values.ingressClassName }}
-{{- end }}
 {{- if .Values.https }}
   tls:
     - hosts:
