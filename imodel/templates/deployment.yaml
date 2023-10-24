@@ -33,6 +33,8 @@ spec:
           image: {{ .Values.imodel.image.repository }}:{{ .Values.imodel.image.tag }}
           workingDir: /home/{{.Values.NB_USER}}
           env:
+            - name: APP_TYPE
+              value: {{.Values.APP_TYPE}}
             - name: API_TOKEN
               value: {{.Values.API_TOKEN}}
             - name: BASE_URL

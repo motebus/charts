@@ -18,6 +18,7 @@ https: true
 ingressClassName: nginx
 
 ## imodel
+APP_TYPE: mlflow
 API_TOKEN:
 MLFLOW_S3_ENDPOINT_URL:
 AWS_ACCESS_KEY_ID:
@@ -33,7 +34,7 @@ imodel:
   # image settings and pull policy
   image:
     repository: motebus/imodel
-    tag: 1.3.5
+    tag: 1.4.0
     pullPolicy: IfNotPresent
   # service settings
   service:
