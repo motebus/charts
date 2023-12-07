@@ -18,23 +18,21 @@ https: true
 ingressClassName: nginx
 
 ## imodel
-APP_TYPE: mlflow
+APP_NAME:
+APP_DESC:
 API_TOKEN:
-MLFLOW_S3_ENDPOINT_URL:
-AWS_ACCESS_KEY_ID:
-AWS_SECRET_ACCESS_KEY:
+BASE_URL:
+S3_ENDPOINT_URL:
+S3_ACCESS_KEY_ID:
+S3_SECRET_ACCESS_KEY:
 MODEL_URI:
-SWAGGER_ENDPOINT_URL:
-SWAGGER_ACCESSKEY:
-SWAGGER_SECRETKEY:
-SWAGGER_BUCKET:
-SWAGGER_OBJECT:
+IMODEL_VERSION: 1.6.0
+INGRESS_PATH: /model
 
 imodel:
   # image settings and pull policy
   image:
     repository: motebus/imodel
-    tag: 1.4.0
     pullPolicy: IfNotPresent
   # service settings
   service:
@@ -53,7 +51,6 @@ imodel:
   ingress:
     enabled: true
     rewritePath: false
-    path: /model
   persistence:
     #Enable config persistence using PVC
     enabled: true

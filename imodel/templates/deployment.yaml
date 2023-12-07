@@ -30,25 +30,24 @@ spec:
 {{- end }}
       containers:
         - name: imodel
-          image: {{ .Values.imodel.image.repository }}:{{ .Values.imodel.image.tag }}
-          workingDir: /home/{{.Values.NB_USER}}
+          image: {{ .Values.imodel.image.repository }}:{{ .Values.IMODEL_VERSION }}
           env:
-            - name: APP_TYPE
-              value: {{.Values.APP_TYPE}}
+            - name: APP_NAME
+              value: {{.Values.APP_NAME}}
+            - name: APP_DESC
+              value: {{.Values.APP_DESC}}
             - name: API_TOKEN
               value: {{.Values.API_TOKEN}}
             - name: BASE_URL
               value: {{.Values.BASE_URL}}
-            - name: MLFLOW_S3_ENDPOINT_URL
-              value: {{.Values.MLFLOW_S3_ENDPOINT_URL}}
-            - name: AWS_ACCESS_KEY_ID
-              value: {{.Values.AWS_ACCESS_KEY_ID}}
-            - name: AWS_SECRET_ACCESS_KEY
-              value: {{.Values.AWS_SECRET_ACCESS_KEY}}
+            - name: S3_ENDPOINT_URL
+              value: {{.Values.S3_ENDPOINT_URL}}
+            - name: S3_ACCESS_KEY_ID
+              value: {{.Values.S3_ACCESS_KEY_ID}}
+            - name: S3_SECRET_ACCESS_KEY
+              value: {{.Values.S3_SECRET_ACCESS_KEY}}
             - name: MODEL_URI
               value: {{.Values.MODEL_URI}}
-            - name: SWAGGER_URI
-              value: {{.Values.SWAGGER_URI}}
 {{- if .Values.imodel.container.extraEnvs }}
 {{ toYaml .Values.imodel.container.extraEnvs | indent 12 }}
 {{- end }}

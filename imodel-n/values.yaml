@@ -5,14 +5,12 @@ nodeSelector: {}
 replicaCount: 1
 # pod toleration
 tolerations: []
-
 #pod DNS policy and config
-#podDnsPolicy: "None"
-#podDnsConfig:
-#  nameservers:
-#    - 8.8.8.8
-#    - 8.8.4.4
-
+podDnsPolicy: "None"
+podDnsConfig:
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
 timezone: Asia/Taipei
 
 hostName: myapps.ypcloud.com

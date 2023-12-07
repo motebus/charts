@@ -1,5 +1,5 @@
 {{- if .Values.imodel.ingress.enabled}}
-{{- $imodelIngressPath := .Values.imodel.ingress.path -}}
+{{- $imodelIngressPath := .Values.INGRESS_PATH -}}
 {{- $imodelServicePort := .Values.imodel.service.port -}}
 {{- $releaseName := .Release.Name -}}
 apiVersion: networking.k8s.io/v1
