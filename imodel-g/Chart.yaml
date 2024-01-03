@@ -2,7 +2,7 @@ apiVersion: v2
 #The chart API version (required)
 #The apiVersion field should be v2 for Helm charts that require at least Helm 3
 
-name: imodel-n
+name: imodel-g
 # The name of the chart (required)
 
 version: 2.6.3
@@ -10,7 +10,7 @@ version: 2.6.3
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
 
-description: imodel cpu
+description: imodel gpu
 # - A single-sentence description of this project (optional)
 
 type: application

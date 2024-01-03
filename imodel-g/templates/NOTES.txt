@@ -1,0 +1,6 @@
+{{- if .Values.imodel.ingress.enabled}}
+{{- $imodelIngressPath := .Values.imodel.ingress.path -}}
+    {{- range .Values.imodel.ingress.hosts }}
+URL: {{ . }}{{ $imodelIngressPath }}
+    {{- end }}
+{{- end }}

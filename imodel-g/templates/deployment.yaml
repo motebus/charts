@@ -1,0 +1,73 @@
+{{- if eq .Values.kind "Deployment"}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deployment
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+       app: {{ .Release.Name }}-deployment
+    spec:
+{{- if .Values.podDnsPolicy}}
+      dnsPolicy: {{ .Values.podDnsPolicy}}
+{{- end}}
+{{- if .Values.podDnsConfig}}
+      dnsConfig:
+{{ toYaml .Values.podDnsConfig | indent 8}}
+{{- end}}
+{{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+{{- end }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
+      containers:
+        - name: imodel
+          image: {{ .Values.imodel.image.repository }}:{{ .Values.IMODEL_VERSION }}
+          env:
+            - name: APP_NAME
+              value: {{.Values.APP_NAME}}
+            - name: APP_DESC
+              value: {{.Values.APP_DESC}}
+            - name: API_TOKEN
+              value: {{.Values.API_TOKEN}}
+            - name: BASE_URL
+              value: {{.Values.BASE_URL}}
+            - name: S3_ENDPOINT_URL
+              value: {{.Values.S3_ENDPOINT_URL}}
+            - name: S3_ACCESS_KEY_ID
+              value: {{.Values.S3_ACCESS_KEY_ID}}
+            - name: S3_SECRET_ACCESS_KEY
+              value: {{.Values.S3_SECRET_ACCESS_KEY}}
+            - name: MODEL_URI
+              value: {{.Values.MODEL_URI}}
+{{- if .Values.imodel.container.extraEnvs }}
+{{ toYaml .Values.imodel.container.extraEnvs | indent 12 }}
+{{- end }}
+          ports:
+           - name: imodel-port
+             containerPort: 5000
+          command: 
+          {{- range .Values.imodel.container.command }}
+           - {{ . | quote }}
+          {{- end}}
+          imagePullPolicy: {{ .Values.imodel.image.pullPolicy}}
+          {{- if .Values.imodel.resources }}
+          resources: {{- toYaml .Values.imodel.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: tz
+              mountPath: /etc/localtime
+
+      volumes:
+        - name: tz
+          hostPath:
+            path: /etc/localtime
+{{- end }}

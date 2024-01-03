@@ -1,0 +1,81 @@
+{{- if eq .Values.kind "StatefulSet"}}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  serviceName: {{ .Release.Name }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deployment
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+       app: {{ .Release.Name }}-deployment
+    spec:
+{{- if .Values.podDnsPolicy}}
+      dnsPolicy: {{ .Values.podDnsPolicy}}
+{{- end}}
+{{- if .Values.podDnsConfig}}
+      dnsConfig:
+{{ toYaml .Values.podDnsConfig | indent 8}}
+{{- end}}
+{{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+{{- end }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
+      containers:
+        - name: imodel
+          image: {{ .Values.imodel.image.repository }}:{{ .Values.imodel.image.tag }}
+          workingDir: /home/{{.Values.NB_USER}}
+          env:
+            - name: MLFLOW_S3_ENDPOINT_URL
+              value: {{.Values.MLFLOW_S3_ENDPOINT_URL}}
+            - name: AWS_ACCESS_KEY_ID
+              value: {{.Values.AWS_ACCESS_KEY_ID}}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{.Values.AWS_SECRET_ACCESS_KEY}}
+            - name: MODEL_URI
+              value: {{.Values.MODEL_URI}}
+{{- if .Values.imodel.container.extraEnvs }}
+{{ toYaml .Values.imodel.container.extraEnvs | indent 12 }}
+{{- end }}
+          ports:
+           - name: imodel-port
+             containerPort: 5000
+          command: 
+          {{- range .Values.imodel.container.command }}
+           - {{ . | quote }}
+          {{- end}}
+          imagePullPolicy: {{ .Values.imodel.image.pullPolicy}}
+          {{- if .Values.imodel.resources }}
+          resources: {{- toYaml .Values.imodel.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: imodel-vol
+              mountPath: /home/{{.Values.NB_USER}}
+            - name: tz
+              mountPath: /etc/localtime
+
+      volumes:
+        - name: tz
+          hostPath:
+            path: /etc/localtime             
+
+  volumeClaimTemplates:
+{{- if .Values.imodel.persistence.enabled}}
+    - metadata:
+        name: imodel-vol
+      spec:
+        accessModes:  [ {{ .Values.imodel.persistence.accessMode | quote }} ]
+        storageClassName: {{ .Values.imodel.persistence.storageClass | quote }}
+        resources:
+            requests:
+                storage: {{ .Values.imodel.persistence.size | quote }}
+{{- end}}
+{{- end}}

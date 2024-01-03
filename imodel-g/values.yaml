@@ -64,6 +64,8 @@ imodel:
     requests:
       memory: 256Mi
       cpu: 100m
+      nvidia.com/gpu: 1
     limits:
       memory: 3Gi
       cpu: 500m
+      nvidia.com/gpu: 1
