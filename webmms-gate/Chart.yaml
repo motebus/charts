@@ -2,7 +2,7 @@ apiVersion: v1
 #The chart API version (required)
 #The apiVersion field should be v2 for Helm charts that require at least Helm 3
 
-name: webmms-srv
+name: webmms-gate
 # The name of the chart (required)
 
 version: v1.0.2
@@ -10,14 +10,14 @@ version: v1.0.2
 kubeVersion:
 # - A SemVer range of compatible Kubernetes versions (optional)
 
-description: webmms-srv
+description: webmms-gate
 # - A single-sentence description of this project (optional)
 
 type: application
 # It is the type of chart (optional)
 
 keywords:
-  - webmms-srv
+  - webmms-gate
 #   - A list of keywords about this project (optional)
 
 # home: The URL of this project's home page (optional)
