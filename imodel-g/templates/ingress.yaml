@@ -8,6 +8,7 @@ metadata:
   name: {{ .Release.Name }}-imodel
   annotations:
 #    kubernetes.io/ingress.class: "{{ .Values.ingressClassName }}"
+    nginx.ingress.kubernetes.io/proxy-body-size: 800m
   {{- if .Values.imodel.ingress.rewritePath }}
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
