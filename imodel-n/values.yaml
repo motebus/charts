@@ -28,6 +28,8 @@ S3_SECRET_ACCESS_KEY:
 MODEL_URI:
 IMODEL_VERSION: 1.6.0
 INGRESS_PATH: /model
+STORAGE_CLASS: csi-cinder
+STORAGE_SIZE: 15Gi
 
 imodel:
   # image settings and pull policy

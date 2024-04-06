@@ -63,6 +63,8 @@ spec:
           resources: {{- toYaml .Values.imodel.resources | nindent 12 }}
           {{- end }}
           volumeMounts:
+            - name: work-vol
+              mountPath: /app/work
             - name: tz
               mountPath: /etc/localtime
 
@@ -70,4 +72,14 @@ spec:
         - name: tz
           hostPath:
             path: /etc/localtime
+
+  volumeClaimTemplates:
+    - metadata:
+        name: work-vol
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: {{.Values.STORAGE_CLASS}}
+        resources:
+          requests:
+            storage: {{.Values.STORAGE_SIZE}}
 {{- end }}
