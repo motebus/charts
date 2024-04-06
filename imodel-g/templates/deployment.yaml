@@ -1,4 +1,16 @@
 {{- if eq .Values.kind "Deployment"}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-work-pvc
+spec:
+  storageClassName: {{.Values.STORAGE_CLASS}}
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{.Values.STORAGE_SIZE}}
+---      
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -72,14 +84,7 @@ spec:
         - name: tz
           hostPath:
             path: /etc/localtime
-
-  volumeClaimTemplates:
-    - metadata:
-        name: work-vol
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: {{.Values.STORAGE_CLASS}}
-        resources:
-          requests:
-            storage: {{.Values.STORAGE_SIZE}}
+        - name: work-vol
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-work-pvc
 {{- end }}
