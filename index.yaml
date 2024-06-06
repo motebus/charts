@@ -3,7 +3,7 @@ entries:
   fbots:
   - apiVersion: v1
     appVersion: v1.5.0
-    created: "2024-04-06T13:56:10.766337568+08:00"
+    created: "2024-06-06T15:08:41.615903+08:00"
     description: fbots
     digest: d87507dd96243d3d5cbc916b8f4cae461c2e2e3d30b1eabc6acb19dc174d878e
     keywords:
@@ -16,7 +16,7 @@ entries:
   fbuilder:
   - apiVersion: v2
     appVersion: v1.0.4
-    created: "2024-04-06T13:56:10.76701564+08:00"
+    created: "2024-06-06T15:08:41.621918+08:00"
     description: fbuilder
     digest: 0c40c22d06154a96a8d0a314d42f5ee743bc1194516db5557ec5cd4f62ca9e3b
     keywords:
@@ -29,7 +29,7 @@ entries:
   ibuilder:
   - apiVersion: v2
     appVersion: v1.2.3
-    created: "2024-04-06T13:56:10.767674305+08:00"
+    created: "2024-06-06T15:08:41.627322+08:00"
     description: jupyter
     digest: d7038249eef179ad9e8ac3deeb357e289e2cffe119f52cde3e7e3674f193bf03
     keywords:
@@ -42,7 +42,7 @@ entries:
   imodel:
   - apiVersion: v2
     appVersion: 2.6.2
-    created: "2024-04-06T13:56:10.768260236+08:00"
+    created: "2024-06-06T15:08:41.639325+08:00"
     description: imodel
     digest: 260030e92acc81afffa7b10c69ef71deaeac8407e3a6e99c9c0e5d23f7ef7e5a
     keywords:
@@ -54,8 +54,20 @@ entries:
     version: 2.6.2
   imodel-g:
   - apiVersion: v2
+    appVersion: 2.6.7
+    created: "2024-06-06T15:08:41.648594+08:00"
+    description: imodel gpu
+    digest: 2a3983a8a5d0f26ead916f6f051a948ed9f41936988e4cb1d3498885d6ae0d99
+    keywords:
+    - imodel
+    name: imodel-g
+    type: application
+    urls:
+    - imodel-g-2.6.7.tgz
+    version: 2.6.7
+  - apiVersion: v2
     appVersion: 2.6.6
-    created: "2024-04-06T13:56:10.768904082+08:00"
+    created: "2024-06-06T15:08:41.643995+08:00"
     description: imodel gpu
     digest: 9dc446a3b01236502f7b2f6e7a92f846985092317a8fb2c6bdd09fd6d760c0a2
     keywords:
@@ -67,8 +79,20 @@ entries:
     version: 2.6.6
   imodel-n:
   - apiVersion: v2
+    appVersion: 2.6.7
+    created: "2024-06-06T15:08:41.662081+08:00"
+    description: imodel cpu
+    digest: 8cc8d96408457fdc1461f94256361d347e7d6b6440b34a73f0c614a8f22f0696
+    keywords:
+    - imodel
+    name: imodel-n
+    type: application
+    urls:
+    - imodel-n-2.6.7.tgz
+    version: 2.6.7
+  - apiVersion: v2
     appVersion: 2.6.6
-    created: "2024-04-06T13:56:10.769528274+08:00"
+    created: "2024-06-06T15:08:41.65676+08:00"
     description: imodel cpu
     digest: ccd1b34b3bad9ecb4eab02366b9275b45baab12a53c4d963faf8492f92ae6198
     keywords:
@@ -81,7 +105,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2024-04-06T13:56:10.770137082+08:00"
+    created: "2024-06-06T15:08:41.670528+08:00"
     description: iocview
     digest: a83de3989155e3e1295a77acbb6240e103e8e482dc8344c8719950862bb5b3c3
     keywords:
@@ -94,7 +118,7 @@ entries:
   mlflow:
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2024-04-06T13:56:10.771095713+08:00"
+    created: "2024-06-06T15:08:41.682828+08:00"
     description: mlflow
     digest: b10c73b8f1cf48b302161c0f49b5608ff8184e0e1a30de75888bb7d640d43ec3
     keywords:
@@ -107,7 +131,7 @@ entries:
   mlflow-n:
   - apiVersion: v1
     appVersion: 2.0.5
-    created: "2024-04-06T13:56:10.770607096+08:00"
+    created: "2024-06-06T15:08:41.677615+08:00"
     description: mlflow
     digest: 25f8cf6b98d1a3d86e186a452a1ca4d026afaf1612d0fcdf7b786740e3ad8760
     keywords:
@@ -120,7 +144,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2024-04-06T13:56:10.771692281+08:00"
+    created: "2024-06-06T15:08:41.689125+08:00"
     description: smartscreen
     digest: 3ec4ffca55de46a68f07ccd24cccb9436e8e7563ac9a08b07be7775cda04960d
     keywords:
@@ -133,7 +157,7 @@ entries:
   webmms-gate:
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2024-04-06T13:56:10.772365639+08:00"
+    created: "2024-06-06T15:08:41.693156+08:00"
     description: webmms-gate
     digest: 82091116515700e1b1b325f8c86e347e114d095f01f04a0d8670df1a195ec523
     keywords:
@@ -143,4 +167,4 @@ entries:
     urls:
     - webmms-gate-v1.0.2.tgz
     version: v1.0.2
-generated: "2024-04-06T13:56:10.765487149+08:00"
+generated: "2024-06-06T15:08:41.605223+08:00"
