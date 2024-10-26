@@ -3,7 +3,7 @@ entries:
   fbots:
   - apiVersion: v1
     appVersion: v1.5.0
-    created: "2024-06-24T13:59:53.845229+08:00"
+    created: "2024-10-26T13:57:13.90705624+08:00"
     description: fbots
     digest: d87507dd96243d3d5cbc916b8f4cae461c2e2e3d30b1eabc6acb19dc174d878e
     keywords:
@@ -16,7 +16,7 @@ entries:
   fbuilder:
   - apiVersion: v2
     appVersion: v1.0.4
-    created: "2024-06-24T13:59:53.846722+08:00"
+    created: "2024-10-26T13:57:13.907889665+08:00"
     description: fbuilder
     digest: 0c40c22d06154a96a8d0a314d42f5ee743bc1194516db5557ec5cd4f62ca9e3b
     keywords:
@@ -29,7 +29,7 @@ entries:
   ibuilder:
   - apiVersion: v2
     appVersion: v1.2.3
-    created: "2024-06-24T13:59:53.848258+08:00"
+    created: "2024-10-26T13:57:13.908893942+08:00"
     description: jupyter
     digest: d7038249eef179ad9e8ac3deeb357e289e2cffe119f52cde3e7e3674f193bf03
     keywords:
@@ -42,7 +42,7 @@ entries:
   imodel:
   - apiVersion: v2
     appVersion: 2.6.2
-    created: "2024-06-24T13:59:53.849654+08:00"
+    created: "2024-10-26T13:57:13.909719485+08:00"
     description: imodel
     digest: 260030e92acc81afffa7b10c69ef71deaeac8407e3a6e99c9c0e5d23f7ef7e5a
     keywords:
@@ -54,8 +54,20 @@ entries:
     version: 2.6.2
   imodel-g:
   - apiVersion: v2
+    appVersion: 2.7.0
+    created: "2024-10-26T13:57:13.913954509+08:00"
+    description: imodel gpu
+    digest: 607b15903649546aa6dff483e0757c87f6bedaeb6d28789f464cede3dc2966f2
+    keywords:
+    - imodel
+    name: imodel-g
+    type: application
+    urls:
+    - imodel-g-2.7.0.tgz
+    version: 2.7.0
+  - apiVersion: v2
     appVersion: 2.6.9
-    created: "2024-06-24T13:59:53.854859+08:00"
+    created: "2024-10-26T13:57:13.913255181+08:00"
     description: imodel gpu
     digest: b43f8d2e1e02c306061ae9390be1aebe8edd2d9be7141a48484416c987a0dac5
     keywords:
@@ -67,7 +79,7 @@ entries:
     version: 2.6.9
   - apiVersion: v2
     appVersion: 2.6.8
-    created: "2024-06-24T13:59:53.853523+08:00"
+    created: "2024-10-26T13:57:13.912501731+08:00"
     description: imodel gpu
     digest: 8bdfeb89a33ed8e017beeb9b57605b7d25e13769f34f3f79607673e75b0ff33f
     keywords:
@@ -79,7 +91,7 @@ entries:
     version: 2.6.8
   - apiVersion: v2
     appVersion: 2.6.7
-    created: "2024-06-24T13:59:53.852245+08:00"
+    created: "2024-10-26T13:57:13.911476071+08:00"
     description: imodel gpu
     digest: 2a3983a8a5d0f26ead916f6f051a948ed9f41936988e4cb1d3498885d6ae0d99
     keywords:
@@ -91,7 +103,7 @@ entries:
     version: 2.6.7
   - apiVersion: v2
     appVersion: 2.6.6
-    created: "2024-06-24T13:59:53.851038+08:00"
+    created: "2024-10-26T13:57:13.910610254+08:00"
     description: imodel gpu
     digest: 9dc446a3b01236502f7b2f6e7a92f846985092317a8fb2c6bdd09fd6d760c0a2
     keywords:
@@ -103,8 +115,20 @@ entries:
     version: 2.6.6
   imodel-n:
   - apiVersion: v2
+    appVersion: 2.7.0
+    created: "2024-10-26T13:57:13.918537691+08:00"
+    description: imodel cpu
+    digest: e088d043de7fe22c5a94371ae59ac201643d659c8decf701ac5c8cf7f6138a03
+    keywords:
+    - imodel
+    name: imodel-n
+    type: application
+    urls:
+    - imodel-n-2.7.0.tgz
+    version: 2.7.0
+  - apiVersion: v2
     appVersion: 2.6.9
-    created: "2024-06-24T13:59:53.860075+08:00"
+    created: "2024-10-26T13:57:13.917382766+08:00"
     description: imodel cpu
     digest: 401728627face996fc85cf70444d81c2a2c2470b60fea8fdbb9635cfd1ef3717
     keywords:
@@ -116,7 +140,7 @@ entries:
     version: 2.6.9
   - apiVersion: v2
     appVersion: 2.6.8
-    created: "2024-06-24T13:59:53.858879+08:00"
+    created: "2024-10-26T13:57:13.91600199+08:00"
     description: imodel cpu
     digest: 10a33a1032668681edecdaf1e51436339b0468b6f59f8cb59a2aca830321672a
     keywords:
@@ -128,7 +152,7 @@ entries:
     version: 2.6.8
   - apiVersion: v2
     appVersion: 2.6.7
-    created: "2024-06-24T13:59:53.857638+08:00"
+    created: "2024-10-26T13:57:13.915307816+08:00"
     description: imodel cpu
     digest: 8cc8d96408457fdc1461f94256361d347e7d6b6440b34a73f0c614a8f22f0696
     keywords:
@@ -140,7 +164,7 @@ entries:
     version: 2.6.7
   - apiVersion: v2
     appVersion: 2.6.6
-    created: "2024-06-24T13:59:53.856244+08:00"
+    created: "2024-10-26T13:57:13.914641811+08:00"
     description: imodel cpu
     digest: ccd1b34b3bad9ecb4eab02366b9275b45baab12a53c4d963faf8492f92ae6198
     keywords:
@@ -153,7 +177,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2024-06-24T13:59:53.861181+08:00"
+    created: "2024-10-26T13:57:13.919303674+08:00"
     description: iocview
     digest: a83de3989155e3e1295a77acbb6240e103e8e482dc8344c8719950862bb5b3c3
     keywords:
@@ -166,7 +190,7 @@ entries:
   mlflow:
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2024-06-24T13:59:53.863146+08:00"
+    created: "2024-10-26T13:57:13.920386345+08:00"
     description: mlflow
     digest: b10c73b8f1cf48b302161c0f49b5608ff8184e0e1a30de75888bb7d640d43ec3
     keywords:
@@ -179,7 +203,7 @@ entries:
   mlflow-n:
   - apiVersion: v1
     appVersion: 2.0.5
-    created: "2024-06-24T13:59:53.8622+08:00"
+    created: "2024-10-26T13:57:13.919835199+08:00"
     description: mlflow
     digest: 25f8cf6b98d1a3d86e186a452a1ca4d026afaf1612d0fcdf7b786740e3ad8760
     keywords:
@@ -192,7 +216,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2024-06-24T13:59:53.864245+08:00"
+    created: "2024-10-26T13:57:13.921050926+08:00"
     description: smartscreen
     digest: 3ec4ffca55de46a68f07ccd24cccb9436e8e7563ac9a08b07be7775cda04960d
     keywords:
@@ -205,7 +229,7 @@ entries:
   webmms-gate:
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2024-06-24T13:59:53.866378+08:00"
+    created: "2024-10-26T13:57:13.921714729+08:00"
     description: webmms-gate
     digest: 82091116515700e1b1b325f8c86e347e114d095f01f04a0d8670df1a195ec523
     keywords:
@@ -215,4 +239,4 @@ entries:
     urls:
     - webmms-gate-v1.0.2.tgz
     version: v1.0.2
-generated: "2024-06-24T13:59:53.84155+08:00"
+generated: "2024-10-26T13:57:13.905908073+08:00"
