@@ -3,7 +3,7 @@ entries:
   fbots:
   - apiVersion: v1
     appVersion: v1.5.0
-    created: "2025-07-07T17:48:35.676184635+08:00"
+    created: "2025-07-08T20:51:19.075802891+08:00"
     description: fbots
     digest: d87507dd96243d3d5cbc916b8f4cae461c2e2e3d30b1eabc6acb19dc174d878e
     keywords:
@@ -16,7 +16,7 @@ entries:
   fbuilder:
   - apiVersion: v2
     appVersion: v1.0.4
-    created: "2025-07-07T17:48:35.677027645+08:00"
+    created: "2025-07-08T20:51:19.076637842+08:00"
     description: fbuilder
     digest: 0c40c22d06154a96a8d0a314d42f5ee743bc1194516db5557ec5cd4f62ca9e3b
     keywords:
@@ -29,7 +29,7 @@ entries:
   ibuilder:
   - apiVersion: v2
     appVersion: v1.2.3
-    created: "2025-07-07T17:48:35.677777032+08:00"
+    created: "2025-07-08T20:51:19.077383662+08:00"
     description: jupyter
     digest: d7038249eef179ad9e8ac3deeb357e289e2cffe119f52cde3e7e3674f193bf03
     keywords:
@@ -42,7 +42,7 @@ entries:
   imodel:
   - apiVersion: v2
     appVersion: 2.6.2
-    created: "2025-07-07T17:48:35.678569623+08:00"
+    created: "2025-07-08T20:51:19.078037432+08:00"
     description: imodel
     digest: 260030e92acc81afffa7b10c69ef71deaeac8407e3a6e99c9c0e5d23f7ef7e5a
     keywords:
@@ -54,8 +54,20 @@ entries:
     version: 2.6.2
   imodel-g:
   - apiVersion: v2
+    appVersion: 3.0.1
+    created: "2025-07-08T20:51:19.082997681+08:00"
+    description: imodel gpu
+    digest: 9c28af5cdea5dcaa57fec05c33ecae4afe92c81322a60149918a9fdea32e9c0a
+    keywords:
+    - imodel
+    name: imodel-g
+    type: application
+    urls:
+    - imodel-g-3.0.1.tgz
+    version: 3.0.1
+  - apiVersion: v2
     appVersion: 3.0.0
-    created: "2025-07-07T17:48:35.683434473+08:00"
+    created: "2025-07-08T20:51:19.082211841+08:00"
     description: imodel gpu
     digest: 8ea6647ac07ff2424a443dec820d19b3b3f29b7e15dc10d2e368d53406629fcf
     keywords:
@@ -67,7 +79,7 @@ entries:
     version: 3.0.0
   - apiVersion: v2
     appVersion: 2.7.0
-    created: "2025-07-07T17:48:35.682192972+08:00"
+    created: "2025-07-08T20:51:19.081409014+08:00"
     description: imodel gpu
     digest: 607b15903649546aa6dff483e0757c87f6bedaeb6d28789f464cede3dc2966f2
     keywords:
@@ -79,7 +91,7 @@ entries:
     version: 2.7.0
   - apiVersion: v2
     appVersion: 2.6.9
-    created: "2025-07-07T17:48:35.681512025+08:00"
+    created: "2025-07-08T20:51:19.080701301+08:00"
     description: imodel gpu
     digest: b43f8d2e1e02c306061ae9390be1aebe8edd2d9be7141a48484416c987a0dac5
     keywords:
@@ -91,7 +103,7 @@ entries:
     version: 2.6.9
   - apiVersion: v2
     appVersion: 2.6.8
-    created: "2025-07-07T17:48:35.680796036+08:00"
+    created: "2025-07-08T20:51:19.080025437+08:00"
     description: imodel gpu
     digest: 8bdfeb89a33ed8e017beeb9b57605b7d25e13769f34f3f79607673e75b0ff33f
     keywords:
@@ -103,7 +115,7 @@ entries:
     version: 2.6.8
   - apiVersion: v2
     appVersion: 2.6.7
-    created: "2025-07-07T17:48:35.679983779+08:00"
+    created: "2025-07-08T20:51:19.07937243+08:00"
     description: imodel gpu
     digest: 2a3983a8a5d0f26ead916f6f051a948ed9f41936988e4cb1d3498885d6ae0d99
     keywords:
@@ -115,7 +127,7 @@ entries:
     version: 2.6.7
   - apiVersion: v2
     appVersion: 2.6.6
-    created: "2025-07-07T17:48:35.679291927+08:00"
+    created: "2025-07-08T20:51:19.078723354+08:00"
     description: imodel gpu
     digest: 9dc446a3b01236502f7b2f6e7a92f846985092317a8fb2c6bdd09fd6d760c0a2
     keywords:
@@ -128,7 +140,7 @@ entries:
   imodel-gpu:
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2025-07-07T17:48:35.684859146+08:00"
+    created: "2025-07-08T20:51:19.084681529+08:00"
     description: imodel gpu
     digest: db9c6eec1f8939e6e119039187d5ec9bd51d65ccddf36378941ea90e77241fd4
     keywords:
@@ -140,8 +152,20 @@ entries:
     version: 3.0.0
   imodel-n:
   - apiVersion: v2
+    appVersion: 3.0.1
+    created: "2025-07-08T20:51:19.090200635+08:00"
+    description: imodel cpu
+    digest: 0026789f2fae37d3afecff16a19dc1e9ff56bc23fc223aa4f501e48a33d0c88b
+    keywords:
+    - imodel
+    name: imodel-n
+    type: application
+    urls:
+    - imodel-n-3.0.1.tgz
+    version: 3.0.1
+  - apiVersion: v2
     appVersion: 3.0.0
-    created: "2025-07-07T17:48:35.68949097+08:00"
+    created: "2025-07-08T20:51:19.089522925+08:00"
     description: imodel cpu
     digest: 6ee4ca13e386af06e5a40e84307505aca32d3c5f83f7ce59d270d3807d83c53d
     keywords:
@@ -153,7 +177,7 @@ entries:
     version: 3.0.0
   - apiVersion: v2
     appVersion: 2.7.0
-    created: "2025-07-07T17:48:35.688770998+08:00"
+    created: "2025-07-08T20:51:19.088761108+08:00"
     description: imodel cpu
     digest: e088d043de7fe22c5a94371ae59ac201643d659c8decf701ac5c8cf7f6138a03
     keywords:
@@ -165,7 +189,7 @@ entries:
     version: 2.7.0
   - apiVersion: v2
     appVersion: 2.6.9
-    created: "2025-07-07T17:48:35.688039573+08:00"
+    created: "2025-07-08T20:51:19.088082712+08:00"
     description: imodel cpu
     digest: 401728627face996fc85cf70444d81c2a2c2470b60fea8fdbb9635cfd1ef3717
     keywords:
@@ -177,7 +201,7 @@ entries:
     version: 2.6.9
   - apiVersion: v2
     appVersion: 2.6.8
-    created: "2025-07-07T17:48:35.687294656+08:00"
+    created: "2025-07-08T20:51:19.087333067+08:00"
     description: imodel cpu
     digest: 10a33a1032668681edecdaf1e51436339b0468b6f59f8cb59a2aca830321672a
     keywords:
@@ -189,7 +213,7 @@ entries:
     version: 2.6.8
   - apiVersion: v2
     appVersion: 2.6.7
-    created: "2025-07-07T17:48:35.686541234+08:00"
+    created: "2025-07-08T20:51:19.086551382+08:00"
     description: imodel cpu
     digest: 8cc8d96408457fdc1461f94256361d347e7d6b6440b34a73f0c614a8f22f0696
     keywords:
@@ -201,7 +225,7 @@ entries:
     version: 2.6.7
   - apiVersion: v2
     appVersion: 2.6.6
-    created: "2025-07-07T17:48:35.685705005+08:00"
+    created: "2025-07-08T20:51:19.08581885+08:00"
     description: imodel cpu
     digest: ccd1b34b3bad9ecb4eab02366b9275b45baab12a53c4d963faf8492f92ae6198
     keywords:
@@ -214,7 +238,7 @@ entries:
   imodel-s:
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2025-07-07T17:48:35.690154004+08:00"
+    created: "2025-07-08T20:51:19.090851362+08:00"
     description: imodel cpu
     digest: c75b1602add7a2d187273ff9d9e7a730a97e889da9a9ade58eca250b757bcd6d
     keywords:
@@ -227,7 +251,7 @@ entries:
   iocview:
   - apiVersion: v1
     appVersion: v2.1.2
-    created: "2025-07-07T17:48:35.690812244+08:00"
+    created: "2025-07-08T20:51:19.091500941+08:00"
     description: iocview
     digest: a83de3989155e3e1295a77acbb6240e103e8e482dc8344c8719950862bb5b3c3
     keywords:
@@ -240,7 +264,7 @@ entries:
   mlflow:
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2025-07-07T17:48:35.692384245+08:00"
+    created: "2025-07-08T20:51:19.093907558+08:00"
     description: mlflow
     digest: b10c73b8f1cf48b302161c0f49b5608ff8184e0e1a30de75888bb7d640d43ec3
     keywords:
@@ -252,8 +276,20 @@ entries:
     version: v1.0.6
   mlflow-n:
   - apiVersion: v1
+    appVersion: 3.0.1
+    created: "2025-07-08T20:51:19.093365014+08:00"
+    description: mlflow
+    digest: 712de071056f37ad323391438bf0380d42c8d557e85dd0bf6d49e2a4872e4ef0
+    keywords:
+    - mlflow
+    name: mlflow-n
+    type: application
+    urls:
+    - mlflow-n-3.0.1.tgz
+    version: 3.0.1
+  - apiVersion: v1
     appVersion: 3.0.0
-    created: "2025-07-07T17:48:35.691840151+08:00"
+    created: "2025-07-08T20:51:19.092618025+08:00"
     description: mlflow
     digest: 42397dfc4b6986f1240c4369e5af06f2d56ae37fa30427573fbcbdf1a6c8a668
     keywords:
@@ -265,7 +301,7 @@ entries:
     version: 3.0.0
   - apiVersion: v1
     appVersion: 2.0.5
-    created: "2025-07-07T17:48:35.691328136+08:00"
+    created: "2025-07-08T20:51:19.092044299+08:00"
     description: mlflow
     digest: 25f8cf6b98d1a3d86e186a452a1ca4d026afaf1612d0fcdf7b786740e3ad8760
     keywords:
@@ -278,7 +314,7 @@ entries:
   sscreen:
   - apiVersion: v1
     appVersion: v2.0.5
-    created: "2025-07-07T17:48:35.693030165+08:00"
+    created: "2025-07-08T20:51:19.094555673+08:00"
     description: smartscreen
     digest: 3ec4ffca55de46a68f07ccd24cccb9436e8e7563ac9a08b07be7775cda04960d
     keywords:
@@ -291,7 +327,7 @@ entries:
   webmms-gate:
   - apiVersion: v1
     appVersion: v1.5.9
-    created: "2025-07-07T17:48:35.69373907+08:00"
+    created: "2025-07-08T20:51:19.095225411+08:00"
     description: webmms-gate
     digest: 82091116515700e1b1b325f8c86e347e114d095f01f04a0d8670df1a195ec523
     keywords:
@@ -301,4 +337,4 @@ entries:
     urls:
     - webmms-gate-v1.0.2.tgz
     version: v1.0.2
-generated: "2025-07-07T17:48:35.675111321+08:00"
+generated: "2025-07-08T20:51:19.074758715+08:00"
